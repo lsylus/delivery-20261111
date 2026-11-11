@@ -1,0 +1,7 @@
+{
+  "data_root": "/NEW_ROOT/work/service-data",
+  "port": 18761,
+  "image": null,
+  "package_paths": [],
+  "credential_ref": null
+}

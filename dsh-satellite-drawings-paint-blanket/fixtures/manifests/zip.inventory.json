@@ -1,0 +1,224 @@
+{
+  "schema_version": 1,
+  "kind": "zip_inventory_not_loaded_CAD",
+  "source_root": "D:\\小卫星\\插件\\新增插件.zip",
+  "archive_bytes": 116928155,
+  "archive_mtime_ns": 1793884755001480800,
+  "files": [
+    {
+      "relative_path": "新增插件/AI图纸技术要求.docx",
+      "bytes": 14792,
+      "compressed_bytes": 12012,
+      "crc32": "25c999e1",
+      "sha256": "9ffec0e25ea378483b2d543b544db33c2dff3fcd39d1466770b6cf6bfee49a48",
+      "detected_format": "other",
+      "header_sample": null
+    },
+    {
+      "relative_path": "新增插件/CODEX_WORK_ORDER.docx",
+      "bytes": 57203,
+      "compressed_bytes": 54740,
+      "crc32": "bf01d226",
+      "sha256": "30afc8d04f31d295635b35353638e5be5fe95b0285e4bdeb5b82f1e88bd6550e",
+      "detected_format": "other",
+      "header_sample": null
+    },
+    {
+      "relative_path": "新增插件/CODEX_WORK_ORDER.md",
+      "bytes": 32354,
+      "compressed_bytes": 14504,
+      "crc32": "fc3c9fb5",
+      "sha256": "29db2afd10a339adacfb491f2639dbb9231f279d1407e5a53ba1aeea81f7df99",
+      "detected_format": "other",
+      "header_sample": null
+    },
+    {
+      "relative_path": "新增插件/DELIVERY_MANIFEST.json",
+      "bytes": 4699,
+      "compressed_bytes": 1868,
+      "crc32": "4fa984b8",
+      "sha256": "c30d10cbdf01fda718948e6767315620ff6f1d596e92e817694baf1a15b4e808",
+      "detected_format": "other",
+      "header_sample": null
+    },
+    {
+      "relative_path": "新增插件/frontend/dist/assets/app.js",
+      "bytes": 51329,
+      "compressed_bytes": 17195,
+      "crc32": "5a71fcc4"
+    },
+    {
+      "relative_path": "新增插件/frontend/dist/assets/cad-scene.js",
+      "bytes": 21709,
+      "compressed_bytes": 8102,
+      "crc32": "133a706c"
+    },
+    {
+      "relative_path": "新增插件/frontend/dist/assets/drawings.js",
+      "bytes": 17647,
+      "compressed_bytes": 6540,
+      "crc32": "5c328892"
+    },
+    {
+      "relative_path": "新增插件/frontend/dist/assets/favicon.svg",
+      "bytes": 294,
+      "compressed_bytes": 182,
+      "crc32": "44fc3b45"
+    },
+    {
+      "relative_path": "新增插件/frontend/dist/assets/styles.css",
+      "bytes": 30620,
+      "compressed_bytes": 7424,
+      "crc32": "4c6e5356"
+    },
+    {
+      "relative_path": "新增插件/frontend/dist/blanket/index.html",
+      "bytes": 688,
+      "compressed_bytes": 436,
+      "crc32": "54a3ce70"
+    },
+    {
+      "relative_path": "新增插件/frontend/dist/index.html",
+      "bytes": 685,
+      "compressed_bytes": 435,
+      "crc32": "be4a9a0b"
+    },
+    {
+      "relative_path": "新增插件/frontend/dist/paint/index.html",
+      "bytes": 685,
+      "compressed_bytes": 435,
+      "crc32": "be4a9a0b"
+    },
+    {
+      "relative_path": "新增插件/frontend/README.md",
+      "bytes": 1739,
+      "compressed_bytes": 1108,
+      "crc32": "cd57189c",
+      "sha256": "5fe8c267f117f996a67ade3dd31db4a2da075d938adb05d721afebd3058dcd4e",
+      "detected_format": "other",
+      "header_sample": null
+    },
+    {
+      "relative_path": "新增插件/preview/blanket-workbench.html",
+      "bytes": 121711,
+      "compressed_bytes": 37831,
+      "crc32": "b258eec6"
+    },
+    {
+      "relative_path": "新增插件/preview/paint-workbench.html",
+      "bytes": 121706,
+      "compressed_bytes": 37828,
+      "crc32": "77f28491"
+    },
+    {
+      "relative_path": "新增插件/references/AI图纸技术要求.docx",
+      "bytes": 14792,
+      "compressed_bytes": 12012,
+      "crc32": "25c999e1",
+      "sha256": "9ffec0e25ea378483b2d543b544db33c2dff3fcd39d1466770b6cf6bfee49a48",
+      "detected_format": "other",
+      "header_sample": null
+    },
+    {
+      "relative_path": "新增插件/references/requirements_traceability.md",
+      "bytes": 4999,
+      "compressed_bytes": 2722,
+      "crc32": "3f63e249",
+      "sha256": "9b53f7bd25efcb61dbbd3e6360bdcff934eb7cdb782f282a4201e20041bf9367",
+      "detected_format": "other",
+      "header_sample": null
+    },
+    {
+      "relative_path": "新增插件/START_HERE.md",
+      "bytes": 3514,
+      "compressed_bytes": 2088,
+      "crc32": "634273cb",
+      "sha256": "c9ffb74342129a3c26e75658eb32c862389262eab027b94acaec50e4ff3443eb",
+      "detected_format": "other",
+      "header_sample": null
+    },
+    {
+      "relative_path": "新增插件/templates/blanket_request.template.json",
+      "bytes": 1327,
+      "compressed_bytes": 622,
+      "crc32": "becd19f3",
+      "sha256": "46d53dc86fbf1bfc36937d6706793620216cdce881dda9c8b354e86bffb11b1c",
+      "detected_format": "other",
+      "header_sample": null,
+      "source_status": "legacy_template_only_not_production_contract"
+    },
+    {
+      "relative_path": "新增插件/templates/case_manifest.template.json",
+      "bytes": 628,
+      "compressed_bytes": 371,
+      "crc32": "2d6935db",
+      "sha256": "074cffbdff410675d6ab8c155cb4e87989823d514e0bc74666a5c16ebad5cf75",
+      "detected_format": "other",
+      "header_sample": null,
+      "source_status": "legacy_template_only_not_production_contract"
+    },
+    {
+      "relative_path": "新增插件/templates/local_environment.template.json",
+      "bytes": 951,
+      "compressed_bytes": 480,
+      "crc32": "0e504c7b",
+      "sha256": "89ed3b3340f9d6eb5d175860f9a1779d28b39dcc96acf06dc09bd77746c02909",
+      "detected_format": "other",
+      "header_sample": null,
+      "source_status": "legacy_template_only_not_production_contract"
+    },
+    {
+      "relative_path": "新增插件/templates/paint_request.template.json",
+      "bytes": 1131,
+      "compressed_bytes": 611,
+      "crc32": "d845624b",
+      "sha256": "40f9388734b91c6456637dcd838c02fe716ec47007738ae8dfea4b17d071250e",
+      "detected_format": "other",
+      "header_sample": null,
+      "source_status": "legacy_template_only_not_production_contract"
+    },
+    {
+      "relative_path": "新增插件/templates/run_result.template.json",
+      "bytes": 1445,
+      "compressed_bytes": 676,
+      "crc32": "83c3f855",
+      "sha256": "17112a591d00b29445ab014be610aa2e2ad007f5ecf2216cdf5940ac46173376",
+      "detected_format": "other",
+      "header_sample": null,
+      "source_status": "legacy_template_only_not_production_contract"
+    },
+    {
+      "relative_path": "新增插件/tools/build_offline.py",
+      "bytes": 2783,
+      "compressed_bytes": 1201,
+      "crc32": "1d549fc5"
+    },
+    {
+      "relative_path": "新增插件/tools/serve_preview.py",
+      "bytes": 1076,
+      "compressed_bytes": 549,
+      "crc32": "d5c6b865"
+    },
+    {
+      "relative_path": "新增插件/测试算例/20261010_asm_5_asm.stp",
+      "bytes": 670820444,
+      "compressed_bytes": 114775524,
+      "crc32": "2c0a1492",
+      "sha256": "d844ec5b964585d16f1162dd6b508ddf3cb885997bd285d533e1d2286ff7a684",
+      "detected_format": "STEP",
+      "header_sample": "ISO-10303-21;\r\nHEADER;\r\nFILE_DESCRIPTION((''),'2;1');\r\nFILE_NAME('20260710_ASM_5_ASM','2026-10-10T09:23:45',('zhuxf'),(''),\r\n'CREO PARAMETRIC BY PTC INC, 202207"
+    },
+    {
+      "relative_path": "新增插件/测试算例/喷漆图.DWG",
+      "bytes": 2156305,
+      "compressed_bytes": 1922363,
+      "crc32": "aa64f52a",
+      "sha256": "65116d803d3ee4c99e4d13ec8bafbcb14d3bbadffd4d8f30612f739fc22ddb96",
+      "detected_format": "DWG",
+      "header_sample": "AC1032\u0000\u0000\u0000\u0000\u0000\u0000\u0003�~ \u0000!\u0000'\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000 \u0001\u0000\u0000\u0000\u0000\u0000\u0000�\u0000\u0000\u0000�\r\u0000\u0000\u0000\u0010\u0000\u0000\u0002\u0002\u0000\u0000�\u0000\u0000\u0000�\u0000\u0000\u0000�\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000h@���*��\u0018�\u000b��������<�\f>������H�!"
+    }
+  ],
+  "completeness": "not_opened",
+  "revision_correspondence": "unknown",
+  "method": "one streaming decompression/hash per CAD entry; no extracted large model"
+}

@@ -1,0 +1,176 @@
+{
+  "revision_id": "ac4895a1-e5cc-5067-9e0b-d74ae73cc223",
+  "parent_revision_id": null,
+  "source_sha256": "25e06f4ce14b366fe6f4ca89af7ccda1f707af62a6aded16a87be7028417e4e5",
+  "template_version": "1.4.0-development-baseline",
+  "template_hash": "3bcf858e7417f304bcaf7100abc1b8fa111dad76a070337f790b687edf5415c7",
+  "font_manifest_hash": "f7c755b57d89aaf89b4e4c8505b9737c440cb1e8f0345b590ea5e869ea329cb5",
+  "output_profile": "dxf_pdf_v1",
+  "rows": [
+    {
+      "schema_version": 1,
+      "row_id": "Sheet1:2",
+      "source": {
+        "sheet": "Sheet1",
+        "excel_row": 2
+      },
+      "raw": {
+        "name": "星敏加热器",
+        "code": "CX-29-KR05-XM01",
+        "width_mm": 25,
+        "length_mm": 25,
+        "lead_side": "短边",
+        "resistance_ohm": 23.52,
+        "tolerance_ohm": 0.71,
+        "quantity_text": "18片",
+        "requested_scale": "1:1",
+        "organization": "上海微小卫星工程中心",
+        "model": "CX-29",
+        "designer": "陈黎",
+        "checker": "曹运涛",
+        "reviewer": "王岩峰",
+        "standards_reviewer": "郑玲",
+        "approver": "施蓉蓉",
+        "stage": "Z"
+      },
+      "values": {
+        "name": "星敏加热器",
+        "code": "CX-29-KR05-XM01",
+        "width_mm": "25",
+        "length_mm": "25",
+        "lead_side": "short",
+        "resistance_ohm": "23.52",
+        "tolerance_ohm": "0.71",
+        "quantity_text": "18片",
+        "requested_scale": "1:1",
+        "organization": "上海微小卫星工程中心",
+        "model": "CX-29",
+        "designer": "陈黎",
+        "checker": "曹运涛",
+        "reviewer": "王岩峰",
+        "standards_reviewer": "郑玲",
+        "approver": "施蓉蓉",
+        "stage": "Z"
+      }
+    },
+    {
+      "schema_version": 1,
+      "row_id": "Sheet1:3",
+      "source": {
+        "sheet": "Sheet1",
+        "excel_row": 3
+      },
+      "raw": {
+        "name": "动量轮加热器",
+        "code": "CX-26-KR05-DLL-01",
+        "width_mm": 30,
+        "length_mm": 50,
+        "lead_side": "长边",
+        "resistance_ohm": 58.8,
+        "tolerance_ohm": 1.76,
+        "quantity_text": "12（备份2）",
+        "requested_scale": "1:1",
+        "organization": "上海微小卫星工程中心",
+        "model": "CX-26",
+        "designer": "吕鑫",
+        "checker": "王岩峰",
+        "reviewer": "曹运涛",
+        "standards_reviewer": "郑玲",
+        "approver": "周苗苗",
+        "stage": "Z"
+      },
+      "values": {
+        "name": "动量轮加热器",
+        "code": "CX-26-KR05-DLL-01",
+        "width_mm": "30",
+        "length_mm": "50",
+        "lead_side": "long",
+        "resistance_ohm": "58.8",
+        "tolerance_ohm": "1.76",
+        "quantity_text": "12（备份2）",
+        "requested_scale": "1:1",
+        "organization": "上海微小卫星工程中心",
+        "model": "CX-26",
+        "designer": "吕鑫",
+        "checker": "王岩峰",
+        "reviewer": "曹运涛",
+        "standards_reviewer": "郑玲",
+        "approver": "周苗苗",
+        "stage": "Z"
+      }
+    },
+    {
+      "schema_version": 1,
+      "row_id": "Sheet1:4",
+      "source": {
+        "sheet": "Sheet1",
+        "excel_row": 4
+      },
+      "raw": {
+        "name": "外热流加热器",
+        "code": "KX-11-WR-100-300-M1",
+        "width_mm": 100,
+        "length_mm": 300,
+        "lead_side": "短边",
+        "resistance_ohm": 200,
+        "tolerance_ohm": 6,
+        "quantity_text": "76片（备份13片）",
+        "requested_scale": "1:2",
+        "organization": "中国科学院微小卫星创新研究院",
+        "model": "KX-11",
+        "designer": "吴立",
+        "checker": "曹运涛",
+        "reviewer": "郑玲",
+        "standards_reviewer": "陈黎",
+        "approver": "周苗苗",
+        "stage": "C"
+      },
+      "values": {
+        "name": "外热流加热器",
+        "code": "KX-11-WR-100-300-M1",
+        "width_mm": "100",
+        "length_mm": "300",
+        "lead_side": "short",
+        "resistance_ohm": "200",
+        "tolerance_ohm": "6",
+        "quantity_text": "76片（备份13片）",
+        "requested_scale": "1:2",
+        "organization": "中国科学院微小卫星创新研究院",
+        "model": "KX-11",
+        "designer": "吴立",
+        "checker": "曹运涛",
+        "reviewer": "郑玲",
+        "standards_reviewer": "陈黎",
+        "approver": "周苗苗",
+        "stage": "C"
+      }
+    }
+  ],
+  "final_scales": {
+    "Sheet1:2": {
+      "numerator": 1,
+      "denominator": "1",
+      "label": "1:1"
+    },
+    "Sheet1:3": {
+      "numerator": 1,
+      "denominator": "1",
+      "label": "1:1"
+    },
+    "Sheet1:4": {
+      "numerator": 1,
+      "denominator": "2",
+      "label": "1:2"
+    }
+  },
+  "issues": [],
+  "proposals": [],
+  "decisions": [],
+  "skipped_row_ids": [],
+  "expected_row_ids": [
+    "Sheet1:2",
+    "Sheet1:3",
+    "Sheet1:4"
+  ],
+  "revision_hash": "b17d482d623d5c3d11300dc671f2607e83d75dacd5955281f05db502530af5c5"
+}

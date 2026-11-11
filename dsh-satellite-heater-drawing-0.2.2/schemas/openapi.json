@@ -1,0 +1,54 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Heater Drawing Service Contract",
+    "version": "1.0.0",
+    "description": "B01 contract snapshot only. Every operation is explicitly unimplemented."
+  },
+  "servers": [{"url": "/"}],
+  "paths": {
+    "/healthz": {"get": {"operationId": "healthz", "x-implementation-status": "not_implemented", "responses": {"200": {"description": "Future liveness response"}}}},
+    "/readyz": {"get": {"operationId": "readyz", "x-implementation-status": "not_implemented", "responses": {"200": {"description": "Future readiness response"}}}},
+    "/api/heater/v1/capabilities": {"get": {"operationId": "getCapabilities", "x-implementation-status": "not_implemented", "responses": {"200": {"description": "Future capability response"}}}},
+    "/api/heater/v1/jobs": {"post": {"operationId": "createJob", "x-implementation-status": "not_implemented", "responses": {"202": {"description": "Future accepted job"}}}},
+    "/api/heater/v1/jobs/{job_id}": {"get": {"operationId": "getJob", "x-implementation-status": "not_implemented", "parameters": [{"$ref": "#/components/parameters/JobId"}], "responses": {"200": {"description": "Future job response"}}}},
+    "/api/heater/v1/jobs/{job_id}/decisions": {"post": {"operationId": "createDecision", "x-implementation-status": "not_implemented", "parameters": [{"$ref": "#/components/parameters/JobId"}], "responses": {"200": {"description": "Future revision response"}}}},
+    "/api/heater/v1/jobs/{job_id}/runs": {"post": {"operationId": "createRun", "x-implementation-status": "not_implemented", "parameters": [{"$ref": "#/components/parameters/JobId"}], "responses": {"202": {"description": "Future run response"}}}},
+    "/api/heater/v1/jobs/{job_id}/runs/{run_id}": {"get": {"operationId": "getRun", "x-implementation-status": "not_implemented", "parameters": [{"$ref": "#/components/parameters/JobId"}, {"$ref": "#/components/parameters/RunId"}], "responses": {"200": {"description": "Future run status"}}}},
+    "/api/heater/v1/jobs/{job_id}/runs/{run_id}/cancel": {"post": {"operationId": "cancelRun", "x-implementation-status": "not_implemented", "parameters": [{"$ref": "#/components/parameters/JobId"}, {"$ref": "#/components/parameters/RunId"}], "responses": {"200": {"description": "Future cancelled run"}}}},
+    "/api/heater/v1/jobs/{job_id}/runs/{run_id}/retry": {"post": {"operationId": "retryRun", "x-implementation-status": "not_implemented", "parameters": [{"$ref": "#/components/parameters/JobId"}, {"$ref": "#/components/parameters/RunId"}], "responses": {"202": {"description": "Future retried run"}}}},
+    "/api/heater/v1/jobs/{job_id}/runs/{run_id}/artifacts": {"get": {"operationId": "listArtifacts", "x-implementation-status": "not_implemented", "parameters": [{"$ref": "#/components/parameters/JobId"}, {"$ref": "#/components/parameters/RunId"}], "responses": {"200": {"description": "Future artifact list"}}}},
+    "/api/heater/v1/artifacts/{artifact_id}/content": {"get": {"operationId": "getArtifactContent", "x-implementation-status": "not_implemented", "parameters": [{"$ref": "#/components/parameters/ArtifactId"}], "responses": {"200": {"description": "Future artifact content"}}}},
+    "/api/heater/v1/jobs/{job_id}/runs/{run_id}/reviews": {"post": {"operationId": "createReview", "x-implementation-status": "not_implemented", "parameters": [{"$ref": "#/components/parameters/JobId"}, {"$ref": "#/components/parameters/RunId"}], "responses": {"201": {"description": "Future review record"}}}}
+  },
+  "components": {
+    "parameters": {
+      "JobId": {"name": "job_id", "in": "path", "required": true, "schema": {"type": "string", "format": "uuid"}},
+      "RunId": {"name": "run_id", "in": "path", "required": true, "schema": {"type": "string", "format": "uuid"}},
+      "ArtifactId": {"name": "artifact_id", "in": "path", "required": true, "schema": {"type": "string", "format": "uuid"}}
+    },
+    "schemas": {
+      "ErrorCode": {
+        "type": "string",
+        "enum": [
+          "INVALID_REQUEST",
+          "AUTHENTICATION_REQUIRED",
+          "ACCESS_DENIED",
+          "NOT_FOUND",
+          "REVISION_CONFLICT",
+          "PAYLOAD_TOO_LARGE",
+          "UNSUPPORTED_INPUT",
+          "CAPABILITY_UNAVAILABLE",
+          "INVALID_FIELD",
+          "MISSING_FIELD",
+          "DUPLICATE_CODE",
+          "WORKER_INTERRUPTED",
+          "INTERNAL_ERROR"
+        ],
+        "x-controlled-extension": "Add with contracts, Python, JSON Schema, OpenAPI, and tests in one change; removal or rename requires a schema version bump."
+      }
+    }
+  },
+  "x-contract-version": 1,
+  "x-runtime-implemented": false
+}

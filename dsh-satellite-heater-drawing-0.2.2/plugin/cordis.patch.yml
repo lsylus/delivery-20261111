@@ -1,0 +1,3 @@
+- insert:
+    - id: satellite-heater-drawing
+      name: '@qmh/dsh-satellite-heater-drawing'

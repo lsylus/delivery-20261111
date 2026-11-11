@@ -1,0 +1,13 @@
+{
+  "name": "@satellite-drawings/host-bridge",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "build": "node ../../scripts/check_workspace.mjs host-bridge",
+    "test": "node --test tests/*.test.mjs"
+  }
+}

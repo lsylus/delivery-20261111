@@ -1,0 +1,1644 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://satellite-drawings.invalid/contracts/drawing.schema.json",
+  "$ref": "#/$defs/DrawingDocument",
+  "$defs": {
+    "Loop": {
+      "type": "object",
+      "properties": {
+        "points": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            },
+            "minItems": 2,
+            "maxItems": 2
+          },
+          "minItems": 3
+        },
+        "closed": {
+          "const": true
+        },
+        "orientation": {
+          "enum": [
+            "cw",
+            "ccw"
+          ]
+        }
+      },
+      "required": [
+        "points",
+        "closed",
+        "orientation"
+      ],
+      "additionalProperties": false
+    },
+    "Entity": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "minLength": 1
+            },
+            "layer": {
+              "enum": [
+                "OUTLINE",
+                "PROTECTION",
+                "CUT",
+                "FOLD",
+                "OVERLAP",
+                "FIXING",
+                "DIMENSION",
+                "TEXT"
+              ]
+            },
+            "source_refs": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "project_id": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "model_id": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "model_revision": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "assembly_digest": {
+                    "type": "string",
+                    "pattern": "^[0-9a-f]{64}$"
+                  },
+                  "instance_id": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "entity_kind": {
+                    "enum": [
+                      "face",
+                      "edge",
+                      "vertex",
+                      "solid",
+                      "instance"
+                    ]
+                  },
+                  "entity_id": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "signature": {
+                    "type": "object",
+                    "properties": {
+                      "type": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "area_mm2": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "centroid_mm": {
+                        "type": "array",
+                        "items": {
+                          "type": "number"
+                        },
+                        "minItems": 3,
+                        "maxItems": 3
+                      },
+                      "normal": {
+                        "anyOf": [
+                          {
+                            "type": "array",
+                            "items": {
+                              "type": "number"
+                            },
+                            "minItems": 3,
+                            "maxItems": 3
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "adjacency": {
+                        "type": "array",
+                        "items": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "minItems": 0
+                      }
+                    },
+                    "required": [
+                      "type",
+                      "area_mm2",
+                      "centroid_mm",
+                      "normal",
+                      "adjacency"
+                    ],
+                    "additionalProperties": false
+                  }
+                },
+                "required": [
+                  "project_id",
+                  "model_id",
+                  "model_revision",
+                  "assembly_digest",
+                  "instance_id",
+                  "entity_kind",
+                  "entity_id",
+                  "signature"
+                ],
+                "additionalProperties": false
+              },
+              "minItems": 0
+            },
+            "kind": {
+              "const": "line"
+            },
+            "start": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 2,
+              "maxItems": 2
+            },
+            "end": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 2,
+              "maxItems": 2
+            }
+          },
+          "required": [
+            "id",
+            "layer",
+            "source_refs",
+            "kind",
+            "start",
+            "end"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "minLength": 1
+            },
+            "layer": {
+              "enum": [
+                "OUTLINE",
+                "PROTECTION",
+                "CUT",
+                "FOLD",
+                "OVERLAP",
+                "FIXING",
+                "DIMENSION",
+                "TEXT"
+              ]
+            },
+            "source_refs": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "project_id": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "model_id": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "model_revision": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "assembly_digest": {
+                    "type": "string",
+                    "pattern": "^[0-9a-f]{64}$"
+                  },
+                  "instance_id": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "entity_kind": {
+                    "enum": [
+                      "face",
+                      "edge",
+                      "vertex",
+                      "solid",
+                      "instance"
+                    ]
+                  },
+                  "entity_id": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "signature": {
+                    "type": "object",
+                    "properties": {
+                      "type": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "area_mm2": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "centroid_mm": {
+                        "type": "array",
+                        "items": {
+                          "type": "number"
+                        },
+                        "minItems": 3,
+                        "maxItems": 3
+                      },
+                      "normal": {
+                        "anyOf": [
+                          {
+                            "type": "array",
+                            "items": {
+                              "type": "number"
+                            },
+                            "minItems": 3,
+                            "maxItems": 3
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "adjacency": {
+                        "type": "array",
+                        "items": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "minItems": 0
+                      }
+                    },
+                    "required": [
+                      "type",
+                      "area_mm2",
+                      "centroid_mm",
+                      "normal",
+                      "adjacency"
+                    ],
+                    "additionalProperties": false
+                  }
+                },
+                "required": [
+                  "project_id",
+                  "model_id",
+                  "model_revision",
+                  "assembly_digest",
+                  "instance_id",
+                  "entity_kind",
+                  "entity_id",
+                  "signature"
+                ],
+                "additionalProperties": false
+              },
+              "minItems": 0
+            },
+            "kind": {
+              "const": "arc"
+            },
+            "center": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 2,
+              "maxItems": 2
+            },
+            "radius_mm": {
+              "type": "number",
+              "exclusiveMinimum": 0
+            },
+            "start_angle_rad": {
+              "type": "number"
+            },
+            "end_angle_rad": {
+              "type": "number"
+            },
+            "direction": {
+              "enum": [
+                "cw",
+                "ccw"
+              ]
+            }
+          },
+          "required": [
+            "id",
+            "layer",
+            "source_refs",
+            "kind",
+            "center",
+            "radius_mm",
+            "start_angle_rad",
+            "end_angle_rad",
+            "direction"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "minLength": 1
+            },
+            "layer": {
+              "enum": [
+                "OUTLINE",
+                "PROTECTION",
+                "CUT",
+                "FOLD",
+                "OVERLAP",
+                "FIXING",
+                "DIMENSION",
+                "TEXT"
+              ]
+            },
+            "source_refs": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "project_id": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "model_id": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "model_revision": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "assembly_digest": {
+                    "type": "string",
+                    "pattern": "^[0-9a-f]{64}$"
+                  },
+                  "instance_id": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "entity_kind": {
+                    "enum": [
+                      "face",
+                      "edge",
+                      "vertex",
+                      "solid",
+                      "instance"
+                    ]
+                  },
+                  "entity_id": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "signature": {
+                    "type": "object",
+                    "properties": {
+                      "type": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "area_mm2": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "centroid_mm": {
+                        "type": "array",
+                        "items": {
+                          "type": "number"
+                        },
+                        "minItems": 3,
+                        "maxItems": 3
+                      },
+                      "normal": {
+                        "anyOf": [
+                          {
+                            "type": "array",
+                            "items": {
+                              "type": "number"
+                            },
+                            "minItems": 3,
+                            "maxItems": 3
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "adjacency": {
+                        "type": "array",
+                        "items": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "minItems": 0
+                      }
+                    },
+                    "required": [
+                      "type",
+                      "area_mm2",
+                      "centroid_mm",
+                      "normal",
+                      "adjacency"
+                    ],
+                    "additionalProperties": false
+                  }
+                },
+                "required": [
+                  "project_id",
+                  "model_id",
+                  "model_revision",
+                  "assembly_digest",
+                  "instance_id",
+                  "entity_kind",
+                  "entity_id",
+                  "signature"
+                ],
+                "additionalProperties": false
+              },
+              "minItems": 0
+            },
+            "kind": {
+              "const": "circle"
+            },
+            "center": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 2,
+              "maxItems": 2
+            },
+            "radius_mm": {
+              "type": "number",
+              "exclusiveMinimum": 0
+            }
+          },
+          "required": [
+            "id",
+            "layer",
+            "source_refs",
+            "kind",
+            "center",
+            "radius_mm"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "minLength": 1
+            },
+            "layer": {
+              "enum": [
+                "OUTLINE",
+                "PROTECTION",
+                "CUT",
+                "FOLD",
+                "OVERLAP",
+                "FIXING",
+                "DIMENSION",
+                "TEXT"
+              ]
+            },
+            "source_refs": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "project_id": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "model_id": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "model_revision": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "assembly_digest": {
+                    "type": "string",
+                    "pattern": "^[0-9a-f]{64}$"
+                  },
+                  "instance_id": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "entity_kind": {
+                    "enum": [
+                      "face",
+                      "edge",
+                      "vertex",
+                      "solid",
+                      "instance"
+                    ]
+                  },
+                  "entity_id": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "signature": {
+                    "type": "object",
+                    "properties": {
+                      "type": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "area_mm2": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "centroid_mm": {
+                        "type": "array",
+                        "items": {
+                          "type": "number"
+                        },
+                        "minItems": 3,
+                        "maxItems": 3
+                      },
+                      "normal": {
+                        "anyOf": [
+                          {
+                            "type": "array",
+                            "items": {
+                              "type": "number"
+                            },
+                            "minItems": 3,
+                            "maxItems": 3
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "adjacency": {
+                        "type": "array",
+                        "items": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "minItems": 0
+                      }
+                    },
+                    "required": [
+                      "type",
+                      "area_mm2",
+                      "centroid_mm",
+                      "normal",
+                      "adjacency"
+                    ],
+                    "additionalProperties": false
+                  }
+                },
+                "required": [
+                  "project_id",
+                  "model_id",
+                  "model_revision",
+                  "assembly_digest",
+                  "instance_id",
+                  "entity_kind",
+                  "entity_id",
+                  "signature"
+                ],
+                "additionalProperties": false
+              },
+              "minItems": 0
+            },
+            "kind": {
+              "const": "polyline"
+            },
+            "points": {
+              "type": "array",
+              "items": {
+                "type": "array",
+                "items": {
+                  "type": "number"
+                },
+                "minItems": 2,
+                "maxItems": 2
+              },
+              "minItems": 2
+            },
+            "closed": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "id",
+            "layer",
+            "source_refs",
+            "kind",
+            "points",
+            "closed"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "minLength": 1
+            },
+            "layer": {
+              "enum": [
+                "OUTLINE",
+                "PROTECTION",
+                "CUT",
+                "FOLD",
+                "OVERLAP",
+                "FIXING",
+                "DIMENSION",
+                "TEXT"
+              ]
+            },
+            "source_refs": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "project_id": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "model_id": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "model_revision": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "assembly_digest": {
+                    "type": "string",
+                    "pattern": "^[0-9a-f]{64}$"
+                  },
+                  "instance_id": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "entity_kind": {
+                    "enum": [
+                      "face",
+                      "edge",
+                      "vertex",
+                      "solid",
+                      "instance"
+                    ]
+                  },
+                  "entity_id": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "signature": {
+                    "type": "object",
+                    "properties": {
+                      "type": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "area_mm2": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "centroid_mm": {
+                        "type": "array",
+                        "items": {
+                          "type": "number"
+                        },
+                        "minItems": 3,
+                        "maxItems": 3
+                      },
+                      "normal": {
+                        "anyOf": [
+                          {
+                            "type": "array",
+                            "items": {
+                              "type": "number"
+                            },
+                            "minItems": 3,
+                            "maxItems": 3
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "adjacency": {
+                        "type": "array",
+                        "items": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "minItems": 0
+                      }
+                    },
+                    "required": [
+                      "type",
+                      "area_mm2",
+                      "centroid_mm",
+                      "normal",
+                      "adjacency"
+                    ],
+                    "additionalProperties": false
+                  }
+                },
+                "required": [
+                  "project_id",
+                  "model_id",
+                  "model_revision",
+                  "assembly_digest",
+                  "instance_id",
+                  "entity_kind",
+                  "entity_id",
+                  "signature"
+                ],
+                "additionalProperties": false
+              },
+              "minItems": 0
+            },
+            "kind": {
+              "const": "hatch"
+            },
+            "outer_loop": {
+              "type": "object",
+              "properties": {
+                "points": {
+                  "type": "array",
+                  "items": {
+                    "type": "array",
+                    "items": {
+                      "type": "number"
+                    },
+                    "minItems": 2,
+                    "maxItems": 2
+                  },
+                  "minItems": 3
+                },
+                "closed": {
+                  "const": true
+                },
+                "orientation": {
+                  "enum": [
+                    "cw",
+                    "ccw"
+                  ]
+                }
+              },
+              "required": [
+                "points",
+                "closed",
+                "orientation"
+              ],
+              "additionalProperties": false
+            },
+            "holes": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "points": {
+                    "type": "array",
+                    "items": {
+                      "type": "array",
+                      "items": {
+                        "type": "number"
+                      },
+                      "minItems": 2,
+                      "maxItems": 2
+                    },
+                    "minItems": 3
+                  },
+                  "closed": {
+                    "const": true
+                  },
+                  "orientation": {
+                    "enum": [
+                      "cw",
+                      "ccw"
+                    ]
+                  }
+                },
+                "required": [
+                  "points",
+                  "closed",
+                  "orientation"
+                ],
+                "additionalProperties": false
+              },
+              "minItems": 0
+            },
+            "pattern": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "id",
+            "layer",
+            "source_refs",
+            "kind",
+            "outer_loop",
+            "holes",
+            "pattern"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "minLength": 1
+            },
+            "layer": {
+              "enum": [
+                "OUTLINE",
+                "PROTECTION",
+                "CUT",
+                "FOLD",
+                "OVERLAP",
+                "FIXING",
+                "DIMENSION",
+                "TEXT"
+              ]
+            },
+            "source_refs": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "project_id": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "model_id": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "model_revision": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "assembly_digest": {
+                    "type": "string",
+                    "pattern": "^[0-9a-f]{64}$"
+                  },
+                  "instance_id": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "entity_kind": {
+                    "enum": [
+                      "face",
+                      "edge",
+                      "vertex",
+                      "solid",
+                      "instance"
+                    ]
+                  },
+                  "entity_id": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "signature": {
+                    "type": "object",
+                    "properties": {
+                      "type": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "area_mm2": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "centroid_mm": {
+                        "type": "array",
+                        "items": {
+                          "type": "number"
+                        },
+                        "minItems": 3,
+                        "maxItems": 3
+                      },
+                      "normal": {
+                        "anyOf": [
+                          {
+                            "type": "array",
+                            "items": {
+                              "type": "number"
+                            },
+                            "minItems": 3,
+                            "maxItems": 3
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "adjacency": {
+                        "type": "array",
+                        "items": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "minItems": 0
+                      }
+                    },
+                    "required": [
+                      "type",
+                      "area_mm2",
+                      "centroid_mm",
+                      "normal",
+                      "adjacency"
+                    ],
+                    "additionalProperties": false
+                  }
+                },
+                "required": [
+                  "project_id",
+                  "model_id",
+                  "model_revision",
+                  "assembly_digest",
+                  "instance_id",
+                  "entity_kind",
+                  "entity_id",
+                  "signature"
+                ],
+                "additionalProperties": false
+              },
+              "minItems": 0
+            },
+            "kind": {
+              "const": "text"
+            },
+            "position": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 2,
+              "maxItems": 2
+            },
+            "text": {
+              "type": "string",
+              "minLength": 1
+            },
+            "height_mm": {
+              "type": "number",
+              "exclusiveMinimum": 0
+            }
+          },
+          "required": [
+            "id",
+            "layer",
+            "source_refs",
+            "kind",
+            "position",
+            "text",
+            "height_mm"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "minLength": 1
+            },
+            "layer": {
+              "enum": [
+                "OUTLINE",
+                "PROTECTION",
+                "CUT",
+                "FOLD",
+                "OVERLAP",
+                "FIXING",
+                "DIMENSION",
+                "TEXT"
+              ]
+            },
+            "source_refs": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "project_id": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "model_id": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "model_revision": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "assembly_digest": {
+                    "type": "string",
+                    "pattern": "^[0-9a-f]{64}$"
+                  },
+                  "instance_id": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "entity_kind": {
+                    "enum": [
+                      "face",
+                      "edge",
+                      "vertex",
+                      "solid",
+                      "instance"
+                    ]
+                  },
+                  "entity_id": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "signature": {
+                    "type": "object",
+                    "properties": {
+                      "type": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "area_mm2": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "centroid_mm": {
+                        "type": "array",
+                        "items": {
+                          "type": "number"
+                        },
+                        "minItems": 3,
+                        "maxItems": 3
+                      },
+                      "normal": {
+                        "anyOf": [
+                          {
+                            "type": "array",
+                            "items": {
+                              "type": "number"
+                            },
+                            "minItems": 3,
+                            "maxItems": 3
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "adjacency": {
+                        "type": "array",
+                        "items": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "minItems": 0
+                      }
+                    },
+                    "required": [
+                      "type",
+                      "area_mm2",
+                      "centroid_mm",
+                      "normal",
+                      "adjacency"
+                    ],
+                    "additionalProperties": false
+                  }
+                },
+                "required": [
+                  "project_id",
+                  "model_id",
+                  "model_revision",
+                  "assembly_digest",
+                  "instance_id",
+                  "entity_kind",
+                  "entity_id",
+                  "signature"
+                ],
+                "additionalProperties": false
+              },
+              "minItems": 0
+            },
+            "kind": {
+              "const": "dimension"
+            },
+            "start": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 2,
+              "maxItems": 2
+            },
+            "end": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 2,
+              "maxItems": 2
+            },
+            "position": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 2,
+              "maxItems": 2
+            },
+            "text_override": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "minLength": 1
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          },
+          "required": [
+            "id",
+            "layer",
+            "source_refs",
+            "kind",
+            "start",
+            "end",
+            "position",
+            "text_override"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "minLength": 1
+            },
+            "layer": {
+              "enum": [
+                "OUTLINE",
+                "PROTECTION",
+                "CUT",
+                "FOLD",
+                "OVERLAP",
+                "FIXING",
+                "DIMENSION",
+                "TEXT"
+              ]
+            },
+            "source_refs": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "project_id": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "model_id": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "model_revision": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "assembly_digest": {
+                    "type": "string",
+                    "pattern": "^[0-9a-f]{64}$"
+                  },
+                  "instance_id": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "entity_kind": {
+                    "enum": [
+                      "face",
+                      "edge",
+                      "vertex",
+                      "solid",
+                      "instance"
+                    ]
+                  },
+                  "entity_id": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "signature": {
+                    "type": "object",
+                    "properties": {
+                      "type": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "area_mm2": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "centroid_mm": {
+                        "type": "array",
+                        "items": {
+                          "type": "number"
+                        },
+                        "minItems": 3,
+                        "maxItems": 3
+                      },
+                      "normal": {
+                        "anyOf": [
+                          {
+                            "type": "array",
+                            "items": {
+                              "type": "number"
+                            },
+                            "minItems": 3,
+                            "maxItems": 3
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "adjacency": {
+                        "type": "array",
+                        "items": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "minItems": 0
+                      }
+                    },
+                    "required": [
+                      "type",
+                      "area_mm2",
+                      "centroid_mm",
+                      "normal",
+                      "adjacency"
+                    ],
+                    "additionalProperties": false
+                  }
+                },
+                "required": [
+                  "project_id",
+                  "model_id",
+                  "model_revision",
+                  "assembly_digest",
+                  "instance_id",
+                  "entity_kind",
+                  "entity_id",
+                  "signature"
+                ],
+                "additionalProperties": false
+              },
+              "minItems": 0
+            },
+            "kind": {
+              "const": "point"
+            },
+            "position": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 2,
+              "maxItems": 2
+            }
+          },
+          "required": [
+            "id",
+            "layer",
+            "source_refs",
+            "kind",
+            "position"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "DrawingDocument": {
+      "type": "object",
+      "properties": {
+        "schema_version": {
+          "const": 1
+        },
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "revision_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "units": {
+          "const": "mm"
+        },
+        "frame": {
+          "type": "object",
+          "properties": {
+            "origin": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 3,
+              "maxItems": 3
+            },
+            "x_axis": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 3,
+              "maxItems": 3
+            },
+            "y_axis": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 3,
+              "maxItems": 3
+            },
+            "z_axis": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 3,
+              "maxItems": 3
+            },
+            "units": {
+              "const": "mm"
+            },
+            "handedness": {
+              "const": "right"
+            }
+          },
+          "required": [
+            "origin",
+            "x_axis",
+            "y_axis",
+            "z_axis",
+            "units",
+            "handedness"
+          ],
+          "additionalProperties": false
+        },
+        "layers": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "enum": [
+                  "OUTLINE",
+                  "PROTECTION",
+                  "CUT",
+                  "FOLD",
+                  "OVERLAP",
+                  "FIXING",
+                  "DIMENSION",
+                  "TEXT"
+                ]
+              },
+              "color": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 255
+              },
+              "line_type": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "required": [
+              "name",
+              "color",
+              "line_type"
+            ],
+            "additionalProperties": false
+          },
+          "minItems": 1
+        },
+        "entities": {
+          "type": "array",
+          "items": {
+            "$ref": "drawing.schema.json#/$defs/Entity"
+          },
+          "minItems": 0
+        },
+        "source_links": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "project_id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "model_id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "model_revision": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "assembly_digest": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{64}$"
+              },
+              "instance_id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "entity_kind": {
+                "enum": [
+                  "face",
+                  "edge",
+                  "vertex",
+                  "solid",
+                  "instance"
+                ]
+              },
+              "entity_id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "signature": {
+                "type": "object",
+                "properties": {
+                  "type": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "area_mm2": {
+                    "anyOf": [
+                      {
+                        "type": "number",
+                        "minimum": 0
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "centroid_mm": {
+                    "type": "array",
+                    "items": {
+                      "type": "number"
+                    },
+                    "minItems": 3,
+                    "maxItems": 3
+                  },
+                  "normal": {
+                    "anyOf": [
+                      {
+                        "type": "array",
+                        "items": {
+                          "type": "number"
+                        },
+                        "minItems": 3,
+                        "maxItems": 3
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "adjacency": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "minItems": 0
+                  }
+                },
+                "required": [
+                  "type",
+                  "area_mm2",
+                  "centroid_mm",
+                  "normal",
+                  "adjacency"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "required": [
+              "project_id",
+              "model_id",
+              "model_revision",
+              "assembly_digest",
+              "instance_id",
+              "entity_kind",
+              "entity_id",
+              "signature"
+            ],
+            "additionalProperties": false
+          },
+          "minItems": 0
+        }
+      },
+      "required": [
+        "schema_version",
+        "id",
+        "revision_id",
+        "units",
+        "frame",
+        "layers",
+        "entities",
+        "source_links"
+      ],
+      "additionalProperties": false
+    }
+  }
+}

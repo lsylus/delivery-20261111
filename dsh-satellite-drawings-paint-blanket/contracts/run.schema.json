@@ -1,0 +1,175 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://satellite-drawings.invalid/contracts/run.schema.json",
+  "$ref": "#/$defs/Run",
+  "$defs": {
+    "Run": {
+      "type": "object",
+      "properties": {
+        "schema_version": {
+          "const": 1
+        },
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "project_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "module": {
+          "enum": [
+            "paint",
+            "blanket"
+          ]
+        },
+        "operation": {
+          "enum": [
+            "model.import",
+            "paint.generate",
+            "paint.recommend",
+            "paint.generate_batch",
+            "paint.edit_regions",
+            "blanket.detect_installation",
+            "blanket.generate",
+            "blanket.edit_shape",
+            "blanket.unfold",
+            "blanket.edit_seams",
+            "blanket.edit_fixed_points",
+            "drawing.edit_annotation",
+            "drawing.export",
+            "engineering.save",
+            "engineering.restore",
+            "history.undo",
+            "history.redo",
+            "geometry.analyze",
+            "engineering.rebind"
+          ]
+        },
+        "input_revision": {
+          "type": "string",
+          "minLength": 1
+        },
+        "input_fingerprint": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "idempotency_key": {
+          "type": "string",
+          "minLength": 1
+        },
+        "state": {
+          "enum": [
+            "queued",
+            "running",
+            "succeeded",
+            "failed",
+            "cancel_requested",
+            "cancelled"
+          ]
+        },
+        "progress": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "worker": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "tool_versions": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "artifacts": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/Artifact"
+          },
+          "minItems": 0
+        },
+        "checks": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/Check"
+          },
+          "minItems": 0
+        },
+        "error": {
+          "anyOf": [
+            {
+              "$ref": "common.schema.json#/$defs/Error"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "schema_version",
+        "id",
+        "project_id",
+        "module",
+        "operation",
+        "input_revision",
+        "input_fingerprint",
+        "idempotency_key",
+        "state",
+        "progress",
+        "worker",
+        "tool_versions",
+        "artifacts",
+        "checks",
+        "error"
+      ],
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "state": {
+                "const": "failed"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "error": {
+                "$ref": "common.schema.json#/$defs/Error"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "state": {
+                "not": {
+                  "const": "succeeded"
+                }
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "artifacts": {
+                "maxItems": 0
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,307 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://satellite-drawings.invalid/contracts/config.schema.json",
+  "$ref": "#/$defs/Converters",
+  "$defs": {
+    "Converters": {
+      "type": "object",
+      "properties": {
+        "dwg": {
+          "type": "object",
+          "properties": {
+            "adapter": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "minLength": 1
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "executable": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "minLength": 1
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "target_version": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "minLength": 1
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "font_paths": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              },
+              "minItems": 0
+            },
+            "timeout_s": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "license_ref": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "minLength": 1
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          },
+          "required": [
+            "adapter",
+            "executable",
+            "target_version",
+            "font_paths",
+            "timeout_s",
+            "license_ref"
+          ],
+          "additionalProperties": false
+        },
+        "native": {
+          "type": "object",
+          "properties": {
+            "adapter": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "minLength": 1
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "endpoint_or_executable": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "minLength": 1
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "vendors": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              },
+              "minItems": 0
+            },
+            "timeout_s": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "credential_ref": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "minLength": 1
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          },
+          "required": [
+            "adapter",
+            "endpoint_or_executable",
+            "vendors",
+            "timeout_s",
+            "credential_ref"
+          ],
+          "additionalProperties": false
+        },
+        "work_root": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "dwg",
+        "native",
+        "work_root"
+      ],
+      "additionalProperties": false
+    },
+    "Acceptance": {
+      "type": "object",
+      "properties": {
+        "service_url": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "credential_ref": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "case_root": {
+          "type": "string",
+          "minLength": 1
+        },
+        "timeout_s": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "memory_limit_mb": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "concurrency": {
+          "const": 1
+        },
+        "cad_reopen_evidence_root": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "service_url",
+        "credential_ref",
+        "case_root",
+        "timeout_s",
+        "memory_limit_mb",
+        "concurrency",
+        "cad_reopen_evidence_root"
+      ],
+      "additionalProperties": false
+    },
+    "Release": {
+      "type": "object",
+      "properties": {
+        "data_root": {
+          "type": "string",
+          "minLength": 1
+        },
+        "port": {
+          "type": "integer",
+          "minimum": 1024,
+          "maximum": 65535
+        },
+        "image": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "package_paths": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 0
+        },
+        "credential_ref": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "data_root",
+        "port",
+        "image",
+        "package_paths",
+        "credential_ref"
+      ],
+      "additionalProperties": false
+    },
+    "HostTest": {
+      "type": "object",
+      "properties": {
+        "profile": {
+          "type": "string",
+          "minLength": 1
+        },
+        "service_url": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "credential_ref": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "data_root": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "profile",
+        "service_url",
+        "credential_ref",
+        "data_root"
+      ],
+      "additionalProperties": false
+    }
+  }
+}

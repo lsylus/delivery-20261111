@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "units": "mm",
+  "cases": [
+    {
+      "id": "cross105",
+      "source_dimensions_mm": [
+        100,
+        100,
+        100
+      ],
+      "panels": 5,
+      "body_area_mm2": 55125,
+      "overlap_area_mm2": 6300,
+      "side_joins": 4,
+      "tab_width_mm": 15
+    },
+    {
+      "id": "rectangular",
+      "source_dimensions_mm": [
+        80,
+        120,
+        60
+      ],
+      "unfold": "top-spanning-tree"
+    },
+    {
+      "id": "multi-hole",
+      "source_dimensions_mm": [
+        80,
+        120,
+        60
+      ],
+      "unfold": "five-separated-panels",
+      "opening_uv_mm": [
+        [
+          20,
+          20
+        ],
+        [
+          30,
+          20
+        ],
+        [
+          30,
+          30
+        ],
+        [
+          20,
+          30
+        ]
+      ]
+    }
+  ]
+}

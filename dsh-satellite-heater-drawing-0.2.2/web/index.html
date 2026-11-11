@@ -1,0 +1,8 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>矩形加热器出图</title><link rel="stylesheet" href="/satellite-heater/app.css"></head>
+<body><main id="app"><header><div><p class="eyebrow">卫星工程 · 图纸工具</p><h1>矩形加热器出图</h1><p>从 Excel 批量生成可编辑 DWG 与对应 PDF。</p></div><span id="connection" role="status">连接中</span></header>
+<section class="card"><h2>导入工作簿</h2><form id="upload"><label>Excel 文件<input id="file" type="file" accept=".xlsx" required></label><label>合并文件名称<input id="name" value="加热器图纸" maxlength="100" required></label><button type="submit" id="uploadButton">上传并校验</button></form><p class="muted">使用工程师提供的 17 列 Excel 结构。字段以 Excel 为准；修改数据后重新上传。</p></section>
+<p id="notice" role="alert" hidden></p>
+<div class="layout"><aside class="card"><h2>当前会话任务</h2><div id="jobs"></div><button class="secondary" id="refresh">刷新列表</button></aside><section class="card" id="detail"><p class="muted">上传工作簿，或选择当前会话已有的任务。</p></section></div>
+<section class="card" id="previewCard" hidden><div class="bar"><h2>PDF 预览</h2><button id="closePreview" class="secondary">关闭预览</button></div><div class="actions"><button id="previousPage" class="secondary">上一页</button><span id="pageNumber" role="status"></span><button id="nextPage" class="secondary">下一页</button><a id="savePdf" class="save" download>下载 PDF</a></div><p id="previewStatus" class="muted" role="status"></p><div class="pdfPage"><canvas id="preview" aria-label="出图 PDF 页面"></canvas></div></section>
+<footer>沿用当前受控模板及样例打印外观。生成完成后请进行工程复核。</footer></main><script src="/satellite-heater/app.js" type="module"></script></body></html>

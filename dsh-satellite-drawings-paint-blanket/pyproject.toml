@@ -1,0 +1,19 @@
+[project]
+name = "satellite-drawings-workspace"
+version = "0.1.0"
+requires-python = ">=3.12,<3.13"
+dependencies = ["thermal-drawings-service", "satellite-geometry-core", "jsonschema==4.24.0", "pytest==9.0.2", "PyYAML==6.0.3", "openapi-spec-validator==0.8.0"]
+
+[tool.uv]
+package = false
+
+[tool.uv.workspace]
+members = ["service", "packages/geometry-core"]
+
+[tool.uv.sources]
+thermal-drawings-service = {workspace = true}
+satellite-geometry-core = {workspace = true}
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "--strict-markers"

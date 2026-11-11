@@ -1,0 +1,393 @@
+{
+  "schema_version": 1,
+  "batches": {
+    "B01": {
+      "dependency_reports": [],
+      "human_gates": [],
+      "boundary_evidence": {
+        "path": "docs/evidence/B05-fix-3/linux/b01-boundary-after.json",
+        "baseline_path": "docs/evidence/B05-fix-3/linux/b01-boundary-before.json",
+        "max_age_hours": 24
+      },
+      "builtin_checks": [
+        "fixtures",
+        "foundation"
+      ],
+      "commands": [
+        {
+          "id": "contract-tests",
+          "argv": [
+            "{python}",
+            "-m",
+            "pytest",
+            "-q",
+            "tests/contracts"
+          ],
+          "kind": "pytest",
+          "required": true
+        },
+        {
+          "id": "runner-tests",
+          "argv": [
+            "{python}",
+            "-m",
+            "pytest",
+            "-q",
+            "tests/planning"
+          ],
+          "kind": "pytest",
+          "required": true
+        },
+        {
+          "id": "ecmascript-contract",
+          "argv": [
+            "node",
+            "scripts/check_ecmascript_contract.mjs"
+          ],
+          "kind": "command",
+          "required": true
+        },
+        {
+          "id": "wheel-install",
+          "argv": [
+            "{python}",
+            "scripts/check_wheel_install.py"
+          ],
+          "kind": "command",
+          "required": true,
+          "blocked_exit_codes": [
+            2
+          ]
+        }
+      ]
+    },
+    "B02": {
+      "dependency_reports": [
+        {
+          "batch": "B01",
+          "path": "docs/evidence/B02-development-fix-1/b01-runner/summary.json",
+          "verification": "current_source_contract",
+          "acceptance_binding_path": "docs/evidence/B02-development-fix-1/b01-acceptance.json",
+          "contract_version": "1",
+          "max_age_hours": 72,
+          "historical_accepted_report": {
+            "path": "docs/evidence/B01-fix-2-r2/summary.json",
+            "sha256": "fc1eaa3f3159505dac5e4e7c9dc23613fdb70d9b56ece719fbb67789861b67d0"
+          }
+        }
+      ],
+      "human_gates": [],
+      "builtin_checks": [
+        "format-evidence"
+      ],
+      "commands": [
+        {
+          "id": "probe-dxf-pdf",
+          "argv": [
+            "{python}",
+            "scripts/probe_formats.py",
+            "--fixture",
+            "fixtures/synthetic/heater_sample.json",
+            "--candidate",
+            "docs/evidence/B02-development-baseline/candidate",
+            "--profile",
+            "dxf_pdf_v1",
+            "--output",
+            "docs/evidence/B02-development-baseline/validation"
+          ],
+          "kind": "command",
+          "required": true
+        },
+        {
+          "id": "format-failure-tests",
+          "argv": [
+            "{python}",
+            "-m",
+            "pytest",
+            "-q",
+            "tests/formats/test_probe_failures.py"
+          ],
+          "kind": "pytest",
+          "required": true
+        },
+        {
+          "id": "regression-tests",
+          "argv": [
+            "{python}",
+            "-m",
+            "pytest",
+            "-q",
+            "tests/contracts",
+            "tests/planning",
+            "tests/formats"
+          ],
+          "kind": "pytest",
+          "required": true
+        },
+        {
+          "id": "probe-dwg-candidate",
+          "argv": [
+            "{python}",
+            "scripts/probe_formats.py",
+            "--profile",
+            "dwg_candidate",
+            "--output",
+            "docs/evidence/B02-development-baseline/dwg"
+          ],
+          "kind": "command",
+          "required": false,
+          "blocked_exit_codes": [
+            2
+          ]
+        },
+        {
+          "id": "check-format-gate",
+          "argv": [
+            "{python}",
+            "scripts/check_format_gate.py",
+            "--decision",
+            "docs/decisions/format-profile.md",
+            "--evidence",
+            "docs/evidence/B02-development-baseline",
+            "--stage",
+            "development"
+          ],
+          "kind": "command",
+          "required": true,
+          "blocked_exit_codes": [
+            2
+          ]
+        }
+      ]
+    },
+    "B03": {
+      "dependency_reports": [
+        {
+          "batch": "B01",
+          "path": "docs/evidence/B03-fix-4/b01-runner/summary.json",
+          "verification": "current_source_contract",
+          "acceptance_binding_path": "docs/evidence/B03-fix-4/b01-acceptance.json",
+          "contract_version": "1",
+          "max_age_hours": 72,
+          "historical_accepted_report": {
+            "path": "docs/evidence/B01-fix-2-r2/summary.json",
+            "sha256": "fc1eaa3f3159505dac5e4e7c9dc23613fdb70d9b56ece719fbb67789861b67d0"
+          }
+        }
+      ],
+      "human_gates": [],
+      "builtin_checks": [],
+      "commands": [
+        {
+          "id": "check-excel-case",
+          "argv": [
+            "{python}",
+            "scripts/check_excel.py",
+            "--input",
+            "fixtures/case/加热器图纸.xlsx",
+            "--output",
+            "docs/evidence/B03-fix-4/case.json"
+          ],
+          "kind": "command",
+          "required": true
+        },
+        {
+          "id": "excel-tests",
+          "argv": [
+            "{python}",
+            "-m",
+            "pytest",
+            "-q",
+            "tests/excel"
+          ],
+          "kind": "pytest",
+          "required": true
+        },
+        {
+          "id": "check-excel-invalid",
+          "argv": [
+            "{python}",
+            "scripts/check_excel.py",
+            "--input",
+            "fixtures/invalid/invalid-values.xlsx",
+            "--output",
+            "docs/evidence/B03-fix-4/invalid.json"
+          ],
+          "kind": "command",
+          "required": true,
+          "expected_exit_codes": [
+            1
+          ]
+        }
+      ]
+    },
+    "B04": {
+      "dependency_reports": [
+        {
+          "batch": "B01",
+          "path": "docs/evidence/B04-fix-3/linux/b01-runner/summary.json",
+          "verification": "current_source_contract",
+          "acceptance_binding_path": "docs/evidence/B04-fix-3/linux/b01-acceptance.json",
+          "contract_version": "1",
+          "max_age_hours": 72,
+          "historical_accepted_report": {
+            "path": "docs/evidence/B01-fix-2-r2/summary.json",
+            "sha256": "fc1eaa3f3159505dac5e4e7c9dc23613fdb70d9b56ece719fbb67789861b67d0"
+          }
+        },
+        {
+          "batch": "B02",
+          "path": "docs/evidence/B02-development-baseline/b02-runner/summary.json",
+          "verification": "immutable_hash",
+          "sha256": "e546508e0f5db2e52e2f4739b9b4b3ab5359bf366563e684cb249c77e0f10a72",
+          "source_git_head": "2ff69ff64192ad812f8c79566d68cdb722e81e10",
+          "source_contract_sha256": "aae8cce63228d45dbaed9a27c1562c109ea5f286c0e54e24691275c55b36a2b9",
+          "contract_version": "1",
+          "max_age_hours": 72
+        },
+        {
+          "batch": "B03",
+          "path": "docs/evidence/B03-fix-4/b03-runner/summary.json",
+          "verification": "immutable_hash",
+          "sha256": "eba6722a475716855100b3bf2b1bde36cabdfd97a50e913698bbe8b3659841eb",
+          "source_git_head": "d28fa4802d39929a5f5bf24eeea8d091ace2bd69",
+          "source_contract_sha256": "3282aac14f9993d66592deff25b830cca82d7cdbcc14e48c085a36fd2df6dc0f",
+          "contract_version": "1",
+          "max_age_hours": 72
+        }
+      ],
+      "human_gates": [],
+      "builtin_checks": [],
+      "commands": [
+        {
+          "id": "draw-real-case",
+          "argv": [
+            "{python}",
+            "scripts/draw_case.py",
+            "--input",
+            "fixtures/case/加热器图纸.xlsx",
+            "--template",
+            "templates/heater-a4-v1",
+            "--output",
+            "docs/evidence/B04-fix-1/linux/case"
+          ],
+          "kind": "command",
+          "required": true
+        },
+        {
+          "id": "check-real-drawing",
+          "argv": [
+            "{python}",
+            "scripts/check_drawing.py",
+            "--dxf",
+            "docs/evidence/B04-fix-1/linux/case/加热器图纸.dxf",
+            "--expected",
+            "fixtures/case/expected.json",
+            "--pages",
+            "docs/evidence/B04-fix-1/linux/case/pages.json",
+            "--output",
+            "docs/evidence/B04-fix-1/linux/readback.json"
+          ],
+          "kind": "command",
+          "required": true
+        },
+        {
+          "id": "drawing-tests",
+          "argv": [
+            "{python}",
+            "-m",
+            "pytest",
+            "-q",
+            "tests/drawing"
+          ],
+          "kind": "pytest",
+          "required": true
+        }
+      ]
+    },
+    "B05": {
+      "dependency_reports": [
+        {
+          "batch": "B01",
+          "path": "docs/evidence/B05-fix-3/linux/b01-runner/summary.json",
+          "verification": "current_source_contract",
+          "acceptance_binding_path": "docs/evidence/B05-fix-3/linux/b01-acceptance.json",
+          "contract_version": "1",
+          "max_age_hours": 72,
+          "historical_accepted_report": {
+            "path": "docs/evidence/B01-fix-2-r2/summary.json",
+            "sha256": "fc1eaa3f3159505dac5e4e7c9dc23613fdb70d9b56ece719fbb67789861b67d0"
+          }
+        },
+        {
+          "batch": "B02",
+          "path": "docs/evidence/B02-development-baseline/b02-runner/summary.json",
+          "verification": "immutable_hash",
+          "sha256": "e546508e0f5db2e52e2f4739b9b4b3ab5359bf366563e684cb249c77e0f10a72",
+          "source_git_head": "2ff69ff64192ad812f8c79566d68cdb722e81e10",
+          "source_contract_sha256": "aae8cce63228d45dbaed9a27c1562c109ea5f286c0e54e24691275c55b36a2b9",
+          "contract_version": "1",
+          "max_age_hours": 72
+        },
+        {
+          "batch": "B04",
+          "path": "docs/evidence/B04-fix-1/linux/runner/summary.json",
+          "verification": "immutable_hash",
+          "sha256": "23ec595f4c5aab4de1b29011bb7dcbd18d3fffdafd158eb5a32dc41c0c1ff888",
+          "source_git_head": "4e760beb65af64cd9834cd0373eab92b02e4b126",
+          "source_contract_sha256": "f4acd4fef85923e190131a41b3515e83932f3c1f1aab74bdf5e53a2109054ff0",
+          "contract_version": "1",
+          "max_age_hours": 72
+        }
+      ],
+      "human_gates": [],
+      "builtin_checks": [],
+      "commands": [
+        {
+          "id": "build-delivery-case",
+          "argv": [
+            "{python}",
+            "scripts/build_delivery.py",
+            "--revision",
+            "fixtures/delivery/case-revision.json",
+            "--dxf",
+            "docs/evidence/B04-fix-1/linux/case/加热器图纸.dxf",
+            "--pages",
+            "docs/evidence/B04-fix-1/linux/case/pages.json",
+            "--output",
+            "docs/evidence/B05/case"
+          ],
+          "kind": "command",
+          "required": true
+        },
+        {
+          "id": "check-delivery-case",
+          "argv": [
+            "{python}",
+            "scripts/check_delivery.py",
+            "--directory",
+            "docs/evidence/B05/case",
+            "--expected",
+            "fixtures/delivery/case-revision.json",
+            "--output",
+            "docs/evidence/B05/check.json"
+          ],
+          "kind": "command",
+          "required": true
+        },
+        {
+          "id": "delivery-tests",
+          "argv": [
+            "{python}",
+            "-m",
+            "pytest",
+            "-q",
+            "tests/delivery"
+          ],
+          "kind": "pytest",
+          "required": true
+        }
+      ]
+    }
+  }
+}

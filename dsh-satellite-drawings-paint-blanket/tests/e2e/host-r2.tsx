@@ -1,0 +1,10 @@
+import React,{useEffect,useState} from 'react';
+import {createRoot} from 'react-dom/client';
+const registry:any={},entries:any={};
+(window as any).__ModuleLoader__={load({id,factory}:any){const plugin=factory((name:string)=>{if(name==='react')return React;throw Error('Unexpected host dependency '+name);});plugin.apply({slots:{inject(_slot:string,fn:Function){fn();},register(meta:any,component:any){if(meta.name==='custom.agent.workspace')registry[meta.key]=component;else entries[meta.id]=meta;return()=>{};}}});}};
+async function boot(){for(const module of ['paint','blanket'])await new Promise<void>((resolve,reject)=>{const s=document.createElement('script');s.src='/client/'+module+'.js';s.onload=()=>resolve();s.onerror=reject;document.head.appendChild(s);});
+  function Host(){const [module,setModule]=useState('paint'),[session,setSession]=useState(''),[draft,setDraft]=useState('');
+    useEffect(()=>{let live=true;const check=async()=>{const r=await fetch(`/api/satellite-${module}/context`,{cache:'no-store',headers:{'x-satellite-session':new URLSearchParams(location.search).get('session')||''}});const d=await r.json();if(live)setSession(d.session_id||'');};check();const t=setInterval(check,500);return()=>{live=false;clearInterval(t);setSession('');setDraft('');};},[module]);
+    const Panel=registry['satellite-'+module];return <div><header><b>B07 Host 集成夹具 · 使用真实网关与服务</b> <button onClick={()=>setModule('paint')}>喷漆入口</button> <button onClick={()=>setModule('blanket')}>多层入口</button></header><div style={{height:'1080px'}}><Panel key={module+session} sessionId={session} useInput={(selector:any)=>selector({draft})} inputActions={{setDraft}}/></div><label>当前聊天草稿<textarea data-testid="host-draft" value={draft} onChange={e=>setDraft(e.target.value)} style={{width:'95%',height:160}}/></label></div>;
+  }createRoot(document.getElementById('host-root')!).render(<Host/>);
+}boot();

@@ -1,0 +1,309 @@
+{
+  "scope": "planning_documents_only",
+  "checked_at": "2026-11-07",
+  "status": "passed",
+  "batch_count": 10,
+  "sections": {
+    "B01": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7"
+    ],
+    "B02": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7"
+    ],
+    "B03": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7"
+    ],
+    "B04": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7"
+    ],
+    "B05": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7"
+    ],
+    "B06": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7"
+    ],
+    "B07": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7"
+    ],
+    "B08": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7"
+    ],
+    "B09": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7"
+    ],
+    "B10": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7"
+    ]
+  },
+  "dependencies": {
+    "B01": [],
+    "B02": [
+      "B01"
+    ],
+    "B03": [
+      "B01"
+    ],
+    "B04": [
+      "B02",
+      "B03"
+    ],
+    "B05": [
+      "B04"
+    ],
+    "B06": [
+      "B05"
+    ],
+    "B07": [
+      "B06"
+    ],
+    "B08": [
+      "B07"
+    ],
+    "B09": [
+      "B08"
+    ],
+    "B10": [
+      "B09"
+    ]
+  },
+  "local_link_count": 26,
+  "local_links": [
+    {
+      "source": "batches\\B01.md",
+      "target": "../plan.md",
+      "exists": true
+    },
+    {
+      "source": "batches\\B01.md",
+      "target": "../contracts.md",
+      "exists": true
+    },
+    {
+      "source": "batches\\B01.md",
+      "target": "../reference/requirements.md",
+      "exists": true
+    },
+    {
+      "source": "batches\\B01.md",
+      "target": "../reference/project-baseline.md",
+      "exists": true
+    },
+    {
+      "source": "batches\\B01.md",
+      "target": "../progress.md",
+      "exists": true
+    },
+    {
+      "source": "plan.md",
+      "target": "reference/requirements.md",
+      "exists": true
+    },
+    {
+      "source": "plan.md",
+      "target": "contracts.md",
+      "exists": true
+    },
+    {
+      "source": "plan.md",
+      "target": "reference/project-baseline.md",
+      "exists": true
+    },
+    {
+      "source": "plan.md",
+      "target": "batches/B01.md",
+      "exists": true
+    },
+    {
+      "source": "plan.md",
+      "target": "batches/B02.md",
+      "exists": true
+    },
+    {
+      "source": "plan.md",
+      "target": "batches/B03.md",
+      "exists": true
+    },
+    {
+      "source": "plan.md",
+      "target": "batches/B04.md",
+      "exists": true
+    },
+    {
+      "source": "plan.md",
+      "target": "batches/B05.md",
+      "exists": true
+    },
+    {
+      "source": "plan.md",
+      "target": "batches/B06.md",
+      "exists": true
+    },
+    {
+      "source": "plan.md",
+      "target": "batches/B07.md",
+      "exists": true
+    },
+    {
+      "source": "plan.md",
+      "target": "batches/B08.md",
+      "exists": true
+    },
+    {
+      "source": "plan.md",
+      "target": "batches/B09.md",
+      "exists": true
+    },
+    {
+      "source": "plan.md",
+      "target": "batches/B10.md",
+      "exists": true
+    },
+    {
+      "source": "plan.md",
+      "target": "progress.md",
+      "exists": true
+    },
+    {
+      "source": "plan.md",
+      "target": "contracts.md",
+      "exists": true
+    },
+    {
+      "source": "progress.md",
+      "target": "batches/B01.md",
+      "exists": true
+    },
+    {
+      "source": "progress.md",
+      "target": "reference/planning-validation.md",
+      "exists": true
+    },
+    {
+      "source": "reference\\planning-validation.md",
+      "target": "plan-check.json",
+      "exists": true
+    },
+    {
+      "source": "reference\\project-baseline.md",
+      "target": "requirements.md",
+      "exists": true
+    },
+    {
+      "source": "reference\\project-baseline.md",
+      "target": "source-files.json",
+      "exists": true
+    },
+    {
+      "source": "reference\\requirements.md",
+      "target": "project-baseline.md",
+      "exists": true
+    }
+  ],
+  "source_file_count": 10,
+  "source_files": [
+    {
+      "name": "加热器图纸.bak",
+      "matches": true
+    },
+    {
+      "name": "加热器图纸.dwg",
+      "matches": true
+    },
+    {
+      "name": "加热器图纸.pdf",
+      "matches": true
+    },
+    {
+      "name": "加热器图纸.xlsx",
+      "matches": true
+    },
+    {
+      "name": "卫星加热器出图案例.docx",
+      "matches": true
+    },
+    {
+      "name": "CAD模板.dwg",
+      "matches": true
+    },
+    {
+      "name": "CX-26-KR05-DLL-01.pdf",
+      "matches": true
+    },
+    {
+      "name": "CX-29-KR05-XM01.pdf",
+      "matches": true
+    },
+    {
+      "name": "HZDX.SHX",
+      "matches": true
+    },
+    {
+      "name": "KX-11-WR-100-300-M1.pdf",
+      "matches": true
+    }
+  ],
+  "errors": [],
+  "business_tests_run": false,
+  "cad_conversion_run": false,
+  "deployed": false
+}

@@ -1,0 +1,109 @@
+{
+  "schema_version": 1,
+  "objective": "按计划推进所有 Batch，并通过验收",
+  "scheduler_thread_id": "01a1b534-eca5-7723-aede-ccb333946b48",
+  "project_id": "2818ee49-9c90-4203-a197-7a147d29b364",
+  "local_root": "C:\\Users\\HUAWEI\\Documents\\ChatGPT\\矩形加热器插件\\heater-drawing",
+  "remote_root": "/data/qmh/satellite-plugins-20261029/dsh-satellite-heater-drawing",
+  "execution_model": "gpt-5.6-sol",
+  "review_model": "gpt-6.1-sol",
+  "reasoning_effort": "high",
+  "active_writer": "01a1b536-62a1-73d3-b47c-ae7599b8e956",
+  "batches": [
+    {
+      "batch": "B01",
+      "status": "executing",
+      "execution_thread_id": "01a1b536-62a1-73d3-b47c-ae7599b8e956",
+      "review_thread_id": null,
+      "report": "docs/reports/B01.md",
+      "review": "docs/reviews/B01.md",
+      "result": null
+    },
+    {
+      "batch": "B02",
+      "status": "not_started",
+      "execution_thread_id": null,
+      "review_thread_id": null,
+      "report": "docs/reports/B02.md",
+      "review": "docs/reviews/B02.md",
+      "result": null
+    },
+    {
+      "batch": "B03",
+      "status": "not_started",
+      "execution_thread_id": null,
+      "review_thread_id": null,
+      "report": "docs/reports/B03.md",
+      "review": "docs/reviews/B03.md",
+      "result": null
+    },
+    {
+      "batch": "B04",
+      "status": "not_started",
+      "execution_thread_id": null,
+      "review_thread_id": null,
+      "report": "docs/reports/B04.md",
+      "review": "docs/reviews/B04.md",
+      "result": null
+    },
+    {
+      "batch": "B05",
+      "status": "not_started",
+      "execution_thread_id": null,
+      "review_thread_id": null,
+      "report": "docs/reports/B05.md",
+      "review": "docs/reviews/B05.md",
+      "result": null
+    },
+    {
+      "batch": "B06",
+      "status": "not_started",
+      "execution_thread_id": null,
+      "review_thread_id": null,
+      "report": "docs/reports/B06.md",
+      "review": "docs/reviews/B06.md",
+      "result": null
+    },
+    {
+      "batch": "B07",
+      "status": "not_started",
+      "execution_thread_id": null,
+      "review_thread_id": null,
+      "report": "docs/reports/B07.md",
+      "review": "docs/reviews/B07.md",
+      "result": null
+    },
+    {
+      "batch": "B08",
+      "status": "not_started",
+      "execution_thread_id": null,
+      "review_thread_id": null,
+      "report": "docs/reports/B08.md",
+      "review": "docs/reviews/B08.md",
+      "result": null
+    },
+    {
+      "batch": "B09",
+      "status": "not_started",
+      "execution_thread_id": null,
+      "review_thread_id": null,
+      "report": "docs/reports/B09.md",
+      "review": "docs/reviews/B09.md",
+      "result": null
+    },
+    {
+      "batch": "B10",
+      "status": "not_started",
+      "execution_thread_id": null,
+      "review_thread_id": null,
+      "report": "docs/reports/B10.md",
+      "review": "docs/reviews/B10.md",
+      "result": null
+    }
+  ],
+  "integration": {
+    "status": "not_started",
+    "review_thread_id": null,
+    "report": "docs/reviews/integration.md"
+  }
+}

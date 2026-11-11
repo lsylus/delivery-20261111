@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "template_id": "heater-a4-v1",
+  "version": "1.4.0-development-baseline",
+  "status": "development_baseline_delivery_approval_pending",
+  "source_method": "native entities preserved from the hash-bound one-time ODA R2018 DXF conversion of the original DWG; translated to controlled paper coordinates without geometric scaling",
+  "source_hashes": {
+    "fixtures/case/CAD模板.dwg": "7c917bb7805aefd8ce327ca7f1e6912c2fcfabcb68ee91569f71503638c82676",
+    "fixtures/case/加热器图纸.pdf": "c38953be0adaac425e1d6a7b9dcdef2fe9a4332f49bea1811a94a69e42aaa912"
+  },
+  "controlled_files": {
+    "layout.json": "63c1bf606fc7933be4700442457f5566545a0b84c23ae849cc4fc7674d04902e",
+    "fonts.json": "f7c755b57d89aaf89b4e4c8505b9737c440cb1e8f0345b590ea5e869ea329cb5",
+    "template.dxf": "3bcf858e7417f304bcaf7100abc1b8fa111dad76a070337f790b687edf5415c7"
+  },
+  "approval_evidence": "docs/evidence/B02-development-baseline/human-approval.json"
+}

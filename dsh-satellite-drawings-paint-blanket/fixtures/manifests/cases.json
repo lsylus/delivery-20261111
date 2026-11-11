@@ -1,0 +1,328 @@
+{
+  "schema_version": 1,
+  "cases": [
+    {
+      "id": "Star1",
+      "module": "shared",
+      "purpose": "Native assembly candidate; select a complete small subassembly in B05",
+      "split": "development",
+      "source_manifest": "fixtures/manifests/Star1.inventory.json",
+      "main_file": null,
+      "vendor": "Creo",
+      "version": null,
+      "expected_instances": null,
+      "reference_artifacts": [
+        "star1_original.stp"
+      ],
+      "revision_match_status": "unknown",
+      "selection_spec": null,
+      "expected_checks": [
+        "units",
+        "assembly_completeness",
+        "revision_correspondence"
+      ],
+      "tolerances": null,
+      "requires_tools": [
+        "licensed-native-converter"
+      ],
+      "completeness": "not_opened",
+      "unknown_reasons": {
+        "main_file": "Not established by B01 inventory; requires actual opening and case review in its owning batch.",
+        "version": "Not established by B01 inventory; requires actual opening and case review in its owning batch.",
+        "expected_instances": "Not established by B01 inventory; requires actual opening and case review in its owning batch.",
+        "selection_spec": "Not established by B01 inventory; requires actual opening and case review in its owning batch.",
+        "tolerances": "Not established by B01 inventory; requires actual opening and case review in its owning batch."
+      }
+    },
+    {
+      "id": "Star2",
+      "module": "shared",
+      "purpose": "Native assembly candidate; select a complete small subassembly in B05",
+      "split": "development",
+      "source_manifest": "fixtures/manifests/Star2.inventory.json",
+      "main_file": null,
+      "vendor": "Creo",
+      "version": null,
+      "expected_instances": null,
+      "reference_artifacts": [
+        "xltts-zp_asm.stp"
+      ],
+      "revision_match_status": "unknown",
+      "selection_spec": null,
+      "expected_checks": [
+        "units",
+        "assembly_completeness",
+        "revision_correspondence"
+      ],
+      "tolerances": null,
+      "requires_tools": [
+        "licensed-native-converter"
+      ],
+      "completeness": "not_opened",
+      "unknown_reasons": {
+        "main_file": "Not established by B01 inventory; requires actual opening and case review in its owning batch.",
+        "version": "Not established by B01 inventory; requires actual opening and case review in its owning batch.",
+        "expected_instances": "Not established by B01 inventory; requires actual opening and case review in its owning batch.",
+        "selection_spec": "Not established by B01 inventory; requires actual opening and case review in its owning batch.",
+        "tolerances": "Not established by B01 inventory; requires actual opening and case review in its owning batch."
+      }
+    },
+    {
+      "id": "Star3",
+      "module": "shared",
+      "purpose": "Native assembly candidate; select a complete small subassembly in B05",
+      "split": "holdout",
+      "source_manifest": "fixtures/manifests/Star3.inventory.json",
+      "main_file": null,
+      "vendor": "Creo",
+      "version": null,
+      "expected_instances": null,
+      "reference_artifacts": [
+        "star3_original.stp"
+      ],
+      "revision_match_status": "unknown",
+      "selection_spec": null,
+      "expected_checks": [
+        "units",
+        "assembly_completeness",
+        "revision_correspondence"
+      ],
+      "tolerances": null,
+      "requires_tools": [
+        "licensed-native-converter"
+      ],
+      "completeness": "not_opened",
+      "unknown_reasons": {
+        "main_file": "Not established by B01 inventory; requires actual opening and case review in its owning batch.",
+        "version": "Not established by B01 inventory; requires actual opening and case review in its owning batch.",
+        "expected_instances": "Not established by B01 inventory; requires actual opening and case review in its owning batch.",
+        "selection_spec": "Not established by B01 inventory; requires actual opening and case review in its owning batch.",
+        "tolerances": "Not established by B01 inventory; requires actual opening and case review in its owning batch."
+      }
+    },
+    {
+      "id": "Star4",
+      "module": "shared",
+      "purpose": "Native assembly candidate; select a complete small subassembly in B05",
+      "split": "holdout",
+      "source_manifest": "fixtures/manifests/Star4.inventory.json",
+      "main_file": null,
+      "vendor": "Creo",
+      "version": null,
+      "expected_instances": null,
+      "reference_artifacts": [
+        "star4_original.stp"
+      ],
+      "revision_match_status": "unknown",
+      "selection_spec": null,
+      "expected_checks": [
+        "units",
+        "assembly_completeness",
+        "revision_correspondence"
+      ],
+      "tolerances": null,
+      "requires_tools": [
+        "licensed-native-converter"
+      ],
+      "completeness": "not_opened",
+      "unknown_reasons": {
+        "main_file": "Not established by B01 inventory; requires actual opening and case review in its owning batch.",
+        "version": "Not established by B01 inventory; requires actual opening and case review in its owning batch.",
+        "expected_instances": "Not established by B01 inventory; requires actual opening and case review in its owning batch.",
+        "selection_spec": "Not established by B01 inventory; requires actual opening and case review in its owning batch.",
+        "tolerances": "Not established by B01 inventory; requires actual opening and case review in its owning batch."
+      }
+    },
+    {
+      "id": "zip-step",
+      "module": "paint",
+      "purpose": "Original supplied STEP/DWG; revision match unverified",
+      "split": "holdout",
+      "source_manifest": "fixtures/manifests/zip.inventory.json",
+      "main_file": "新增插件/测试算例/20261010_asm_5_asm.stp",
+      "vendor": "Creo",
+      "version": null,
+      "expected_instances": null,
+      "reference_artifacts": null,
+      "revision_match_status": "unknown",
+      "selection_spec": null,
+      "expected_checks": [
+        "units",
+        "assembly_completeness",
+        "revision_correspondence"
+      ],
+      "tolerances": null,
+      "requires_tools": [
+        "STEP-reader"
+      ],
+      "completeness": "not_opened",
+      "unknown_reasons": {
+        "version": "Not established by B01 inventory; requires actual opening and case review in its owning batch.",
+        "expected_instances": "Not established by B01 inventory; requires actual opening and case review in its owning batch.",
+        "reference_artifacts": "Not established by B01 inventory; requires actual opening and case review in its owning batch.",
+        "selection_spec": "Not established by B01 inventory; requires actual opening and case review in its owning batch.",
+        "tolerances": "Not established by B01 inventory; requires actual opening and case review in its owning batch."
+      }
+    },
+    {
+      "id": "zip-dwg",
+      "module": "paint",
+      "purpose": "Original supplied STEP/DWG; revision match unverified",
+      "split": "holdout",
+      "source_manifest": "fixtures/manifests/zip.inventory.json",
+      "main_file": "新增插件/测试算例/喷漆图.DWG",
+      "vendor": "AutoCAD",
+      "version": null,
+      "expected_instances": null,
+      "reference_artifacts": null,
+      "revision_match_status": "unknown",
+      "selection_spec": null,
+      "expected_checks": [
+        "units",
+        "assembly_completeness",
+        "revision_correspondence"
+      ],
+      "tolerances": null,
+      "requires_tools": [
+        "DWG-reader",
+        "AutoCAD-reopen"
+      ],
+      "completeness": "not_opened",
+      "unknown_reasons": {
+        "version": "Not established by B01 inventory; requires actual opening and case review in its owning batch.",
+        "expected_instances": "Not established by B01 inventory; requires actual opening and case review in its owning batch.",
+        "reference_artifacts": "Not established by B01 inventory; requires actual opening and case review in its owning batch.",
+        "selection_spec": "Not established by B01 inventory; requires actual opening and case review in its owning batch.",
+        "tolerances": "Not established by B01 inventory; requires actual opening and case review in its owning batch."
+      }
+    },
+    {
+      "id": "catch-original",
+      "module": "shared",
+      "purpose": "Existing STEP candidate; no geometry or truth asserted",
+      "split": "development",
+      "source_manifest": "fixtures/manifests/catch-original.inventory.json",
+      "main_file": "original.step",
+      "vendor": null,
+      "version": null,
+      "expected_instances": null,
+      "reference_artifacts": null,
+      "revision_match_status": "unknown",
+      "selection_spec": null,
+      "expected_checks": [
+        "units",
+        "assembly_completeness",
+        "revision_correspondence"
+      ],
+      "tolerances": null,
+      "requires_tools": [
+        "STEP-reader"
+      ],
+      "completeness": "not_opened",
+      "unknown_reasons": {
+        "vendor": "Not established by B01 inventory; requires actual opening and case review in its owning batch.",
+        "version": "Not established by B01 inventory; requires actual opening and case review in its owning batch.",
+        "expected_instances": "Not established by B01 inventory; requires actual opening and case review in its owning batch.",
+        "reference_artifacts": "Not established by B01 inventory; requires actual opening and case review in its owning batch.",
+        "selection_spec": "Not established by B01 inventory; requires actual opening and case review in its owning batch.",
+        "tolerances": "Not established by B01 inventory; requires actual opening and case review in its owning batch."
+      }
+    },
+    {
+      "id": "real-thruster",
+      "module": "shared",
+      "purpose": "Existing STEP candidate; no geometry or truth asserted",
+      "split": "development",
+      "source_manifest": "fixtures/manifests/real-thruster.inventory.json",
+      "main_file": "original.step",
+      "vendor": null,
+      "version": null,
+      "expected_instances": null,
+      "reference_artifacts": null,
+      "revision_match_status": "unknown",
+      "selection_spec": null,
+      "expected_checks": [
+        "units",
+        "assembly_completeness",
+        "revision_correspondence"
+      ],
+      "tolerances": null,
+      "requires_tools": [
+        "STEP-reader"
+      ],
+      "completeness": "not_opened",
+      "unknown_reasons": {
+        "vendor": "Not established by B01 inventory; requires actual opening and case review in its owning batch.",
+        "version": "Not established by B01 inventory; requires actual opening and case review in its owning batch.",
+        "expected_instances": "Not established by B01 inventory; requires actual opening and case review in its owning batch.",
+        "reference_artifacts": "Not established by B01 inventory; requires actual opening and case review in its owning batch.",
+        "selection_spec": "Not established by B01 inventory; requires actual opening and case review in its owning batch.",
+        "tolerances": "Not established by B01 inventory; requires actual opening and case review in its owning batch."
+      }
+    },
+    {
+      "id": "real-gearbox",
+      "module": "shared",
+      "purpose": "Existing STEP candidate; no geometry or truth asserted",
+      "split": "development",
+      "source_manifest": "fixtures/manifests/real-gearbox.inventory.json",
+      "main_file": "original.step",
+      "vendor": null,
+      "version": null,
+      "expected_instances": null,
+      "reference_artifacts": null,
+      "revision_match_status": "unknown",
+      "selection_spec": null,
+      "expected_checks": [
+        "units",
+        "assembly_completeness",
+        "revision_correspondence"
+      ],
+      "tolerances": null,
+      "requires_tools": [
+        "STEP-reader"
+      ],
+      "completeness": "not_opened",
+      "unknown_reasons": {
+        "vendor": "Not established by B01 inventory; requires actual opening and case review in its owning batch.",
+        "version": "Not established by B01 inventory; requires actual opening and case review in its owning batch.",
+        "expected_instances": "Not established by B01 inventory; requires actual opening and case review in its owning batch.",
+        "reference_artifacts": "Not established by B01 inventory; requires actual opening and case review in its owning batch.",
+        "selection_spec": "Not established by B01 inventory; requires actual opening and case review in its owning batch.",
+        "tolerances": "Not established by B01 inventory; requires actual opening and case review in its owning batch."
+      }
+    },
+    {
+      "id": "satellite-assembly",
+      "module": "shared",
+      "purpose": "Existing STEP candidate; no geometry or truth asserted",
+      "split": "holdout",
+      "source_manifest": "fixtures/manifests/satellite-assembly.inventory.json",
+      "main_file": "original.step",
+      "vendor": null,
+      "version": null,
+      "expected_instances": null,
+      "reference_artifacts": null,
+      "revision_match_status": "unknown",
+      "selection_spec": null,
+      "expected_checks": [
+        "units",
+        "assembly_completeness",
+        "revision_correspondence"
+      ],
+      "tolerances": null,
+      "requires_tools": [
+        "STEP-reader"
+      ],
+      "completeness": "not_opened",
+      "unknown_reasons": {
+        "vendor": "Not established by B01 inventory; requires actual opening and case review in its owning batch.",
+        "version": "Not established by B01 inventory; requires actual opening and case review in its owning batch.",
+        "expected_instances": "Not established by B01 inventory; requires actual opening and case review in its owning batch.",
+        "reference_artifacts": "Not established by B01 inventory; requires actual opening and case review in its owning batch.",
+        "selection_spec": "Not established by B01 inventory; requires actual opening and case review in its owning batch.",
+        "tolerances": "Not established by B01 inventory; requires actual opening and case review in its owning batch."
+      }
+    }
+  ]
+}

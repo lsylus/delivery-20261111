@@ -1,0 +1,852 @@
+{
+  "$defs": {
+    "Bounds": {
+      "additionalProperties": false,
+      "properties": {
+        "left": {
+          "pattern": "^-?(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$(?![\\s\\S])",
+          "title": "Left",
+          "type": "string"
+        },
+        "bottom": {
+          "pattern": "^-?(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$(?![\\s\\S])",
+          "title": "Bottom",
+          "type": "string"
+        },
+        "right": {
+          "pattern": "^-?(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$(?![\\s\\S])",
+          "title": "Right",
+          "type": "string"
+        },
+        "top": {
+          "pattern": "^-?(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$(?![\\s\\S])",
+          "title": "Top",
+          "type": "string"
+        }
+      },
+      "required": [
+        "left",
+        "bottom",
+        "right",
+        "top"
+      ],
+      "title": "Bounds",
+      "type": "object"
+    },
+    "Decision": {
+      "additionalProperties": false,
+      "properties": {
+        "decision_id": {
+          "format": "uuid",
+          "title": "Decision Id",
+          "type": "string"
+        },
+        "actor_id": {
+          "minLength": 1,
+          "title": "Actor Id",
+          "type": "string"
+        },
+        "decided_at": {
+          "format": "date-time",
+          "title": "Decided At",
+          "type": "string"
+        },
+        "kind": {
+          "$ref": "#/$defs/DecisionKind"
+        },
+        "base_revision_hash": {
+          "pattern": "^[0-9a-f]{64}$(?![\\s\\S])",
+          "title": "Base Revision Hash",
+          "type": "string"
+        },
+        "issue_ids": {
+          "items": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "title": "Issue Ids",
+          "type": "array"
+        },
+        "proposal_ids": {
+          "items": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "title": "Proposal Ids",
+          "type": "array"
+        },
+        "row_ids": {
+          "items": {
+            "pattern": "^[^:\\r\\n]+:(?:[2-9]|[1-9][0-9]+)$(?![\\s\\S])",
+            "type": "string"
+          },
+          "title": "Row Ids",
+          "type": "array"
+        },
+        "reason": {
+          "minLength": 1,
+          "title": "Reason",
+          "type": "string"
+        },
+        "confirmation_receipt_id": {
+          "minLength": 1,
+          "title": "Confirmation Receipt Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "decision_id",
+        "actor_id",
+        "decided_at",
+        "kind",
+        "base_revision_hash",
+        "reason",
+        "confirmation_receipt_id"
+      ],
+      "title": "Decision",
+      "type": "object"
+    },
+    "DecisionKind": {
+      "enum": [
+        "scale",
+        "skip"
+      ],
+      "title": "DecisionKind",
+      "type": "string"
+    },
+    "ErrorCode": {
+      "description": "Fixed v1 vocabulary shared by row issues and HTTP errors.",
+      "enum": [
+        "INVALID_REQUEST",
+        "AUTHENTICATION_REQUIRED",
+        "ACCESS_DENIED",
+        "NOT_FOUND",
+        "REVISION_CONFLICT",
+        "PAYLOAD_TOO_LARGE",
+        "UNSUPPORTED_INPUT",
+        "CAPABILITY_UNAVAILABLE",
+        "INVALID_FIELD",
+        "MISSING_FIELD",
+        "DUPLICATE_CODE",
+        "WORKER_INTERRUPTED",
+        "INTERNAL_ERROR"
+      ],
+      "title": "ErrorCode",
+      "type": "string"
+    },
+    "HeaterFields": {
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Name",
+          "type": "string"
+        },
+        "code": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Code",
+          "type": "string"
+        },
+        "width_mm": {
+          "pattern": "^(?:0\\.[0-9]*[1-9][0-9]*|[1-9][0-9]*(?:\\.[0-9]+)?)$(?![\\s\\S])",
+          "title": "Width Mm",
+          "type": "string"
+        },
+        "length_mm": {
+          "pattern": "^(?:0\\.[0-9]*[1-9][0-9]*|[1-9][0-9]*(?:\\.[0-9]+)?)$(?![\\s\\S])",
+          "title": "Length Mm",
+          "type": "string"
+        },
+        "lead_side": {
+          "$ref": "#/$defs/LeadSide"
+        },
+        "resistance_ohm": {
+          "pattern": "^(?:0\\.[0-9]*[1-9][0-9]*|[1-9][0-9]*(?:\\.[0-9]+)?)$(?![\\s\\S])",
+          "title": "Resistance Ohm",
+          "type": "string"
+        },
+        "tolerance_ohm": {
+          "pattern": "^(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$(?![\\s\\S])",
+          "title": "Tolerance Ohm",
+          "type": "string"
+        },
+        "quantity_text": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Quantity Text",
+          "type": "string"
+        },
+        "requested_scale": {
+          "pattern": "^1:(?:1(?:\\.[0-9]+)?|(?:[2-9]|[1-9][0-9]+)(?:\\.[0-9]+)?)$(?![\\s\\S])",
+          "title": "Requested Scale",
+          "type": "string"
+        },
+        "organization": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Organization",
+          "type": "string"
+        },
+        "model": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Model",
+          "type": "string"
+        },
+        "designer": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Designer",
+          "type": "string"
+        },
+        "checker": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Checker",
+          "type": "string"
+        },
+        "reviewer": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Reviewer",
+          "type": "string"
+        },
+        "standards_reviewer": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Standards Reviewer",
+          "type": "string"
+        },
+        "approver": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Approver",
+          "type": "string"
+        },
+        "stage": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Stage",
+          "type": "string"
+        }
+      },
+      "required": [
+        "name",
+        "code",
+        "width_mm",
+        "length_mm",
+        "lead_side",
+        "resistance_ohm",
+        "tolerance_ohm",
+        "quantity_text",
+        "requested_scale",
+        "organization",
+        "model",
+        "designer",
+        "checker",
+        "reviewer",
+        "standards_reviewer",
+        "approver",
+        "stage"
+      ],
+      "title": "HeaterFields",
+      "type": "object"
+    },
+    "HeaterRow": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": 1,
+          "default": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "row_id": {
+          "pattern": "^[^:\\r\\n]+:(?:[2-9]|[1-9][0-9]+)$(?![\\s\\S])",
+          "title": "Row Id",
+          "type": "string"
+        },
+        "source": {
+          "$ref": "#/$defs/SourceLocation"
+        },
+        "raw": {
+          "$ref": "#/$defs/RawHeaterFields"
+        },
+        "values": {
+          "$ref": "#/$defs/HeaterFields"
+        }
+      },
+      "required": [
+        "row_id",
+        "source",
+        "raw",
+        "values"
+      ],
+      "title": "HeaterRow",
+      "type": "object",
+      "x-semantic-validator": "heater_drawing.domain.models.validate_contract_semantics"
+    },
+    "Issue": {
+      "additionalProperties": false,
+      "properties": {
+        "issue_id": {
+          "format": "uuid",
+          "title": "Issue Id",
+          "type": "string"
+        },
+        "row_id": {
+          "anyOf": [
+            {
+              "pattern": "^[^:\\r\\n]+:(?:[2-9]|[1-9][0-9]+)$(?![\\s\\S])",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Row Id"
+        },
+        "sheet": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Sheet"
+        },
+        "excel_row": {
+          "anyOf": [
+            {
+              "minimum": 2,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Excel Row"
+        },
+        "code": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Code"
+        },
+        "field": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Field"
+        },
+        "raw_value": {
+          "anyOf": [
+            {},
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Raw Value"
+        },
+        "error_code": {
+          "$ref": "#/$defs/ErrorCode"
+        },
+        "severity": {
+          "$ref": "#/$defs/Severity"
+        },
+        "message": {
+          "minLength": 1,
+          "title": "Message",
+          "type": "string"
+        },
+        "suggested_fix": {
+          "minLength": 1,
+          "title": "Suggested Fix",
+          "type": "string"
+        },
+        "scope": {
+          "$ref": "#/$defs/IssueScope"
+        },
+        "skippable": {
+          "title": "Skippable",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "issue_id",
+        "error_code",
+        "severity",
+        "message",
+        "suggested_fix",
+        "scope",
+        "skippable"
+      ],
+      "title": "Issue",
+      "type": "object",
+      "x-semantic-validator": "heater_drawing.domain.models.validate_contract_semantics",
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "scope": {
+                "const": "row"
+              }
+            },
+            "required": [
+              "scope"
+            ]
+          },
+          "then": {
+            "required": [
+              "row_id",
+              "sheet",
+              "excel_row"
+            ],
+            "properties": {
+              "row_id": {
+                "type": "string",
+                "pattern": "^[^:\\r\\n]+:(?:[2-9]|[1-9][0-9]+)$(?![\\s\\S])"
+              },
+              "sheet": {
+                "type": "string",
+                "minLength": 1
+              },
+              "excel_row": {
+                "type": "integer",
+                "minimum": 2
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "skippable": {
+                "const": false
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "anyOf": [
+              {
+                "required": [
+                  "row_id"
+                ],
+                "properties": {
+                  "row_id": {
+                    "not": {
+                      "type": "null"
+                    }
+                  }
+                }
+              },
+              {
+                "required": [
+                  "sheet"
+                ],
+                "properties": {
+                  "sheet": {
+                    "not": {
+                      "type": "null"
+                    }
+                  }
+                }
+              },
+              {
+                "required": [
+                  "excel_row"
+                ],
+                "properties": {
+                  "excel_row": {
+                    "not": {
+                      "type": "null"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          "then": {
+            "required": [
+              "row_id",
+              "sheet",
+              "excel_row"
+            ],
+            "properties": {
+              "row_id": {
+                "type": "string",
+                "pattern": "^[^:\\r\\n]+:(?:[2-9]|[1-9][0-9]+)$(?![\\s\\S])"
+              },
+              "sheet": {
+                "type": "string",
+                "minLength": 1
+              },
+              "excel_row": {
+                "type": "integer",
+                "minimum": 2
+              }
+            }
+          }
+        }
+      ]
+    },
+    "IssueScope": {
+      "enum": [
+        "workbook",
+        "row",
+        "system"
+      ],
+      "title": "IssueScope",
+      "type": "string"
+    },
+    "LeadSide": {
+      "enum": [
+        "short",
+        "long"
+      ],
+      "title": "LeadSide",
+      "type": "string"
+    },
+    "RawHeaterFields": {
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "title": "Name"
+        },
+        "code": {
+          "title": "Code"
+        },
+        "width_mm": {
+          "title": "Width Mm"
+        },
+        "length_mm": {
+          "title": "Length Mm"
+        },
+        "lead_side": {
+          "title": "Lead Side"
+        },
+        "resistance_ohm": {
+          "title": "Resistance Ohm"
+        },
+        "tolerance_ohm": {
+          "title": "Tolerance Ohm"
+        },
+        "quantity_text": {
+          "title": "Quantity Text"
+        },
+        "requested_scale": {
+          "title": "Requested Scale"
+        },
+        "organization": {
+          "title": "Organization"
+        },
+        "model": {
+          "title": "Model"
+        },
+        "designer": {
+          "title": "Designer"
+        },
+        "checker": {
+          "title": "Checker"
+        },
+        "reviewer": {
+          "title": "Reviewer"
+        },
+        "standards_reviewer": {
+          "title": "Standards Reviewer"
+        },
+        "approver": {
+          "title": "Approver"
+        },
+        "stage": {
+          "title": "Stage"
+        }
+      },
+      "required": [
+        "name",
+        "code",
+        "width_mm",
+        "length_mm",
+        "lead_side",
+        "resistance_ohm",
+        "tolerance_ohm",
+        "quantity_text",
+        "requested_scale",
+        "organization",
+        "model",
+        "designer",
+        "checker",
+        "reviewer",
+        "standards_reviewer",
+        "approver",
+        "stage"
+      ],
+      "title": "RawHeaterFields",
+      "type": "object"
+    },
+    "Scale": {
+      "additionalProperties": false,
+      "properties": {
+        "numerator": {
+          "const": 1,
+          "default": 1,
+          "title": "Numerator",
+          "type": "integer"
+        },
+        "denominator": {
+          "pattern": "^(?:1(?:\\.[0-9]+)?|(?:[2-9]|[1-9][0-9]+)(?:\\.[0-9]+)?)$(?![\\s\\S])",
+          "title": "Denominator",
+          "type": "string"
+        },
+        "label": {
+          "pattern": "^1:(?:1(?:\\.[0-9]+)?|(?:[2-9]|[1-9][0-9]+)(?:\\.[0-9]+)?)$(?![\\s\\S])",
+          "title": "Label",
+          "type": "string"
+        }
+      },
+      "required": [
+        "denominator",
+        "label"
+      ],
+      "title": "Scale",
+      "type": "object",
+      "x-semantic-validator": "heater_drawing.domain.models.validate_contract_semantics"
+    },
+    "ScaleProposal": {
+      "additionalProperties": false,
+      "properties": {
+        "proposal_id": {
+          "format": "uuid",
+          "title": "Proposal Id",
+          "type": "string"
+        },
+        "row_id": {
+          "pattern": "^[^:\\r\\n]+:(?:[2-9]|[1-9][0-9]+)$(?![\\s\\S])",
+          "title": "Row Id",
+          "type": "string"
+        },
+        "original": {
+          "$ref": "#/$defs/Scale"
+        },
+        "proposed": {
+          "$ref": "#/$defs/Scale"
+        },
+        "reason": {
+          "minLength": 1,
+          "title": "Reason",
+          "type": "string"
+        },
+        "measured_bounds_paper_mm": {
+          "$ref": "#/$defs/Bounds"
+        },
+        "available_bounds_paper_mm": {
+          "$ref": "#/$defs/Bounds"
+        },
+        "revision_hash": {
+          "pattern": "^[0-9a-f]{64}$(?![\\s\\S])",
+          "title": "Revision Hash",
+          "type": "string"
+        },
+        "template_hash": {
+          "pattern": "^[0-9a-f]{64}$(?![\\s\\S])",
+          "title": "Template Hash",
+          "type": "string"
+        }
+      },
+      "required": [
+        "proposal_id",
+        "row_id",
+        "original",
+        "proposed",
+        "reason",
+        "measured_bounds_paper_mm",
+        "available_bounds_paper_mm",
+        "revision_hash",
+        "template_hash"
+      ],
+      "title": "ScaleProposal",
+      "type": "object"
+    },
+    "Severity": {
+      "enum": [
+        "error",
+        "warning"
+      ],
+      "title": "Severity",
+      "type": "string"
+    },
+    "SourceLocation": {
+      "additionalProperties": false,
+      "properties": {
+        "sheet": {
+          "maxLength": 128,
+          "minLength": 1,
+          "title": "Sheet",
+          "type": "string"
+        },
+        "excel_row": {
+          "minimum": 2,
+          "title": "Excel Row",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "sheet",
+        "excel_row"
+      ],
+      "title": "SourceLocation",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "revision_id": {
+      "format": "uuid",
+      "title": "Revision Id",
+      "type": "string"
+    },
+    "parent_revision_id": {
+      "anyOf": [
+        {
+          "format": "uuid",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Parent Revision Id"
+    },
+    "source_sha256": {
+      "pattern": "^[0-9a-f]{64}$(?![\\s\\S])",
+      "title": "Source Sha256",
+      "type": "string"
+    },
+    "template_version": {
+      "minLength": 1,
+      "title": "Template Version",
+      "type": "string"
+    },
+    "template_hash": {
+      "pattern": "^[0-9a-f]{64}$(?![\\s\\S])",
+      "title": "Template Hash",
+      "type": "string"
+    },
+    "font_manifest_hash": {
+      "pattern": "^[0-9a-f]{64}$(?![\\s\\S])",
+      "title": "Font Manifest Hash",
+      "type": "string"
+    },
+    "output_profile": {
+      "minLength": 1,
+      "title": "Output Profile",
+      "type": "string"
+    },
+    "rows": {
+      "items": {
+        "$ref": "#/$defs/HeaterRow"
+      },
+      "minItems": 1,
+      "title": "Rows",
+      "type": "array"
+    },
+    "final_scales": {
+      "patternProperties": {
+        "^[^:\\r\\n]+:(?:[2-9]|[1-9][0-9]+)$(?![\\s\\S])": {
+          "$ref": "#/$defs/Scale"
+        }
+      },
+      "title": "Final Scales",
+      "type": "object"
+    },
+    "issues": {
+      "items": {
+        "$ref": "#/$defs/Issue"
+      },
+      "title": "Issues",
+      "type": "array"
+    },
+    "proposals": {
+      "items": {
+        "$ref": "#/$defs/ScaleProposal"
+      },
+      "title": "Proposals",
+      "type": "array"
+    },
+    "decisions": {
+      "items": {
+        "$ref": "#/$defs/Decision"
+      },
+      "title": "Decisions",
+      "type": "array"
+    },
+    "skipped_row_ids": {
+      "items": {
+        "pattern": "^[^:\\r\\n]+:(?:[2-9]|[1-9][0-9]+)$(?![\\s\\S])",
+        "type": "string"
+      },
+      "title": "Skipped Row Ids",
+      "type": "array"
+    },
+    "expected_row_ids": {
+      "items": {
+        "pattern": "^[^:\\r\\n]+:(?:[2-9]|[1-9][0-9]+)$(?![\\s\\S])",
+        "type": "string"
+      },
+      "minItems": 1,
+      "title": "Expected Row Ids",
+      "type": "array"
+    },
+    "revision_hash": {
+      "pattern": "^[0-9a-f]{64}$(?![\\s\\S])",
+      "title": "Revision Hash",
+      "type": "string"
+    }
+  },
+  "required": [
+    "revision_id",
+    "parent_revision_id",
+    "source_sha256",
+    "template_version",
+    "template_hash",
+    "font_manifest_hash",
+    "output_profile",
+    "rows",
+    "final_scales",
+    "issues",
+    "proposals",
+    "decisions",
+    "skipped_row_ids",
+    "expected_row_ids",
+    "revision_hash"
+  ],
+  "title": "Revision",
+  "type": "object",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://dsh.local/heater-drawing/v1/revision.schema.json",
+  "x-semantic-validator": "heater_drawing.domain.models.validate_contract_semantics",
+  "x-validation-order": [
+    "draft-2020-12-structure",
+    "shared-python-semantics"
+  ]
+}

@@ -1,0 +1,130 @@
+{
+  "schema_version": 1,
+  "stage": "specification_only_not_generated_CAD",
+  "oracle": {
+    "length_absolute_mm": 1e-06,
+    "area_volume_relative": 1e-06,
+    "near_zero_absolute": "declared_per_case"
+  },
+  "cases": [
+    {
+      "id": "assembly-tree",
+      "generate_from_batch": "B02",
+      "roots": 2,
+      "nested_depth": 2,
+      "repeated_definition_occurrences": 2,
+      "expect": "distinct occurrence IDs, equal definition IDs, composed local/world rigid transforms"
+    },
+    {
+      "id": "paint-plate",
+      "generate_from_batch": "B02",
+      "plate_mm": [
+        100,
+        80,
+        5
+      ],
+      "feet_mm": [
+        [
+          10,
+          10,
+          4
+        ],
+        [
+          10,
+          10,
+          4
+        ]
+      ],
+      "foot_centers_mm": [
+        [
+          -20,
+          0
+        ],
+        [
+          20,
+          0
+        ]
+      ],
+      "gaps_mm": [
+        0,
+        0.099,
+        0.1,
+        0.101
+      ],
+      "hole_radius_mm": 3,
+      "boss_radius_mm": 4,
+      "rib_width_mm": 2,
+      "expect": "two separately buffered footprints; gap remains paintable; material-only hole offset; boss protected without automatic extra offset; rib projection alone not protected"
+    },
+    {
+      "id": "box-100",
+      "generate_from_batch": "B02",
+      "box_mm": [
+        100,
+        100,
+        100
+      ],
+      "expected_baseline_volume_mm3": 1000000,
+      "expected_initial_mm": [
+        105,
+        105,
+        105
+      ],
+      "expected_side_gap_mm": 2.5,
+      "expected_top_gap_mm": 5,
+      "expected_ratio": 1.157625,
+      "installation_bottom_z_mm": 0
+    },
+    {
+      "id": "panel-opening",
+      "generate_from_batch": "B02",
+      "outer_mm": [
+        [
+          0,
+          0
+        ],
+        [
+          100,
+          0
+        ],
+        [
+          100,
+          80
+        ],
+        [
+          0,
+          80
+        ]
+      ],
+      "hole_mm": [
+        [
+          40,
+          30
+        ],
+        [
+          60,
+          30
+        ],
+        [
+          60,
+          50
+        ],
+        [
+          40,
+          50
+        ]
+      ],
+      "expected_area_mm2": 7600,
+      "seam_width_mm": 15,
+      "seam_ownership": "one panel only",
+      "point_valid_mm": [
+        20,
+        20
+      ],
+      "point_invalid_mm": [
+        50,
+        40
+      ]
+    }
+  ]
+}

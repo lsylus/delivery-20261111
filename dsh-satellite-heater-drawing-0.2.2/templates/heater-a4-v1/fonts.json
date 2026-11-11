@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "profile_id": "heater-fonts-v4-native-mtext-layout",
+  "status": "pending_human_approval",
+  "cad_text_mode": "editable_text",
+  "cad_style_name": "HZ",
+  "cad_style_font_file": "txt.shx",
+  "cad_style_bigfont_file": "hzdx.shx",
+  "cad_style_width_factor": 0.7,
+  "pdf_font_family": "Noto Sans CJK SC",
+  "face_family": "Noto Sans CJK SC",
+  "face_postscript_name": "NotoSansCJKsc-Regular",
+  "source_collection_path": "/usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc",
+  "source_collection_sha256": "b76b0433203017ca80401b2ee0dd69350349871c4b19d504c34dbdd80541690a",
+  "collection_face_index": 2,
+  "units_per_em": 1000,
+  "cap_height_units": 733,
+  "render_font_path": ".runtime-fonts/NotoSansCJKsc-Regular.otf",
+  "extracted_face_sha256": "e67a2b986195ba174259130d5d69a09e25cabfe5668fd3e4b6ec031d0a6ae322",
+  "font_package": "fonts-noto-cjk 1:20220127+repack1-1",
+  "license": "SIL Open Font License 1.1 (system package; binary not bundled)",
+  "distribution_policy": "extract exact face 2 into ignored runtime storage; never commit the binary",
+  "dimension_style_name": "HEATER_DIM",
+  "dimension_text_style": "HEATER_CJK",
+  "render_cad_style_font_file": "NotoSansCJKsc-Regular.otf",
+  "pdf_hz_substitution_text_scale": 0.8,
+  "pdf_native_noto_text_scale": 1.0,
+  "pdf_text_scale_policy": "The 0.8 visual compensation applies only while replacing original HZ SHX text with the temporary locked Noto PDF face. Native HEATER_CJK dimensions already use that exact Noto face and remain at 1.0.",
+  "cad_dependencies": [
+    {
+      "style": "HZ",
+      "font_file": "txt.shx",
+      "bigfont_file": "hzdx.shx",
+      "source_sha256": "42a8be6684d58bd2d886d7670d676af9445d65ca208ff116e8103b9114ed5f9c",
+      "redistribution_permission": "unknown",
+      "delivery": "not bundled; target CAD dependency must be resolved by the operator",
+      "license": "unknown"
+    },
+    {
+      "style": "HEATER_CJK",
+      "font_file": "NotoSansCJKsc-Regular.otf",
+      "postscript": "NotoSansCJKsc-Regular",
+      "sha256": "e67a2b986195ba174259130d5d69a09e25cabfe5668fd3e4b6ec031d0a6ae322",
+      "license": "SIL Open Font License 1.1"
+    }
+  ],
+  "original_hzdx_shx": {
+    "path": "fixtures/case/HZDX.SHX",
+    "sha256": "42a8be6684d58bd2d886d7670d676af9445d65ca208ff116e8103b9114ed5f9c",
+    "redistribution_permission": "unknown",
+    "selected_for_dxf_style": true,
+    "bundled": false
+  },
+  "required_symbols": ["Ω", "±", "（", "）", "－", "；", "：", "。"],
+  "pdf_render_note": "The controlled Linux PDF renderer uses the locked Noto face because it does not interpret the original SHX bigfont; this does not replace the DXF HZ style.",
+  "target_cad_note": "Target CAD must resolve txt.shx plus hzdx.shx for HZ text; HZDX is not bundled because redistribution permission is unknown."
+}

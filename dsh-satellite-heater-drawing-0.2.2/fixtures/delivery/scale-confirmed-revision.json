@@ -1,0 +1,223 @@
+{
+  "revision_id": "91b8ae9f-5365-55e8-9040-c8b0c1b06d0e",
+  "parent_revision_id": "8700b9e0-96ea-5c86-a8df-9de9ebd324d9",
+  "source_sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+  "template_version": "1.4.0-development-baseline",
+  "template_hash": "3bcf858e7417f304bcaf7100abc1b8fa111dad76a070337f790b687edf5415c7",
+  "font_manifest_hash": "f7c755b57d89aaf89b4e4c8505b9737c440cb1e8f0345b590ea5e869ea329cb5",
+  "output_profile": "dxf_pdf_v1",
+  "rows": [
+    {
+      "schema_version": 1,
+      "row_id": "Sheet1:2",
+      "source": {
+        "sheet": "Sheet1",
+        "excel_row": 2
+      },
+      "raw": {
+        "name": "星敏加热器",
+        "code": "CX-29-KR05-XM01",
+        "width_mm": 25,
+        "length_mm": 25,
+        "lead_side": "短边",
+        "resistance_ohm": 23.52,
+        "tolerance_ohm": 0.71,
+        "quantity_text": "18片",
+        "requested_scale": "1:1",
+        "organization": "上海微小卫星工程中心",
+        "model": "CX-29",
+        "designer": "陈黎",
+        "checker": "曹运涛",
+        "reviewer": "王岩峰",
+        "standards_reviewer": "郑玲",
+        "approver": "施蓉蓉",
+        "stage": "Z"
+      },
+      "values": {
+        "name": "星敏加热器",
+        "code": "CX-29-KR05-XM01",
+        "width_mm": "25",
+        "length_mm": "25",
+        "lead_side": "short",
+        "resistance_ohm": "23.52",
+        "tolerance_ohm": "0.71",
+        "quantity_text": "18片",
+        "requested_scale": "1:1",
+        "organization": "上海微小卫星工程中心",
+        "model": "CX-29",
+        "designer": "陈黎",
+        "checker": "曹运涛",
+        "reviewer": "王岩峰",
+        "standards_reviewer": "郑玲",
+        "approver": "施蓉蓉",
+        "stage": "Z"
+      }
+    },
+    {
+      "schema_version": 1,
+      "row_id": "Sheet1:3",
+      "source": {
+        "sheet": "Sheet1",
+        "excel_row": 3
+      },
+      "raw": {
+        "name": "动量轮加热器",
+        "code": "CX-26-KR05-DLL-01",
+        "width_mm": 30,
+        "length_mm": 50,
+        "lead_side": "长边",
+        "resistance_ohm": 58.8,
+        "tolerance_ohm": 1.76,
+        "quantity_text": "12（备份2）",
+        "requested_scale": "1:1",
+        "organization": "上海微小卫星工程中心",
+        "model": "CX-26",
+        "designer": "吕鑫",
+        "checker": "王岩峰",
+        "reviewer": "曹运涛",
+        "standards_reviewer": "郑玲",
+        "approver": "周苗苗",
+        "stage": "Z"
+      },
+      "values": {
+        "name": "动量轮加热器",
+        "code": "CX-26-KR05-DLL-01",
+        "width_mm": "30",
+        "length_mm": "50",
+        "lead_side": "long",
+        "resistance_ohm": "58.8",
+        "tolerance_ohm": "1.76",
+        "quantity_text": "12（备份2）",
+        "requested_scale": "1:1",
+        "organization": "上海微小卫星工程中心",
+        "model": "CX-26",
+        "designer": "吕鑫",
+        "checker": "王岩峰",
+        "reviewer": "曹运涛",
+        "standards_reviewer": "郑玲",
+        "approver": "周苗苗",
+        "stage": "Z"
+      }
+    },
+    {
+      "schema_version": 1,
+      "row_id": "Sheet1:4",
+      "source": {
+        "sheet": "Sheet1",
+        "excel_row": 4
+      },
+      "raw": {
+        "name": "外热流加热器",
+        "code": "KX-11-WR-100-300-M1",
+        "width_mm": 100,
+        "length_mm": 300,
+        "lead_side": "短边",
+        "resistance_ohm": 200,
+        "tolerance_ohm": 6,
+        "quantity_text": "76片（备份13片）",
+        "requested_scale": "1:1",
+        "organization": "中国科学院微小卫星创新研究院",
+        "model": "KX-11",
+        "designer": "吴立",
+        "checker": "曹运涛",
+        "reviewer": "郑玲",
+        "standards_reviewer": "陈黎",
+        "approver": "周苗苗",
+        "stage": "C"
+      },
+      "values": {
+        "name": "外热流加热器",
+        "code": "KX-11-WR-100-300-M1",
+        "width_mm": "100",
+        "length_mm": "300",
+        "lead_side": "short",
+        "resistance_ohm": "200",
+        "tolerance_ohm": "6",
+        "quantity_text": "76片（备份13片）",
+        "requested_scale": "1:1",
+        "organization": "中国科学院微小卫星创新研究院",
+        "model": "KX-11",
+        "designer": "吴立",
+        "checker": "曹运涛",
+        "reviewer": "郑玲",
+        "standards_reviewer": "陈黎",
+        "approver": "周苗苗",
+        "stage": "C"
+      }
+    }
+  ],
+  "final_scales": {
+    "Sheet1:2": {
+      "numerator": 1,
+      "denominator": "1",
+      "label": "1:1"
+    },
+    "Sheet1:3": {
+      "numerator": 1,
+      "denominator": "1",
+      "label": "1:1"
+    },
+    "Sheet1:4": {
+      "numerator": 1,
+      "denominator": "2",
+      "label": "1:2"
+    }
+  },
+  "issues": [],
+  "proposals": [
+    {
+      "proposal_id": "ad007714-f30c-5436-8822-4401971dd0b9",
+      "row_id": "Sheet1:4",
+      "original": {
+        "numerator": 1,
+        "denominator": "1",
+        "label": "1:1"
+      },
+      "proposed": {
+        "numerator": 1,
+        "denominator": "2",
+        "label": "1:2"
+      },
+      "reason": "完整图元、尺寸箭头、文字、引线或禁入区在当前比例下不满足受控边界；建议最小可行比例",
+      "measured_bounds_paper_mm": {
+        "left": "23.174889291686",
+        "bottom": "17.316635540918",
+        "right": "155.094889291686",
+        "top": "347.426635540918"
+      },
+      "available_bounds_paper_mm": {
+        "left": "30.0",
+        "bottom": "90.0",
+        "right": "145.0",
+        "top": "280.0"
+      },
+      "revision_hash": "1de636f68ab6107b76d13adddfa506ac9e6d2ea6b69565b9d6fe006b6ec5342f",
+      "template_hash": "3bcf858e7417f304bcaf7100abc1b8fa111dad76a070337f790b687edf5415c7"
+    }
+  ],
+  "decisions": [
+    {
+      "decision_id": "b457e263-5f28-56fa-a738-bda62c2f92a5",
+      "actor_id": "b05-test-fixture-actor",
+      "decided_at": "2026-11-09T09:00:00Z",
+      "kind": "scale",
+      "base_revision_hash": "1de636f68ab6107b76d13adddfa506ac9e6d2ea6b69565b9d6fe006b6ec5342f",
+      "issue_ids": [],
+      "proposal_ids": [
+        "ad007714-f30c-5436-8822-4401971dd0b9"
+      ],
+      "row_ids": [
+        "Sheet1:4"
+      ],
+      "reason": "B05 test fixture accepts generated 1:2 proposal; not production authorization",
+      "confirmation_receipt_id": "fixture-only-scale-receipt"
+    }
+  ],
+  "skipped_row_ids": [],
+  "expected_row_ids": [
+    "Sheet1:2",
+    "Sheet1:3",
+    "Sheet1:4"
+  ],
+  "revision_hash": "3c2bd9914c0e1eff408849b20b60ed393bf9c404e0edd19b7ab2d7500df5bc77"
+}

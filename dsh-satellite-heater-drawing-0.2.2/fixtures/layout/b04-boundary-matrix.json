@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "cases": [
+    {"id": "real-square-1-1", "expected": "page"},
+    {"id": "real-long-lead-1-1", "expected": "page"},
+    {"id": "real-large-1-2", "expected": "page"},
+    {"id": "real-large-1-1", "expected": "proposal-1:2"},
+    {"id": "no-standard-scale", "expected": "error"},
+    {"id": "long-title-text", "expected": "error-no-proposal"},
+    {"id": "missing-glyph", "expected": "error-no-proposal"},
+    {"id": "lead-clearance-1mm", "expected": "error-below-0.25mm"},
+    {"id": "lead-clearance-2mm", "expected": "page"},
+    {"id": "exact-complete-geometry-bbox", "expected": "page"},
+    {"id": "bbox-overflow-0.11mm", "expected": "error"}
+  ]
+}

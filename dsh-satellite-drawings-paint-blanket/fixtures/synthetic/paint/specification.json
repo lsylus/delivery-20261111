@@ -1,0 +1,13 @@
+{
+  "case_id": "b08-planar-analytic",
+  "units": "mm",
+  "source": "scripts/b08_cases.py; exported real XCAF STEP assembly.step",
+  "plate": {"origin": [0, 0, -5], "size": [100, 80, 5]},
+  "feet": {"xy_origins": [[10, 10], [40, 10]], "size": [10, 10, 8], "gap_mm": 0.099},
+  "hole": {"center_xy": [80, 60], "radius": 4, "through_depth": 5},
+  "integral_boss": {"center_xy": [65, 20], "radius": 4, "height": 6, "extra_offset": 0},
+  "integral_rib": {"origin": [20, 50, 0], "size": [25, 2, 6], "manual_classification": "rib"},
+  "oracle": {"one_foot_area": "100 + 40*3 + pi*3^2", "hole_ring_area": "pi*(7^2-4^2)", "boss_cap_area": "pi*4^2", "rib_protection_area": 0},
+  "tolerances": {"length_abs_mm": 0.000001, "area_relative": 0.000001, "near_zero_abs": 0.000000001},
+  "not_manufacturing_tolerance": true
+}

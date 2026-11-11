@@ -1,0 +1,6 @@
+- insert:
+    - id: satellite-blanket
+      name: '@satellite-drawings/blanket-plugin'
+      config:
+        serviceUrl: 'http://127.0.0.1:18777'
+        tenant: xingqiao-9999

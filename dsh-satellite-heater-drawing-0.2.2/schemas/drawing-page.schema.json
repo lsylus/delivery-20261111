@@ -1,0 +1,452 @@
+{
+  "$defs": {
+    "Bounds": {
+      "additionalProperties": false,
+      "properties": {
+        "left": {
+          "pattern": "^-?(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$(?![\\s\\S])",
+          "title": "Left",
+          "type": "string"
+        },
+        "bottom": {
+          "pattern": "^-?(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$(?![\\s\\S])",
+          "title": "Bottom",
+          "type": "string"
+        },
+        "right": {
+          "pattern": "^-?(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$(?![\\s\\S])",
+          "title": "Right",
+          "type": "string"
+        },
+        "top": {
+          "pattern": "^-?(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$(?![\\s\\S])",
+          "title": "Top",
+          "type": "string"
+        }
+      },
+      "required": [
+        "left",
+        "bottom",
+        "right",
+        "top"
+      ],
+      "title": "Bounds",
+      "type": "object"
+    },
+    "CheckResult": {
+      "additionalProperties": false,
+      "properties": {
+        "passed": {
+          "title": "Passed",
+          "type": "boolean"
+        },
+        "details": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Details",
+          "type": "array"
+        }
+      },
+      "required": [
+        "passed"
+      ],
+      "title": "CheckResult",
+      "type": "object"
+    },
+    "DimensionDefinition": {
+      "additionalProperties": false,
+      "properties": {
+        "measurement": {
+          "enum": [
+            "width",
+            "length"
+          ],
+          "title": "Measurement",
+          "type": "string"
+        },
+        "value_mm": {
+          "pattern": "^(?:0\\.[0-9]*[1-9][0-9]*|[1-9][0-9]*(?:\\.[0-9]+)?)$(?![\\s\\S])",
+          "title": "Value Mm",
+          "type": "string"
+        }
+      },
+      "required": [
+        "measurement",
+        "value_mm"
+      ],
+      "title": "DimensionDefinition",
+      "type": "object"
+    },
+    "DrawingChecks": {
+      "additionalProperties": false,
+      "properties": {
+        "bounds": {
+          "$ref": "#/$defs/CheckResult"
+        },
+        "collisions": {
+          "$ref": "#/$defs/CheckResult"
+        },
+        "glyph_coverage": {
+          "$ref": "#/$defs/CheckResult"
+        }
+      },
+      "required": [
+        "bounds",
+        "collisions",
+        "glyph_coverage"
+      ],
+      "title": "DrawingChecks",
+      "type": "object"
+    },
+    "Geometry": {
+      "additionalProperties": false,
+      "properties": {
+        "rectangle": {
+          "$ref": "#/$defs/RectangleGeometry"
+        },
+        "lead_segments": {
+          "items": {
+            "$ref": "#/$defs/LeadSegment"
+          },
+          "maxItems": 2,
+          "minItems": 2,
+          "title": "Lead Segments",
+          "type": "array"
+        },
+        "dimension_definitions": {
+          "items": {
+            "$ref": "#/$defs/DimensionDefinition"
+          },
+          "maxItems": 2,
+          "minItems": 2,
+          "title": "Dimension Definitions",
+          "type": "array"
+        }
+      },
+      "required": [
+        "rectangle",
+        "lead_segments",
+        "dimension_definitions"
+      ],
+      "title": "Geometry",
+      "type": "object"
+    },
+    "HeaterFields": {
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Name",
+          "type": "string"
+        },
+        "code": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Code",
+          "type": "string"
+        },
+        "width_mm": {
+          "pattern": "^(?:0\\.[0-9]*[1-9][0-9]*|[1-9][0-9]*(?:\\.[0-9]+)?)$(?![\\s\\S])",
+          "title": "Width Mm",
+          "type": "string"
+        },
+        "length_mm": {
+          "pattern": "^(?:0\\.[0-9]*[1-9][0-9]*|[1-9][0-9]*(?:\\.[0-9]+)?)$(?![\\s\\S])",
+          "title": "Length Mm",
+          "type": "string"
+        },
+        "lead_side": {
+          "$ref": "#/$defs/LeadSide"
+        },
+        "resistance_ohm": {
+          "pattern": "^(?:0\\.[0-9]*[1-9][0-9]*|[1-9][0-9]*(?:\\.[0-9]+)?)$(?![\\s\\S])",
+          "title": "Resistance Ohm",
+          "type": "string"
+        },
+        "tolerance_ohm": {
+          "pattern": "^(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$(?![\\s\\S])",
+          "title": "Tolerance Ohm",
+          "type": "string"
+        },
+        "quantity_text": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Quantity Text",
+          "type": "string"
+        },
+        "requested_scale": {
+          "pattern": "^1:(?:1(?:\\.[0-9]+)?|(?:[2-9]|[1-9][0-9]+)(?:\\.[0-9]+)?)$(?![\\s\\S])",
+          "title": "Requested Scale",
+          "type": "string"
+        },
+        "organization": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Organization",
+          "type": "string"
+        },
+        "model": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Model",
+          "type": "string"
+        },
+        "designer": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Designer",
+          "type": "string"
+        },
+        "checker": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Checker",
+          "type": "string"
+        },
+        "reviewer": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Reviewer",
+          "type": "string"
+        },
+        "standards_reviewer": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Standards Reviewer",
+          "type": "string"
+        },
+        "approver": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Approver",
+          "type": "string"
+        },
+        "stage": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Stage",
+          "type": "string"
+        }
+      },
+      "required": [
+        "name",
+        "code",
+        "width_mm",
+        "length_mm",
+        "lead_side",
+        "resistance_ohm",
+        "tolerance_ohm",
+        "quantity_text",
+        "requested_scale",
+        "organization",
+        "model",
+        "designer",
+        "checker",
+        "reviewer",
+        "standards_reviewer",
+        "approver",
+        "stage"
+      ],
+      "title": "HeaterFields",
+      "type": "object"
+    },
+    "LeadSegment": {
+      "additionalProperties": false,
+      "properties": {
+        "start": {
+          "$ref": "#/$defs/Point"
+        },
+        "end": {
+          "$ref": "#/$defs/Point"
+        }
+      },
+      "required": [
+        "start",
+        "end"
+      ],
+      "title": "LeadSegment",
+      "type": "object"
+    },
+    "LeadSide": {
+      "enum": [
+        "short",
+        "long"
+      ],
+      "title": "LeadSide",
+      "type": "string"
+    },
+    "Placement": {
+      "additionalProperties": false,
+      "properties": {
+        "model_origin_mm": {
+          "$ref": "#/$defs/Point"
+        },
+        "tile_bounds_mm": {
+          "$ref": "#/$defs/Bounds"
+        },
+        "paper_bounds_mm": {
+          "$ref": "#/$defs/Bounds"
+        },
+        "layout_name": {
+          "minLength": 1,
+          "title": "Layout Name",
+          "type": "string"
+        }
+      },
+      "required": [
+        "model_origin_mm",
+        "tile_bounds_mm",
+        "paper_bounds_mm",
+        "layout_name"
+      ],
+      "title": "Placement",
+      "type": "object"
+    },
+    "Point": {
+      "additionalProperties": false,
+      "properties": {
+        "x": {
+          "pattern": "^-?(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$(?![\\s\\S])",
+          "title": "X",
+          "type": "string"
+        },
+        "y": {
+          "pattern": "^-?(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$(?![\\s\\S])",
+          "title": "Y",
+          "type": "string"
+        }
+      },
+      "required": [
+        "x",
+        "y"
+      ],
+      "title": "Point",
+      "type": "object"
+    },
+    "RectangleGeometry": {
+      "additionalProperties": false,
+      "properties": {
+        "origin": {
+          "$ref": "#/$defs/Point"
+        },
+        "width_mm": {
+          "pattern": "^(?:0\\.[0-9]*[1-9][0-9]*|[1-9][0-9]*(?:\\.[0-9]+)?)$(?![\\s\\S])",
+          "title": "Width Mm",
+          "type": "string"
+        },
+        "length_mm": {
+          "pattern": "^(?:0\\.[0-9]*[1-9][0-9]*|[1-9][0-9]*(?:\\.[0-9]+)?)$(?![\\s\\S])",
+          "title": "Length Mm",
+          "type": "string"
+        }
+      },
+      "required": [
+        "origin",
+        "width_mm",
+        "length_mm"
+      ],
+      "title": "RectangleGeometry",
+      "type": "object"
+    },
+    "Scale": {
+      "additionalProperties": false,
+      "properties": {
+        "numerator": {
+          "const": 1,
+          "default": 1,
+          "title": "Numerator",
+          "type": "integer"
+        },
+        "denominator": {
+          "pattern": "^(?:1(?:\\.[0-9]+)?|(?:[2-9]|[1-9][0-9]+)(?:\\.[0-9]+)?)$(?![\\s\\S])",
+          "title": "Denominator",
+          "type": "string"
+        },
+        "label": {
+          "pattern": "^1:(?:1(?:\\.[0-9]+)?|(?:[2-9]|[1-9][0-9]+)(?:\\.[0-9]+)?)$(?![\\s\\S])",
+          "title": "Label",
+          "type": "string"
+        }
+      },
+      "required": [
+        "denominator",
+        "label"
+      ],
+      "title": "Scale",
+      "type": "object",
+      "x-semantic-validator": "heater_drawing.domain.models.validate_contract_semantics"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": 1,
+      "default": 1,
+      "title": "Schema Version",
+      "type": "integer"
+    },
+    "row_id": {
+      "pattern": "^[^:\\r\\n]+:(?:[2-9]|[1-9][0-9]+)$(?![\\s\\S])",
+      "title": "Row Id",
+      "type": "string"
+    },
+    "code": {
+      "minLength": 1,
+      "title": "Code",
+      "type": "string"
+    },
+    "revision_hash": {
+      "pattern": "^[0-9a-f]{64}$(?![\\s\\S])",
+      "title": "Revision Hash",
+      "type": "string"
+    },
+    "template_hash": {
+      "pattern": "^[0-9a-f]{64}$(?![\\s\\S])",
+      "title": "Template Hash",
+      "type": "string"
+    },
+    "scale": {
+      "$ref": "#/$defs/Scale"
+    },
+    "geometry_mm": {
+      "$ref": "#/$defs/Geometry"
+    },
+    "fields": {
+      "$ref": "#/$defs/HeaterFields"
+    },
+    "fixed_text_version": {
+      "minLength": 1,
+      "title": "Fixed Text Version",
+      "type": "string"
+    },
+    "placement": {
+      "$ref": "#/$defs/Placement"
+    },
+    "checks": {
+      "$ref": "#/$defs/DrawingChecks"
+    }
+  },
+  "required": [
+    "row_id",
+    "code",
+    "revision_hash",
+    "template_hash",
+    "scale",
+    "geometry_mm",
+    "fields",
+    "fixed_text_version",
+    "placement",
+    "checks"
+  ],
+  "title": "DrawingPage",
+  "type": "object",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://dsh.local/heater-drawing/v1/drawing-page.schema.json",
+  "x-semantic-validator": "heater_drawing.domain.models.validate_contract_semantics",
+  "x-validation-order": [
+    "draft-2020-12-structure",
+    "shared-python-semantics"
+  ]
+}

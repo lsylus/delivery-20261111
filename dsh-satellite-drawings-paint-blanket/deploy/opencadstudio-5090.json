@@ -1,0 +1,20 @@
+{
+  "dwg": {
+    "adapter": "opencadstudio",
+    "executable": "/data/qmh/OpenCADStudio/current/squashfs-root/usr/bin/OpenCADStudio",
+    "target_version": "ACAD2018",
+    "font_paths": [
+      "/usr/share/fonts/truetype/droid/DroidSansFallbackFull.ttf"
+    ],
+    "timeout_s": 30,
+    "license_ref": null
+  },
+  "native": {
+    "adapter": null,
+    "endpoint_or_executable": null,
+    "vendors": [],
+    "timeout_s": 30,
+    "credential_ref": null
+  },
+  "work_root": "/data/qmh/satellite-plugins-20261029/dsh-satellite-drawings/work/thermal-simple-opencad"
+}

@@ -1,0 +1,3 @@
+export function localPoint(svg:SVGSVGElement,x:number,y:number){const m=svg.getScreenCTM();if(!m)throw Error('view_unavailable');const p=new DOMPoint(x,y).matrixTransform(m.inverse());return [p.x,p.y];}
+export function rectangleHits(document:any,a:number[],b:number[]){const lo=[Math.min(a[0],b[0]),Math.min(a[1],b[1])],hi=[Math.max(a[0],b[0]),Math.max(a[1],b[1])];return document.entities.filter((e:any)=>{const xs=e.points.map((p:number[])=>p[0]),ys=e.points.map((p:number[])=>p[1]);return Math.min(...xs)<=hi[0]&&Math.max(...xs)>=lo[0]&&Math.min(...ys)<=hi[1]&&Math.max(...ys)>=lo[1];});}
+export function svgTransform(svg:SVGSVGElement){const m=svg.getScreenCTM();if(!m)throw Error('view_unavailable');return [m.a,m.c,0,m.e,m.b,m.d,0,m.f,0,0,1,0,0,0,0,1];}

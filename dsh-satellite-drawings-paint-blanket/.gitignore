@@ -1,0 +1,17 @@
+node_modules/
+.venv*/
+.tools/
+__pycache__/
+.pytest_cache/
+*.egg-info/
+work/**
+!work/config/
+!work/config/*.example.json
+*.local.json
+*.pyc
+dist/
+build/
+
+# B07 reproducible plugin build output (packed deliverables are evidence).
+plugins/*/plugin/lib/
+plugins/*/plugin/public/

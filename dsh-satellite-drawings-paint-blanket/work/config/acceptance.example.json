@@ -1,0 +1,9 @@
+{
+  "service_url": null,
+  "credential_ref": null,
+  "case_root": "/controlled/cases",
+  "timeout_s": 600,
+  "memory_limit_mb": 16384,
+  "concurrency": 1,
+  "cad_reopen_evidence_root": null
+}

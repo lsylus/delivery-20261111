@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "scope": "B02 development baseline",
+  "status": "user_direction_accepted",
+  "actor": "project-user",
+  "recorded_at": "2026-11-09T00:05:52+08:00",
+  "source": "User five-item decision in current B02 execution chat; scheduler forwarded same direction",
+  "candidate_manifest_sha256": "0fc298cd05e459fe7dc33a42046f0b05db3ffd90b295305e4747bc233cfcfbd7",
+  "manufacturing_approval": "pending",
+  "autocad_compatibility": "unverified",
+  "dwg_release_decision": "postpone_keep_dxf_pdf_baseline",
+  "lead_rule": "short-edge-paper-v1",
+  "technical_block_translation_paper_mm": [
+    3,
+    8
+  ],
+  "current_writer_scope": "B02 only; no self-started later batches",
+  "continuation_authorization": "After independent B02 technical acceptance and downstream prerequisites, scheduler may continue; stop only the batch with an unresolved necessary blocker.",
+  "authorization_source": "Latest direct user instruction forwarded by scheduler in this execution chat"
+}

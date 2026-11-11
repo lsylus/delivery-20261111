@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "kind": "inventory_not_loaded_assembly",
+  "source_root": "/data/qmh/satellite-plugins-20261029/dsh-satellite-geometry/cases/catch-original",
+  "files": [
+    {
+      "relative_path": "original.step",
+      "bytes": 96478666,
+      "sha256": "b08287d75f974a1698a2b3c9b704aa1bdbca1a96d756b7c5c161e91b3ed06845",
+      "detected_format": "STEP",
+      "header_sample": "ISO-10303-21;\nHEADER;\nFILE_DESCRIPTION(('Open CASCADE Model'),'2;1');\nFILE_NAME('Open CASCADE Shape Model','2026-08-19T17:16:00',('Author'),(\n    'Open CASCADE'"
+    }
+  ],
+  "completeness": "not_opened"
+}

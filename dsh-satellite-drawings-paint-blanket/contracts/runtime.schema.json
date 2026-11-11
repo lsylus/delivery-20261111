@@ -1,0 +1,221 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://satellite-drawings.invalid/contracts/runtime.schema.json",
+  "$defs": {
+    "CreateProject": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "module": {
+          "enum": [
+            "paint",
+            "blanket"
+          ]
+        }
+      },
+      "required": [
+        "name",
+        "module"
+      ],
+      "additionalProperties": false
+    },
+    "ImportRequest": {
+      "type": "object",
+      "properties": {
+        "asset_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "main_file": {
+          "type": "string",
+          "minLength": 1
+        },
+        "format_options": {
+          "type": "object"
+        },
+        "expected_revision": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 160
+        },
+        "idempotency_key": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 160
+        }
+      },
+      "required": [
+        "asset_id",
+        "main_file",
+        "format_options",
+        "expected_revision",
+        "idempotency_key"
+      ],
+      "additionalProperties": false
+    },
+    "RevisionRequest": {
+      "type": "object",
+      "properties": {
+        "expected_revision": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 160
+        },
+        "selection": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/EntityRef"
+          }
+        },
+        "parameters": {
+          "type": "object"
+        },
+        "overrides": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "model_ref": {
+          "$ref": "common.schema.json#/$defs/ModelRef"
+        },
+        "document_edits": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        }
+      },
+      "required": [
+        "expected_revision",
+        "selection",
+        "parameters",
+        "overrides",
+        "model_ref"
+      ],
+      "additionalProperties": false
+    },
+    "SessionBinding": {
+      "$ref": "operation.schema.json#/$defs/SessionBinding"
+    },
+    "OperationEnvelope": {
+      "$ref": "operation.schema.json#/$defs/OperationEnvelope"
+    },
+    "Asset": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "filename": {
+          "type": "string"
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "bytes": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "format": {
+          "const": "STEP"
+        }
+      },
+      "required": [
+        "id",
+        "filename",
+        "sha256",
+        "bytes",
+        "format"
+      ],
+      "additionalProperties": false
+    },
+    "ModelResponse": {
+      "type": "object",
+      "properties": {
+        "snapshot": {
+          "$ref": "model.schema.json#/$defs/ModelSnapshot"
+        },
+        "artifacts": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/Artifact"
+          }
+        }
+      },
+      "required": [
+        "snapshot",
+        "artifacts"
+      ],
+      "additionalProperties": false
+    },
+    "Capabilities": {
+      "type": "object",
+      "properties": {
+        "implementation_stage": {
+          "enum": [
+            "B06",
+            "B08",
+            "B09",
+            "B10",
+            "B11",
+            "B12",
+            "B13"
+          ]
+        },
+        "auth_mode": {
+          "enum": [
+            "dev-only",
+            "dsh-account"
+          ]
+        },
+        "trusted_host": {
+          "enum": [
+            "not_configured",
+            "awaiting_platform_acceptance"
+          ]
+        },
+        "formats": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "operations": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "unavailable": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "concurrency": {
+          "const": 1
+        },
+        "upload_limit_bytes": {
+          "type": "integer",
+          "minimum": 1
+        }
+      },
+      "required": [
+        "implementation_stage",
+        "auth_mode",
+        "trusted_host",
+        "formats",
+        "operations",
+        "unavailable",
+        "concurrency",
+        "upload_limit_bytes"
+      ],
+      "additionalProperties": false
+    }
+  }
+}

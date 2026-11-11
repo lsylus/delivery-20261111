@@ -1,0 +1,337 @@
+{
+  "schema_version": 1,
+  "id": "b04-analytic-drawing",
+  "revision_id": "b04-r1",
+  "units": "mm",
+  "frame": {
+    "origin": [
+      0,
+      0,
+      0
+    ],
+    "x_axis": [
+      1,
+      0,
+      0
+    ],
+    "y_axis": [
+      0,
+      1,
+      0
+    ],
+    "z_axis": [
+      0,
+      0,
+      1
+    ],
+    "units": "mm",
+    "handedness": "right"
+  },
+  "layers": [
+    {
+      "name": "OUTLINE",
+      "color": 1,
+      "line_type": "CONTINUOUS"
+    },
+    {
+      "name": "PROTECTION",
+      "color": 2,
+      "line_type": "CONTINUOUS"
+    },
+    {
+      "name": "CUT",
+      "color": 3,
+      "line_type": "CONTINUOUS"
+    },
+    {
+      "name": "FOLD",
+      "color": 4,
+      "line_type": "DASHED"
+    },
+    {
+      "name": "OVERLAP",
+      "color": 5,
+      "line_type": "CONTINUOUS"
+    },
+    {
+      "name": "FIXING",
+      "color": 6,
+      "line_type": "CONTINUOUS"
+    },
+    {
+      "name": "DIMENSION",
+      "color": 7,
+      "line_type": "CONTINUOUS"
+    },
+    {
+      "name": "TEXT",
+      "color": 8,
+      "line_type": "CONTINUOUS"
+    }
+  ],
+  "entities": [
+    {
+      "id": "outline",
+      "kind": "polyline",
+      "layer": "OUTLINE",
+      "source_refs": [],
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          100,
+          0
+        ],
+        [
+          100,
+          60
+        ],
+        [
+          0,
+          60
+        ]
+      ],
+      "closed": true
+    },
+    {
+      "id": "hole",
+      "kind": "polyline",
+      "layer": "CUT",
+      "source_refs": [],
+      "points": [
+        [
+          40,
+          20
+        ],
+        [
+          40,
+          40
+        ],
+        [
+          60,
+          40
+        ],
+        [
+          60,
+          20
+        ]
+      ],
+      "closed": true
+    },
+    {
+      "id": "protection",
+      "kind": "hatch",
+      "layer": "PROTECTION",
+      "source_refs": [],
+      "outer_loop": {
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            100,
+            0
+          ],
+          [
+            100,
+            60
+          ],
+          [
+            0,
+            60
+          ]
+        ],
+        "closed": true,
+        "orientation": "ccw"
+      },
+      "holes": [
+        {
+          "points": [
+            [
+              40,
+              20
+            ],
+            [
+              40,
+              40
+            ],
+            [
+              60,
+              40
+            ],
+            [
+              60,
+              20
+            ]
+          ],
+          "closed": true,
+          "orientation": "cw"
+        }
+      ],
+      "pattern": "ANSI31"
+    },
+    {
+      "id": "circle",
+      "kind": "circle",
+      "layer": "OUTLINE",
+      "source_refs": [],
+      "center": [
+        115,
+        15
+      ],
+      "radius_mm": 5
+    },
+    {
+      "id": "arc-ccw",
+      "kind": "arc",
+      "layer": "OUTLINE",
+      "source_refs": [],
+      "center": [
+        115,
+        35
+      ],
+      "radius_mm": 5,
+      "start_angle_rad": 0,
+      "end_angle_rad": 1.5707963267948966,
+      "direction": "ccw"
+    },
+    {
+      "id": "arc-cw",
+      "kind": "arc",
+      "layer": "OUTLINE",
+      "source_refs": [],
+      "center": [
+        130,
+        35
+      ],
+      "radius_mm": 5,
+      "start_angle_rad": 0,
+      "end_angle_rad": 1.5707963267948966,
+      "direction": "cw"
+    },
+    {
+      "id": "fold",
+      "kind": "line",
+      "layer": "FOLD",
+      "source_refs": [],
+      "start": [
+        0,
+        50
+      ],
+      "end": [
+        100,
+        50
+      ]
+    },
+    {
+      "id": "overlap",
+      "kind": "polyline",
+      "layer": "OVERLAP",
+      "source_refs": [],
+      "points": [
+        [
+          100,
+          0
+        ],
+        [
+          115,
+          0
+        ],
+        [
+          115,
+          60
+        ],
+        [
+          100,
+          60
+        ]
+      ],
+      "closed": true
+    },
+    {
+      "id": "open-cut",
+      "kind": "polyline",
+      "layer": "CUT",
+      "source_refs": [],
+      "points": [
+        [
+          0,
+          65
+        ],
+        [
+          50,
+          70
+        ],
+        [
+          100,
+          65
+        ]
+      ],
+      "closed": false
+    },
+    {
+      "id": "fixing",
+      "kind": "point",
+      "layer": "FIXING",
+      "source_refs": [],
+      "position": [
+        10,
+        10
+      ]
+    },
+    {
+      "id": "label",
+      "kind": "text",
+      "layer": "TEXT",
+      "source_refs": [],
+      "position": [
+        0,
+        78
+      ],
+      "text": "喷漆保护区 / 搭接15毫米 / 固定点",
+      "height_mm": 3
+    },
+    {
+      "id": "width",
+      "kind": "dimension",
+      "layer": "DIMENSION",
+      "source_refs": [],
+      "start": [
+        0,
+        0
+      ],
+      "end": [
+        100,
+        0
+      ],
+      "position": [
+        50,
+        -10
+      ],
+      "text_override": null
+    },
+    {
+      "id": "height",
+      "kind": "dimension",
+      "layer": "DIMENSION",
+      "source_refs": [],
+      "start": [
+        100,
+        0
+      ],
+      "end": [
+        100,
+        60
+      ],
+      "position": [
+        140,
+        30
+      ],
+      "text_override": "60 mm"
+    }
+  ],
+  "source_links": []
+}

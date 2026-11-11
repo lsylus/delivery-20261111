@@ -1,0 +1,36 @@
+* text=auto eol=lf
+
+# B04 evidence hashes bind exact CAD and log bytes across platforms.
+docs/evidence/B04/** -text -whitespace
+*.dwg binary
+*.FCStd binary
+*.dxf binary
+
+# B02 native CAD output and logs preserve exact hashed bytes.
+docs/evidence/B02/** -text -whitespace
+fixtures/synthetic/*.step -text -whitespace
+*.glb binary
+
+# B03 measurement evidence binds exact bytes across platforms.
+docs/evidence/B03/** -text -whitespace
+
+# B06 preserves exact HTTP/CAD acceptance evidence bytes.
+docs/evidence/B06/** -text -whitespace
+
+# B08 real STEP and acceptance assets preserve exact hashed bytes.
+docs/evidence/B08/** -text -whitespace
+fixtures/synthetic/paint/*.step -text -whitespace
+fixtures/release-cases/*.step -text -whitespace
+
+# Preserve exact B05 archived evidence bytes across checkouts.
+docs/evidence/B05/** -text -whitespace
+
+# Preserve exact B09 test/CAD/browser evidence.
+docs/evidence/B09/** -text -whitespace
+
+# B10 native fixtures and exact evidence bytes.
+docs/evidence/B10/** -text -whitespace
+fixtures/synthetic/blanket/*.step -text -whitespace
+
+# B11 exact native artifacts and test evidence.
+docs/evidence/B11/** -text -whitespace

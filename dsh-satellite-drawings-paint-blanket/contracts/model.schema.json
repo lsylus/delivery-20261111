@@ -1,0 +1,770 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://satellite-drawings.invalid/contracts/model.schema.json",
+  "$ref": "#/$defs/SourceManifest",
+  "$defs": {
+    "SourceManifest": {
+      "type": "object",
+      "properties": {
+        "schema_version": {
+          "const": 1
+        },
+        "asset_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "main_file": {
+          "type": "string",
+          "minLength": 1
+        },
+        "files": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "relative_path": {
+                "type": "string",
+                "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$))(?!.*\\\\)(?![A-Za-z]:).+"
+              },
+              "sha256": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{64}$"
+              },
+              "bytes": {
+                "type": "integer",
+                "minimum": 0
+              }
+            },
+            "required": [
+              "relative_path",
+              "sha256",
+              "bytes"
+            ],
+            "additionalProperties": false
+          },
+          "minItems": 1
+        },
+        "assembly_digest": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "detected_format": {
+          "enum": [
+            "STEP",
+            "DWG",
+            "Creo_PART",
+            "Creo_ASSEMBLY",
+            "NX_PART",
+            "unknown"
+          ]
+        },
+        "vendor": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "vendor_version": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "units": {
+          "anyOf": [
+            {
+              "enum": [
+                "mm",
+                "m",
+                "inch"
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "load_status": {
+          "enum": [
+            "not_opened",
+            "complete",
+            "partial",
+            "failed"
+          ]
+        },
+        "missing_refs": {
+          "anyOf": [
+            {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              },
+              "minItems": 0
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "conversion_evidence": {
+          "anyOf": [
+            {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              },
+              "minItems": 0
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "schema_version",
+        "asset_id",
+        "main_file",
+        "files",
+        "assembly_digest",
+        "detected_format",
+        "vendor",
+        "vendor_version",
+        "units",
+        "load_status",
+        "missing_refs",
+        "conversion_evidence"
+      ],
+      "additionalProperties": false
+    },
+    "Project": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "owner_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "module_states": {
+          "type": "object",
+          "properties": {
+            "paint": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "minLength": 1
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "blanket": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "minLength": 1
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          },
+          "required": [
+            "paint",
+            "blanket"
+          ],
+          "additionalProperties": false
+        },
+        "created_at": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "id",
+        "owner_id",
+        "name",
+        "module_states",
+        "created_at"
+      ],
+      "additionalProperties": false
+    },
+    "EngineeringRevision": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "parent_id": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "model_ref": {
+          "type": "object",
+          "properties": {
+            "project_id": {
+              "type": "string",
+              "minLength": 1
+            },
+            "model_id": {
+              "type": "string",
+              "minLength": 1
+            },
+            "model_revision": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "assembly_digest": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            }
+          },
+          "required": [
+            "project_id",
+            "model_id",
+            "model_revision",
+            "assembly_digest"
+          ],
+          "additionalProperties": false
+        },
+        "parameters": {
+          "type": "object"
+        },
+        "selection": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "project_id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "model_id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "model_revision": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "assembly_digest": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{64}$"
+              },
+              "instance_id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "entity_kind": {
+                "enum": [
+                  "face",
+                  "edge",
+                  "vertex",
+                  "solid",
+                  "instance"
+                ]
+              },
+              "entity_id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "signature": {
+                "type": "object",
+                "properties": {
+                  "type": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "area_mm2": {
+                    "anyOf": [
+                      {
+                        "type": "number",
+                        "minimum": 0
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "centroid_mm": {
+                    "type": "array",
+                    "items": {
+                      "type": "number"
+                    },
+                    "minItems": 3,
+                    "maxItems": 3
+                  },
+                  "normal": {
+                    "anyOf": [
+                      {
+                        "type": "array",
+                        "items": {
+                          "type": "number"
+                        },
+                        "minItems": 3,
+                        "maxItems": 3
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "adjacency": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "minItems": 0
+                  }
+                },
+                "required": [
+                  "type",
+                  "area_mm2",
+                  "centroid_mm",
+                  "normal",
+                  "adjacency"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "required": [
+              "project_id",
+              "model_id",
+              "model_revision",
+              "assembly_digest",
+              "instance_id",
+              "entity_kind",
+              "entity_id",
+              "signature"
+            ],
+            "additionalProperties": false
+          },
+          "minItems": 0
+        },
+        "overrides": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          },
+          "minItems": 0
+        },
+        "document_edits": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          },
+          "minItems": 0
+        },
+        "input_fingerprint": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      },
+      "required": [
+        "id",
+        "parent_id",
+        "model_ref",
+        "parameters",
+        "selection",
+        "overrides",
+        "document_edits",
+        "input_fingerprint"
+      ],
+      "additionalProperties": false
+    },
+    "ModelSnapshot": {
+      "type": "object",
+      "properties": {
+        "schema_version": {
+          "const": 1
+        },
+        "model_ref": {
+          "type": "object",
+          "properties": {
+            "project_id": {
+              "type": "string",
+              "minLength": 1
+            },
+            "model_id": {
+              "type": "string",
+              "minLength": 1
+            },
+            "model_revision": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "assembly_digest": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            }
+          },
+          "required": [
+            "project_id",
+            "model_id",
+            "model_revision",
+            "assembly_digest"
+          ],
+          "additionalProperties": false
+        },
+        "units": {
+          "const": "mm"
+        },
+        "source_manifest": {
+          "type": "object",
+          "properties": {
+            "schema_version": {
+              "const": 1
+            },
+            "asset_id": {
+              "type": "string",
+              "minLength": 1
+            },
+            "main_file": {
+              "type": "string",
+              "minLength": 1
+            },
+            "files": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "relative_path": {
+                    "type": "string",
+                    "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$))(?!.*\\\\)(?![A-Za-z]:).+"
+                  },
+                  "sha256": {
+                    "type": "string",
+                    "pattern": "^[0-9a-f]{64}$"
+                  },
+                  "bytes": {
+                    "type": "integer",
+                    "minimum": 0
+                  }
+                },
+                "required": [
+                  "relative_path",
+                  "sha256",
+                  "bytes"
+                ],
+                "additionalProperties": false
+              },
+              "minItems": 1
+            },
+            "assembly_digest": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            "detected_format": {
+              "enum": [
+                "STEP",
+                "DWG",
+                "Creo_PART",
+                "Creo_ASSEMBLY",
+                "NX_PART",
+                "unknown"
+              ]
+            },
+            "vendor": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "minLength": 1
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "vendor_version": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "minLength": 1
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "units": {
+              "anyOf": [
+                {
+                  "enum": [
+                    "mm",
+                    "m",
+                    "inch"
+                  ]
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "load_status": {
+              "enum": [
+                "not_opened",
+                "complete",
+                "partial",
+                "failed"
+              ]
+            },
+            "missing_refs": {
+              "anyOf": [
+                {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "minItems": 0
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "conversion_evidence": {
+              "anyOf": [
+                {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "minItems": 0
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          },
+          "required": [
+            "schema_version",
+            "asset_id",
+            "main_file",
+            "files",
+            "assembly_digest",
+            "detected_format",
+            "vendor",
+            "vendor_version",
+            "units",
+            "load_status",
+            "missing_refs",
+            "conversion_evidence"
+          ],
+          "additionalProperties": false
+        },
+        "definitions": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "shape_asset": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "required": [
+              "id",
+              "shape_asset"
+            ],
+            "additionalProperties": false
+          },
+          "minItems": 0
+        },
+        "instances": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "instance_id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "definition_id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "parent_instance_id": {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "name": {
+                "type": "string",
+                "minLength": 1
+              },
+              "local_transform": {
+                "$ref": "common.schema.json#/$defs/Transform"
+              },
+              "world_transform": {
+                "$ref": "common.schema.json#/$defs/Transform"
+              }
+            },
+            "required": [
+              "instance_id",
+              "definition_id",
+              "parent_instance_id",
+              "name",
+              "local_transform",
+              "world_transform"
+            ],
+            "additionalProperties": false
+          },
+          "minItems": 1
+        },
+        "mesh_map_asset": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "schema_version",
+        "model_ref",
+        "units",
+        "source_manifest",
+        "definitions",
+        "instances",
+        "mesh_map_asset"
+      ],
+      "additionalProperties": false
+    },
+    "EngineeringBundle": {
+      "type": "object",
+      "properties": {
+        "schema_version": {
+          "const": 1
+        },
+        "source_manifest_refs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "derived_shape_refs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "construction_parameters": {
+          "type": "object"
+        },
+        "cut_edges": {
+          "type": "array",
+          "items": {
+            "anyOf": [
+              {
+                "$ref": "common.schema.json#/$defs/EntityRef"
+              },
+              {
+                "type": "string",
+                "minLength": 1
+              }
+            ]
+          }
+        },
+        "seams": {
+          "type": "array",
+          "items": {
+            "$ref": "blanket.schema.json#/$defs/Seam"
+          }
+        },
+        "fixed_points": {
+          "type": "array",
+          "items": {
+            "$ref": "blanket.schema.json#/$defs/FixedPoint"
+          }
+        },
+        "drawing_document": {
+          "anyOf": [
+            {
+              "$ref": "drawing.schema.json#/$defs/DrawingDocument"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "revisions": {
+          "type": "array",
+          "items": {
+            "$ref": "model.schema.json#/$defs/EngineeringRevision"
+          }
+        },
+        "current_revision": {
+          "type": "string",
+          "minLength": 1
+        },
+        "rebuilder_version": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "schema_version",
+        "source_manifest_refs",
+        "derived_shape_refs",
+        "construction_parameters",
+        "cut_edges",
+        "seams",
+        "fixed_points",
+        "drawing_document",
+        "revisions",
+        "current_revision",
+        "rebuilder_version"
+      ],
+      "additionalProperties": false
+    }
+  }
+}

@@ -1,0 +1,319 @@
+{
+  "schema_version": 1,
+  "source": "/data/qmh/satellite-plugins-20261029/dsh-satellite-geometry/cases/satellite-assembly/original.step",
+  "source_sha256": "6fc811ef4efe5a974c4ae0424a60298264cb5586549b6ec5689b5475311ee65d",
+  "source_bytes": 49374275,
+  "cases": [
+    {
+      "id": "computer-space",
+      "source_key": [
+        1,
+        158
+      ],
+      "name": "Allocated_space_for_computer_systems_1",
+      "definition": "Allocated_space_for_computer_systems_1",
+      "path": "fixtures/real-derived/b13/computer-space.brep",
+      "sha256": "2037ea35db2993144c16ba426ce74b6b524ff059cfc29e9c962f313c84cf5858",
+      "bytes": 5130,
+      "source_metrics": {
+        "volume_mm3": 56812500.0,
+        "area_mm2": 1052250.0,
+        "bounds_mm": [
+          25.0,
+          100.0,
+          205.0,
+          450.0,
+          500.0,
+          705.0
+        ],
+        "faces": 12
+      },
+      "readback_metrics": {
+        "volume_mm3": 56812500.0,
+        "area_mm2": 1052250.0,
+        "bounds_mm": [
+          25.0,
+          100.0,
+          205.0,
+          450.0,
+          500.0,
+          705.0
+        ],
+        "faces": 12
+      }
+    },
+    {
+      "id": "launch-mechanism",
+      "source_key": [
+        1,
+        157
+      ],
+      "name": "Alba_Orbital_PocketQube_Launch_Mechanism_v3_2",
+      "definition": "Alba_Orbital_PocketQube_Launch_Mechanism_v3_2",
+      "path": "fixtures/real-derived/b13/launch-mechanism.brep",
+      "sha256": "9250f69af0270e7e337e07a4601c20b5f0ed17c335d0b652fe3c760be3bec5e2",
+      "bytes": 11987,
+      "source_metrics": {
+        "volume_mm3": 860466.0955841693,
+        "area_mm2": 170199.99964237213,
+        "bounds_mm": [
+          159.85625099096558,
+          664.856250990998,
+          559.99999999999,
+          229.85625099097,
+          734.8562509909999,
+          909.9999999999906
+        ],
+        "faces": 23
+      },
+      "readback_metrics": {
+        "volume_mm3": 860466.0955841693,
+        "area_mm2": 170199.99964237213,
+        "bounds_mm": [
+          159.85625099096558,
+          664.856250990998,
+          559.99999999999,
+          229.85625099097,
+          734.8562509909999,
+          909.9999999999906
+        ],
+        "faces": 23
+      }
+    },
+    {
+      "id": "conical-support",
+      "source_key": [
+        1,
+        27
+      ],
+      "name": "support_1",
+      "definition": "support_1",
+      "path": "fixtures/real-derived/b13/conical-support.brep",
+      "sha256": "575c6a96f178a01d75e05775cc744073d3540459383403589f33bc6e240e5172",
+      "bytes": 1565,
+      "source_metrics": {
+        "volume_mm3": 402647.4584350805,
+        "area_mm2": 51609.169168293534,
+        "bounds_mm": [
+          65.0,
+          65.0,
+          885.00000245869,
+          235.0,
+          235.0,
+          905.00000245869
+        ],
+        "faces": 3
+      },
+      "readback_metrics": {
+        "volume_mm3": 402647.45843508077,
+        "area_mm2": 51609.169168293585,
+        "bounds_mm": [
+          64.99999999999999,
+          64.99999999999999,
+          885.00000245869,
+          235.0,
+          235.0,
+          905.00000245869
+        ],
+        "faces": 3
+      }
+    },
+    {
+      "id": "fuel-tank",
+      "source_key": [
+        1,
+        124
+      ],
+      "name": "Fuel_Tank_(Cold_Gas)_v3_1",
+      "definition": "Fuel_Tank_(Cold_Gas)_v3_1",
+      "path": "fixtures/real-derived/b13/fuel-tank.brep",
+      "sha256": "b4acea009d318b59b73cf8109f416f29c4ba59785fef7d4d4f773cf2d73ec30f",
+      "bytes": 17254,
+      "source_metrics": {
+        "volume_mm3": 992776.7888552379,
+        "area_mm2": 992793.5440167213,
+        "bounds_mm": [
+          25.0,
+          875.0,
+          50.0,
+          225.0,
+          1075.0,
+          850.0
+        ],
+        "faces": 6
+      },
+      "readback_metrics": {
+        "volume_mm3": 992776.7888552323,
+        "area_mm2": 992793.544016722,
+        "bounds_mm": [
+          25.0,
+          875.0,
+          50.0,
+          225.0,
+          1075.0,
+          850.0
+        ],
+        "faces": 6
+      }
+    },
+    {
+      "id": "motor",
+      "source_key": [
+        1,
+        4
+      ],
+      "name": "145mm_motor_ST8M223Bxxxx_v3_1",
+      "definition": "145mm_motor_ST8M223Bxxxx_v3_1",
+      "path": "fixtures/real-derived/b13/motor.brep",
+      "sha256": "edc44902536be2fcff86a27ed937d71c55bdc9acbc2508fc43dd58b81513f724",
+      "bytes": 80878,
+      "source_metrics": {
+        "volume_mm3": 5368123.9999497,
+        "area_mm2": 239540.82574391062,
+        "bounds_mm": [
+          54.99999989999995,
+          257.13309296294995,
+          22.535457974641993,
+          424.0,
+          402.13309316295005,
+          205.035458074642
+        ],
+        "faces": 44
+      },
+      "readback_metrics": {
+        "volume_mm3": 5368123.999949701,
+        "area_mm2": 239540.82574391062,
+        "bounds_mm": [
+          54.99999989999995,
+          257.13309296294995,
+          22.535457974641993,
+          424.0,
+          402.13309316295005,
+          205.035458074642
+        ],
+        "faces": 44
+      }
+    },
+    {
+      "id": "mounting-plate",
+      "source_key": [
+        1,
+        137
+      ],
+      "name": "Component1_1_5",
+      "definition": "Component1_1_5",
+      "path": "fixtures/real-derived/b13/mounting-plate.brep",
+      "sha256": "52b572deb1ded5378d7438dd4d648c771168713ebf7af74ebf24e09147b9f9a9",
+      "bytes": 8779,
+      "source_metrics": {
+        "volume_mm3": 187466.38327496403,
+        "area_mm2": 50159.64787223731,
+        "bounds_mm": [
+          354.0,
+          239.63309306294994,
+          5.035458074652979,
+          364.0,
+          419.633093062944,
+          185.03545807464303
+        ],
+        "faces": 11
+      },
+      "readback_metrics": {
+        "volume_mm3": 187466.38327496403,
+        "area_mm2": 50159.64787223731,
+        "bounds_mm": [
+          354.0,
+          239.63309306294994,
+          5.035458074652979,
+          364.0,
+          419.633093062944,
+          185.03545807464303
+        ],
+        "faces": 11
+      }
+    },
+    {
+      "id": "reaction-wheel",
+      "source_key": [
+        1,
+        142
+      ],
+      "name": "Reaction_wheel_v7_1",
+      "definition": "Reaction_wheel_v7_1",
+      "path": "fixtures/real-derived/b13/reaction-wheel.brep",
+      "sha256": "b3b075b67a7fe974abda49a2882db94452ed19f8c818889c79180bc2efe3db59",
+      "bytes": 37934,
+      "source_metrics": {
+        "volume_mm3": 361853.55001511605,
+        "area_mm2": 96842.03289600332,
+        "bounds_mm": [
+          15.43998772177902,
+          22.050923699816877,
+          5.000000000000159,
+          165.43998772177903,
+          172.05092369981693,
+          65.00000000000043
+        ],
+        "faces": 40
+      },
+      "readback_metrics": {
+        "volume_mm3": 361853.5500151164,
+        "area_mm2": 96842.0328960034,
+        "bounds_mm": [
+          15.43998772177902,
+          22.050923699816877,
+          5.000000000000159,
+          165.43998772177903,
+          172.05092369981693,
+          65.00000000000043
+        ],
+        "faces": 40
+      }
+    },
+    {
+      "id": "camera",
+      "source_key": [
+        1,
+        28
+      ],
+      "name": "Top_Camera_1",
+      "definition": "Top_Camera_1",
+      "path": "fixtures/real-derived/b13/camera.brep",
+      "sha256": "1e64bee01fd60645c552ae2fbf71374f2632de0e9d470386e289424c5131fceb",
+      "bytes": 19423,
+      "source_metrics": {
+        "volume_mm3": 1550607.1078147178,
+        "area_mm2": 79604.89969169124,
+        "bounds_mm": [
+          89.99999999999999,
+          75.0,
+          924.6404085251166,
+          210.00000000000003,
+          222.9405158309784,
+          1070.67951112229
+        ],
+        "faces": 10
+      },
+      "readback_metrics": {
+        "volume_mm3": 1550607.1078147243,
+        "area_mm2": 79604.89969169162,
+        "bounds_mm": [
+          89.99999999999997,
+          74.99999999999999,
+          924.6404085251166,
+          210.00000000000003,
+          222.9405158309784,
+          1070.67951112229
+        ],
+        "faces": 10
+      }
+    }
+  ],
+  "engineering_truth": "pending_case_specific_review",
+  "identity_tolerance": {
+    "length_mm": 1e-06,
+    "relative_volume": 1e-09,
+    "meaning": "extraction oracle only"
+  },
+  "full_assembly_import": "B12 failed non-triangulable face; this extraction is not full assembly import acceptance"
+}

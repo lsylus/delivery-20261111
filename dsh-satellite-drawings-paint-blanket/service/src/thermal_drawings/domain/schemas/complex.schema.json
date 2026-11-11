@@ -1,0 +1,102 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://satellite-drawings.invalid/contracts/complex.schema.json",
+  "$ref": "#/$defs/AnalysisInput",
+  "$defs": {
+    "AnalysisInput": {
+      "type": "object",
+      "properties": {
+        "face_ref": {
+          "$ref": "common.schema.json#/$defs/EntityRef"
+        },
+        "deflection_mm": {
+          "type": "number",
+          "minimum": 1e-05,
+          "maximum": 100
+        },
+        "cuts_u": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "uniqueItems": true,
+          "maxItems": 128
+        },
+        "envelope_offset_mm": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "maximum": 50
+        },
+        "installation_setup": {
+          "$ref": "blanket.schema.json#/$defs/InstallationSetup"
+        }
+      },
+      "required": [
+        "face_ref",
+        "deflection_mm",
+        "cuts_u"
+      ],
+      "additionalProperties": false
+    },
+    "AnalysisResult": {
+      "type": "object",
+      "properties": {
+        "schema_version": {
+          "const": 1
+        },
+        "revision_id": {
+          "type": "string"
+        },
+        "model_ref": {
+          "$ref": "common.schema.json#/$defs/ModelRef"
+        },
+        "source_ref": {
+          "$ref": "common.schema.json#/$defs/EntityRef"
+        },
+        "module": {
+          "enum": [
+            "blanket",
+            "paint"
+          ]
+        },
+        "algorithm_version": {
+          "const": "b13-analysis-v1"
+        },
+        "result": {
+          "type": "object"
+        },
+        "status": {
+          "const": "needs_review"
+        },
+        "manufacturing_approved": {
+          "const": false
+        }
+      },
+      "required": [
+        "schema_version",
+        "revision_id",
+        "model_ref",
+        "source_ref",
+        "module",
+        "algorithm_version",
+        "result",
+        "status",
+        "manufacturing_approved"
+      ],
+      "additionalProperties": false
+    },
+    "RebindInput": {
+      "type": "object",
+      "properties": {
+        "source_revision_id": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "source_revision_id"
+      ],
+      "additionalProperties": false
+    }
+  }
+}

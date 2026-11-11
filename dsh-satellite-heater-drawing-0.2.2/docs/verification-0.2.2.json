@@ -1,0 +1,22 @@
+{
+  "archive": "dist/plugin-release-20261110/qmh-dsh-satellite-heater-drawing-0.2.2.tgz",
+  "sha256": "6999f02aaf6ae5cb98a8163ae5786b613d21dcac13c0b5c1b314bd6f190efbe9",
+  "target_dsh": "0.2.2-rc.1-102617d-dirty",
+  "host": "Actual current host SidebarRightTabRegistry, controller, store and SlotCore, real React/Chromium; fixture surrounding shell and backend API",
+  "checks": [
+    "packaged client registers native sidebar page and guide entry with actual current host services, without agent-page",
+    "header button opens expanded native sidebar state",
+    "repeated opening reuses page within pane",
+    "collapse and reopen preserve iframe form",
+    "session switching uses isolated encoded workbench URLs and restores retained form",
+    "closing page removes tab; guide navigation reopens it",
+    "actual packaged workbench renders in iframe at 420px without document horizontal overflow",
+    "no browser tab or page navigation",
+    "missing-session guard",
+    "workbench requests carry owning session",
+    "no browser script errors"
+  ],
+  "live_dsh_installation": "not_run",
+  "status": "passed",
+  "note": "Copied development evidence. Surrounding shell and API are fixtures; live DSH installation is not verified."
+}

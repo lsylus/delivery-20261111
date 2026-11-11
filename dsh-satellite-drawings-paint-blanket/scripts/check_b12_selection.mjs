@@ -1,0 +1,12 @@
+import fs from 'node:fs';
+import assert from 'node:assert/strict';
+import {blanketOverlay} from '../packages/workbench-common/src/BlanketOverlay.ts';
+import {validateSelection} from '../packages/host-bridge/src/selection-context.mjs';
+const net=JSON.parse(fs.readFileSync('docs/evidence/B11/artifacts/cross.json')).net,seam=net.seams[0];
+const edges=[net.edges[seam.edge_a],net.edges[seam.edge_b]].map(e=>{const p=net.panels.find(p=>p.key===e.panel);return {id:e.id,panel_key:p.key,panel_id:p.id,mapping_ref:p.mapping_ref,world:e.world};});
+const refs=net.panels.filter(p=>edges.some(e=>e.panel_key===p.key)).flatMap(p=>p.source_refs);
+const value={schema_version:1,session_id:'session',module:'blanket',project_id:net.model_ref.project_id,model_ref:net.model_ref,engineering_revision:net.revision_id,result_id:'result',entity_refs:refs,view:'2d',local_coordinates:[],annotation:'swap seam',view_transform:[1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1],blanket_target:{kind:'seam',id:seam.id,edges}};
+const authority={...value,net,face_refs:refs};assert.deepEqual(validateSelection(value,authority),value);
+for(const mutate of [v=>v.blanket_target.edges[0].mapping_ref='stale',v=>v.blanket_target.edges[0].panel_key=v.blanket_target.edges[0].panel_id,v=>v.blanket_target.edges[1].world[0][0]+=1,v=>v.module='paint',v=>v.result_id='old',v=>v.session_id='other',v=>v.entity_refs=[net.panels.find(p=>!edges.some(e=>e.panel_key===p.key)).source_refs[0]]]){const bad=structuredClone(value);mutate(bad);assert.throws(()=>validateSelection(bad,authority));}
+const cover=JSON.parse(fs.readFileSync('docs/evidence/B11/artifacts/cross/blanket-result.json'));const overlay=blanketOverlay({blanketResult:{blanket:cover},blanketNet:{net},blanketTarget:value.blanket_target});const displayed=overlay.children.filter(o=>o.userData.kind==='seam-edge');assert.equal(displayed.length,2);for(let i=0;i<2;i++){assert.equal(displayed[i].userData.panel_key,edges[i].panel_key);const actual=Array.from(displayed[i].geometry.attributes.position.array),expected=edges[i].world.flatMap(p=>[p[0]/1000,p[2]/1000,-p[1]/1000]);actual.forEach((v,j)=>assert.ok(Math.abs(v-expected[j])<1e-7));}overlay.traverse(o=>{o.geometry?.dispose();o.material?.dispose();});
+const out=process.env.B12_EVIDENCE_DIR||'docs/evidence/B12';fs.writeFileSync(`${out}/selection.json`,JSON.stringify({status:'pass',cases:10,context:value},null,2));console.log('10 real net selection/mapping checks passed');

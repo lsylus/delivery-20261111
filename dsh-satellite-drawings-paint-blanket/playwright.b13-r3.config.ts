@@ -1,0 +1,2 @@
+import {defineConfig} from '@playwright/test';
+export default defineConfig({testDir:'tests/e2e',testMatch:'complex-r3-workflow.spec.ts',workers:1,fullyParallel:false,timeout:240000,expect:{timeout:120000},outputDir:'work/b13-r3-playwright',reporter:[['list'],['json',{outputFile:`${process.env.B13_EVIDENCE_DIR||'docs/evidence/B13/r3/browser-development'}/browser.json`}]],use:{viewport:{width:1600,height:1400},headless:true,launchOptions:{args:['--no-sandbox','--use-angle=swiftshader','--enable-unsafe-swiftshader']}}});

@@ -1,0 +1,56 @@
+{
+  "checked_at": "2026-11-07",
+  "source_directory": "C:\\Users\\HUAWEI\\Documents\\ChatGPT\\插件\\work\\heater_case\\矩形加热器自动出图案例",
+  "files": [
+    {
+      "name": "加热器图纸.bak",
+      "bytes": 157238,
+      "sha256": "79417c241ba9d04c4269b950616d0d96808b54686032772baa71391ddc43185e"
+    },
+    {
+      "name": "加热器图纸.dwg",
+      "bytes": 158558,
+      "sha256": "b1aa8a4d45580a44362f5a522b1149b90a209fd02fd54c91f7c8a72dc9d6e34c"
+    },
+    {
+      "name": "加热器图纸.pdf",
+      "bytes": 128277,
+      "sha256": "c38953be0adaac425e1d6a7b9dcdef2fe9a4332f49bea1811a94a69e42aaa912"
+    },
+    {
+      "name": "加热器图纸.xlsx",
+      "bytes": 11051,
+      "sha256": "25e06f4ce14b366fe6f4ca89af7ccda1f707af62a6aded16a87be7028417e4e5"
+    },
+    {
+      "name": "卫星加热器出图案例.docx",
+      "bytes": 428552,
+      "sha256": "fe5918da4d47d46777caf470d7f6b378c37ae4a0928883679543fa6176ee5d47"
+    },
+    {
+      "name": "CAD模板.dwg",
+      "bytes": 135045,
+      "sha256": "7c917bb7805aefd8ce327ca7f1e6912c2fcfabcb68ee91569f71503638c82676"
+    },
+    {
+      "name": "CX-26-KR05-DLL-01.pdf",
+      "bytes": 55783,
+      "sha256": "cc3e3422a6260e4c2993d32d18af829c1be9dce1bebf40a1690f0dd51909c678"
+    },
+    {
+      "name": "CX-29-KR05-XM01.pdf",
+      "bytes": 55482,
+      "sha256": "f1eecbfd4f7720a2142831d00e0cf38138a035145782276d5d0a910cfcefd532"
+    },
+    {
+      "name": "HZDX.SHX",
+      "bytes": 1171621,
+      "sha256": "42a8be6684d58bd2d886d7670d676af9445d65ca208ff116e8103b9114ed5f9c"
+    },
+    {
+      "name": "KX-11-WR-100-300-M1.pdf",
+      "bytes": 57002,
+      "sha256": "1f081ec15de16737b7c694f5e44c22fd43d391d02b658241cfacabbbd85bf340"
+    }
+  ]
+}

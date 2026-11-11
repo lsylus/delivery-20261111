@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "kind": "inventory_not_loaded_assembly",
+  "source_root": "/data/qmh/satellite-plugins-20261029/dsh-satellite-geometry/cases/real-gearbox",
+  "files": [
+    {
+      "relative_path": "original.step",
+      "bytes": 1583275,
+      "sha256": "eabc4c4634b8bcdb27795900dae4c07394c891ba40a01352448945ae94b249d1",
+      "detected_format": "STEP",
+      "header_sample": "ISO-10303-21;\nHEADER;\nFILE_DESCRIPTION(('Open CASCADE Model'),'2;1');\nFILE_NAME('Open CASCADE Shape Model','2026-09-29T17:01:50',('Author'),(\n    'Open CASCADE'"
+    }
+  ],
+  "completeness": "not_opened"
+}

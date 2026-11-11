@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "model_ref": {
+    "project_id": "p1",
+    "model_id": "m1",
+    "model_revision": 1,
+    "assembly_digest": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+  },
+  "target_instances": [
+    "instance-a"
+  ],
+  "included_faces": [],
+  "excluded_faces": [],
+  "openings": [],
+  "installation_frame": {
+    "origin": [
+      0,
+      0,
+      0
+    ],
+    "x_axis": [
+      1,
+      0,
+      0
+    ],
+    "y_axis": [
+      0,
+      1,
+      0
+    ],
+    "z_axis": [
+      0,
+      0,
+      1
+    ],
+    "units": "mm",
+    "handedness": "right"
+  },
+  "allowance": {
+    "mode": "linear_xyz",
+    "factors": [
+      1.05,
+      1.05,
+      1.05
+    ],
+    "anchor": "installation_bottom_center"
+  },
+  "envelope_policy": "installation_box",
+  "cut_edges": [],
+  "fold_edges": [],
+  "unfold_base_panel": null,
+  "overlaps": [],
+  "fixed_points": [],
+  "rule_version": "blanket-v1"
+}

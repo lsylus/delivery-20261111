@@ -1,0 +1,18 @@
+import fs from 'node:fs';
+import assert from 'node:assert/strict';
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+import { Box3 } from 'three';
+const path='docs/evidence/B10/artifacts/generated/cover.glb';
+const raw=fs.readFileSync(path);
+const gltf=await new GLTFLoader().parseAsync(raw.buffer.slice(raw.byteOffset,raw.byteOffset+raw.byteLength),'');
+gltf.scene.updateMatrixWorld(true);
+let primitives=0,triangles=0;
+gltf.scene.traverse(o=>{if(o.isMesh){primitives++;triangles+=(o.geometry.index?.count ?? o.geometry.attributes.position.count)/3;assert(o.geometry.attributes.normal);}});
+assert.equal(primitives,5);assert.equal(triangles,10);
+const box=new Box3().setFromObject(gltf.scene);
+const min=[-.0525,0,-.0525],max=[.0525,.105,.0525];
+box.min.toArray().forEach((x,i)=>assert(Math.abs(x-min[i])<1e-8,JSON.stringify(box)));
+box.max.toArray().forEach((x,i)=>assert(Math.abs(x-max[i])<1e-8,JSON.stringify(box)));
+const evidence={status:'pass',loader:'Three.js GLTFLoader',primitives,triangles,world_units:'m/Y-up',bounds:{min:box.min.toArray(),max:box.max.toArray()}};
+fs.writeFileSync('docs/evidence/B10/glb-loader.json',JSON.stringify(evidence,null,2)+'\n');
+console.log(JSON.stringify(evidence));

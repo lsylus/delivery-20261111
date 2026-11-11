@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "id": "run1",
+  "project_id": "p1",
+  "module": "paint",
+  "operation": "paint.generate",
+  "input_revision": "r1",
+  "input_fingerprint": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "idempotency_key": "k1",
+  "state": "queued",
+  "progress": 0,
+  "worker": null,
+  "tool_versions": {},
+  "artifacts": [],
+  "checks": [],
+  "error": null
+}

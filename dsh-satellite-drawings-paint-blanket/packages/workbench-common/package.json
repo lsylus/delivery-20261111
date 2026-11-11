@@ -1,0 +1,17 @@
+{
+  "name": "@satellite-drawings/workbench-common",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "dependencies": {
+    "react": "19.2.0",
+    "react-dom": "19.2.0",
+    "three": "0.184.0"
+  },
+  "scripts": {
+    "build": "node ../../scripts/check_workspace.mjs workbench-common"
+  }
+}

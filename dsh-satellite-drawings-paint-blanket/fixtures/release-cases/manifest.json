@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "cases": [
+    {
+      "file": "simplified.step",
+      "bytes": 13009025,
+      "sha256": "ba2c3b7b984e76310cdaf03f447f9a44b2ae9758121326853252777f9cfde0c1",
+      "role": "primary_paint_demo"
+    },
+    {
+      "file": "reference-paint.dwg",
+      "bytes": 2156305,
+      "sha256": "65116d803d3ee4c99e4d13ec8bafbcb14d3bbadffd4d8f30612f739fc22ddb96",
+      "role": "engineer_reference_drawing"
+    },
+    {
+      "file": "engineering-requirements.docx",
+      "bytes": 14792,
+      "sha256": "9ffec0e25ea378483b2d543b544db33c2dff3fcd39d1466770b6cf6bfee49a48",
+      "role": "engineer_requirements"
+    }
+  ],
+  "excluded_external_cases": [
+    {
+      "name": "20261010_asm_5_asm.stp",
+      "bytes": 670820444,
+      "sha256": "d844ec5b964585d16f1162dd6b508ddf3cb885997bd285d533e1d2286ff7a684",
+      "reason": "exceeds normal GitHub single-file limit and was not used for the initial demo"
+    },
+    {
+      "name": "catch-original/original.step",
+      "reason": "explicitly excluded from the demo because import was too slow"
+    }
+  ]
+}

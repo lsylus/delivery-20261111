@@ -1,0 +1,51 @@
+import fs from 'node:fs';
+import {test,expect} from '@playwright/test';
+import {open,config,login,screenshot} from './helpers';
+test('real GLB raycast selects exact FaceRef and linked fixture, camera is revision neutral',async({page,context})=>{
+  const c=await open(page,context);const before=await page.getByTestId('revision').textContent();
+  await expect(page.getByTestId('assembly-tree')).toContainText('left-foot');
+  const canvas=page.locator('canvas'),box=(await canvas.boundingBox())!;
+  let picked=false;
+  for(const dx of [.5,.65,.35,.8,.2]){for(const dy of [.5,.35,.65]){await page.mouse.click(box.x+box.width*dx,box.y+box.height*dy);if(await page.getByTestId('selected-faces').locator('li').count()){picked=true;break;}}if(picked)break;}
+  expect(picked).toBe(true);await expect(page.locator('polygon[data-selected=true]')).toHaveCount(1);
+  const text=await page.getByTestId('selected-faces').textContent();expect(text).toMatch(/occ-.*face-/);
+  await screenshot(page,'real-face-selection');
+  await page.mouse.move(box.x+20,box.y+20);await page.mouse.down();await page.mouse.move(box.x+100,box.y+80,{steps:8});await page.mouse.up();await page.mouse.wheel(0,100);
+  await expect(page.getByTestId('revision')).toHaveText(before!);
+  await page.getByTestId('drawing-face-0').click();await expect(page.getByTestId('selected-faces')).toContainText('face-1');
+  await screenshot(page,'fixture-selection');
+  await page.getByLabel('参数 JSON').fill('{');await expect(page.getByRole('button',{name:'保存工程版本',exact:true})).toBeDisabled();
+  await page.getByLabel('参数 JSON').fill('{"note":"b07"}');await page.getByRole('button',{name:'撤销草稿',exact:true}).click();await expect(page.getByLabel('参数 JSON')).toHaveValue('{}');await page.getByRole('button',{name:'重做草稿',exact:true}).click();await expect(page.getByLabel('参数 JSON')).toHaveValue('{"note":"b07"}');
+  await page.getByRole('button',{name:'保存工程版本',exact:true}).click();await expect(page.getByTestId('revision')).not.toHaveText(before!);
+  const newRevision=await page.getByTestId('revision').textContent();
+  const project=await page.getByTestId('project').textContent();const api=c.origin+'/api/satellite-paint/service';
+  const saved=await(await page.request.get(`${api}/projects/${project}/revisions/${newRevision}`)).json();
+  const model=await(await page.request.get(`${api}/projects/${project}/models/${saved.model_ref.model_id}`)).json();
+  const mapAsset=model.artifacts.find((a:any)=>a.relative_storage_path.endsWith('mesh-map.json'));
+  const map=await(await page.request.get(api+mapAsset.download_url.replace('/api/v1',''))).json();expect(saved.selection).toEqual([map.faces[0].face_ref]);
+  fs.writeFileSync('docs/evidence/B07/selection-flow.json',JSON.stringify({status:'pass',before_revision:before,after_revision:newRevision,selection:saved.selection,mesh_map_sha256:mapAsset.sha256,camera_created_revision:false},null,2));await page.reload();await expect(page.getByTestId('revision')).toHaveText(newRevision!);await expect(page.getByTestId('selected-faces')).toContainText('face-1');
+});
+test('browser uploads actual STEP through B06 HTTP and renders returned model',async({page,context})=>{
+  await open(page,context);await page.getByRole('button',{name:'新建工程',exact:true}).click();await expect(page.getByTestId('viewer')).toHaveCount(0);
+  await page.getByLabel('导入 STEP',{exact:true}).setInputFiles('fixtures/synthetic/assembly-tree.step');
+  await expect(page.getByTestId('viewer')).toHaveAttribute('data-ready','true',{timeout:45000});await expect(page.getByTestId('assembly-tree')).toContainText('right-foot');await screenshot(page,'browser-step-import');
+});
+test('two packaged client slots load; validated selection reaches only host draft',async({page,context})=>{
+  const c=await login(context);await page.goto(c.origin+'/host');
+  const frame=page.frameLocator('iframe');await expect(frame.getByTestId('viewer')).toHaveAttribute('data-ready','true');await page.waitForTimeout(600);
+  const first=(await frame.getByTestId('drawing-face-0').boundingBox())!,second=(await frame.getByTestId('drawing-face-1').boundingBox())!;
+  await page.keyboard.down('Shift');await page.mouse.move(first.x+2,first.y+2);await page.mouse.down();await page.mouse.move(second.x+second.width-2,second.y+second.height-2,{steps:8});await page.mouse.up();await page.keyboard.up('Shift');
+  await expect(frame.getByTestId('selected-faces').locator('li')).toHaveCount(2);
+  await frame.getByLabel('对话批注').fill('检查这个面');await frame.getByRole('button',{name:'带入聊天草稿'}).click();await expect(page.getByTestId('host-draft')).toHaveValue(/检查这个面/);
+  const draft=await page.getByTestId('host-draft').inputValue();const selection=JSON.parse(draft.slice(draft.indexOf('{')));
+  expect(selection.entity_refs).toHaveLength(2);expect(selection.local_coordinates).toHaveLength(2);expect(selection.view_transform).toHaveLength(16);expect(selection.view).toBe('2d');
+  fs.writeFileSync('docs/evidence/B07/annotation-context.json',JSON.stringify({status:'pass',selection},null,2));
+  await page.evaluate(selection=>{const source=document.querySelector('iframe')!.contentWindow;for(const variant of [{origin:'https://evil.invalid',source},{origin:location.origin,source:window},{origin:location.origin,source,selection:{...selection,session_id:'stale'}}])window.dispatchEvent(new MessageEvent('message',{origin:variant.origin,source:variant.source,data:{type:'satellite-drawings:chat',request_id:crypto.randomUUID(),selection:variant.selection||selection}}));},selection);
+  await page.waitForTimeout(350);await expect(page.getByTestId('host-draft')).toHaveValue(draft);
+  const api=c.origin+'/api/satellite-paint/service';const project=selection.project_id;
+  const current=await(await page.request.get(`${api}/projects/${project}/revisions/${selection.engineering_revision}`)).json();
+  expect((await page.request.post(`${api}/projects/${project}/revisions`,{headers:{Origin:c.origin},data:{expected_revision:current.id,model_ref:current.model_ref,selection:current.selection,parameters:{changed:1},overrides:[]}})).status()).toBe(201);
+  await frame.getByRole('button',{name:'带入聊天草稿'}).click();await page.waitForTimeout(350);await expect(page.getByTestId('host-draft')).toHaveValue(draft);
+  await page.getByRole('button',{name:'多层入口'}).click();await expect(frame.getByTestId('mode')).toContainText('LIVE');await expect(frame.getByTestId('identity')).toContainText('blanket');await expect(frame.getByTestId('viewer')).toHaveAttribute('data-ready','true');
+  await expect(page.getByTestId('host-draft')).toHaveValue('');await screenshot(page,'two-plugin-host');
+});

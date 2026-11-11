@@ -1,0 +1,14 @@
+# Large generated release artifacts stay on the build host and are uploaded as
+# GitHub Release assets. They are not source files.
+/dsh-satellite-drawings-paint-0.1.0-blanket-0.3.0/
+/dsh-satellite-heater-drawing-0.2.2-github-source.tar.gz
+/dsh-satellite-heater-drawing-0.2.2-github-source.tar.gz.sha256
+
+# Historical generated acceptance evidence is preserved in the frozen source
+# archive on the build host. It is not required to modify, test or deploy.
+/dsh-satellite-drawings-paint-blanket/docs/evidence/
+
+# Editor and operating-system metadata.
+.DS_Store
+Thumbs.db
+.vscode/

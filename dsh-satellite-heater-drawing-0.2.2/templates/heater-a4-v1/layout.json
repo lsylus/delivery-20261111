@@ -1,0 +1,1464 @@
+{
+  "schema_version": 1,
+  "template_id": "heater-a4-v1",
+  "fixed_text_version": "heater-a4-original-dwg-v1",
+  "coordinate_system": "paper millimetres, origin at lower-left",
+  "paper_mm": {
+    "width": 210.0,
+    "height": 297.0
+  },
+  "outer_border_mm": {
+    "left": 5.0,
+    "bottom": 5.0,
+    "right": 205.0,
+    "top": 287.857142857
+  },
+  "drawing_area_mm": {
+    "left": 30.0,
+    "bottom": 90.0,
+    "right": 145.0,
+    "top": 280.0
+  },
+  "technical_text_bbox_mm": {
+    "left": 134.5,
+    "bottom": 57.5,
+    "right": 203.0,
+    "top": 111.0
+  },
+  "title_block_bbox_mm": {
+    "left": 5.0,
+    "bottom": 5.0,
+    "right": 205.0,
+    "top": 48.0
+  },
+  "forbidden_zones_mm": [
+    {
+      "name": "left-register-strip",
+      "left": 5.0,
+      "bottom": 48.0,
+      "right": 25.5129,
+      "top": 292.0
+    },
+    {
+      "name": "technical-requirements",
+      "left": 134.0,
+      "bottom": 56.0,
+      "right": 205.0,
+      "top": 113.0
+    },
+    {
+      "name": "title-block",
+      "left": 5.0,
+      "bottom": 5.0,
+      "right": 205.0,
+      "top": 48.0
+    }
+  ],
+  "heater_center_paper_mm": {
+    "fallback": {
+      "x": 88.0,
+      "y": 187.0
+    },
+    "sample_overrides": {
+      "CX-29-KR05-XM01": {
+        "x": 112.023527454353,
+        "y": 195.684018026194
+      },
+      "CX-26-KR05-DLL-01": {
+        "x": 109.910871088954,
+        "y": 194.886748003686
+      },
+      "KX-11-WR-100-300-M1": {
+        "x": 89.134889291686,
+        "y": 181.926635540918
+      }
+    },
+    "source": "reference PDF vector geometry reverse-mapped through the approximate native-to-PDF affine transform",
+    "uncertainty_mm": 0.2,
+    "status": "reconstruction_candidate_pending_engineering_approval"
+  },
+  "dimension_placement_paper_mm": {
+    "fallback": {
+      "width_offset": 8.0,
+      "length_offset": 8.0,
+      "length_side": "auto"
+    },
+    "sample_overrides": {
+      "CX-29-KR05-XM01": {
+        "width_offset": 12.24,
+        "length_offset": 13.6,
+        "length_side": "right"
+      },
+      "CX-26-KR05-DLL-01": {
+        "width_offset": 9.97,
+        "length_offset": 13.1,
+        "length_side": "right"
+      },
+      "KX-11-WR-100-300-M1": {
+        "width_offset": 11.11,
+        "length_offset": 12.46,
+        "length_side": "left"
+      }
+    },
+    "source": "reference PDF dimension-line positions reverse-mapped through the approximate native-to-PDF affine transform",
+    "uncertainty_mm": 0.25,
+    "status": "reconstruction_candidate_pending_engineering_approval"
+  },
+  "lead_parameters_paper_mm": {
+    "rule_id": "short-edge-paper-v1",
+    "basis": "S=min(width,length)/scale_denominator; all results in paper mm; illustrative geometry only, actual wire length remains 300mm. Tiny sheets use the short-edge cap even below nominal lower bound.",
+    "center_gap": {
+      "ratio": 0.25,
+      "min_mm": 2.0,
+      "max_mm": 12.0,
+      "short_edge_cap": 0.6
+    },
+    "inside_length": {
+      "ratio": 0.2,
+      "min_mm": 2.0,
+      "max_mm": 10.0,
+      "short_edge_cap": 0.35
+    },
+    "outside_length": {
+      "ratio": 0.25,
+      "min_mm": 3.0,
+      "max_mm": 12.0
+    }
+  },
+  "source_template": {
+    "evidence_path": "docs/evidence/B02-fix-12/original-template/CAD模板-r2018.dxf",
+    "sha256": "9bcca3259ef7881af10e640538ec9cd8947bce7d86ee30f18e0c20f7cc8b4c15",
+    "model_origin_mm": [
+      2831.401843915681,
+      -4433.726129851452
+    ],
+    "paper_origin_mm": [
+      5.0,
+      5.0
+    ],
+    "modelspace_entity_count": 78,
+    "line_count": 45,
+    "text_count": 33,
+    "yellow_true_color": 16308017,
+    "yellow_aci": 40,
+    "yellow_layer": "图纸底框",
+    "dynamic_placeholders": {
+      "单位名称": "organization",
+      "型号名称": "model",
+      "加热器名称": "name",
+      "加热器代号": "code",
+      "设计人员": "designer",
+      "校对人员": "checker",
+      "审核人员": "reviewer",
+      "标审人员": "standards_reviewer",
+      "批准人员": "approver",
+      "阶段标记": "stage",
+      "比例因子": "scale"
+    }
+  },
+  "standard_scale_denominators": [
+    1,
+    2,
+    5,
+    10,
+    20,
+    50,
+    100
+  ],
+  "layers": [
+    {
+      "name": "0",
+      "aci": 7,
+      "true_color": null,
+      "linetype": "CONTINUOUS",
+      "lineweight": -3,
+      "plot": 1,
+      "purpose": "preserved original DWG layer"
+    },
+    {
+      "name": "___SHELL",
+      "aci": 7,
+      "true_color": null,
+      "linetype": "CONTINUOUS",
+      "lineweight": -3,
+      "plot": 1,
+      "purpose": "preserved original DWG layer"
+    },
+    {
+      "name": "加热器",
+      "aci": 5,
+      "true_color": null,
+      "linetype": "CONTINUOUS",
+      "lineweight": 50,
+      "plot": 1,
+      "purpose": "preserved original DWG layer"
+    },
+    {
+      "name": "Defpoints",
+      "aci": 7,
+      "true_color": null,
+      "linetype": "CONTINUOUS",
+      "lineweight": -3,
+      "plot": 0,
+      "purpose": "preserved original DWG layer"
+    },
+    {
+      "name": "标注",
+      "aci": 201,
+      "true_color": null,
+      "linetype": "CONTINUOUS",
+      "lineweight": -3,
+      "plot": 1,
+      "purpose": "preserved original DWG layer"
+    },
+    {
+      "name": "text",
+      "aci": 7,
+      "true_color": null,
+      "linetype": "CONTINUOUS",
+      "lineweight": -3,
+      "plot": 1,
+      "purpose": "preserved original DWG layer"
+    },
+    {
+      "name": "图纸底框",
+      "aci": 1,
+      "true_color": null,
+      "linetype": "CONTINUOUS",
+      "lineweight": 50,
+      "plot": 1,
+      "purpose": "preserved original DWG layer"
+    },
+    {
+      "name": "TU",
+      "aci": 250,
+      "true_color": null,
+      "linetype": "CONTINUOUS",
+      "lineweight": 30,
+      "plot": 1,
+      "purpose": "preserved original DWG layer"
+    },
+    {
+      "name": "加热片",
+      "aci": 1,
+      "true_color": null,
+      "linetype": "CONTINUOUS",
+      "lineweight": 50,
+      "plot": 1,
+      "purpose": "preserved original DWG layer"
+    },
+    {
+      "name": "1",
+      "aci": 1,
+      "true_color": null,
+      "linetype": "CONTINUOUS",
+      "lineweight": 50,
+      "plot": 1,
+      "purpose": "preserved original DWG layer"
+    },
+    {
+      "name": "主动加热器",
+      "aci": 1,
+      "true_color": null,
+      "linetype": "CONTINUOUS",
+      "lineweight": -3,
+      "plot": 1,
+      "purpose": "preserved original DWG layer"
+    },
+    {
+      "name": "热电偶",
+      "aci": 30,
+      "true_color": null,
+      "linetype": "CONTINUOUS",
+      "lineweight": 50,
+      "plot": 1,
+      "purpose": "preserved original DWG layer"
+    },
+    {
+      "name": "喷漆保护",
+      "aci": 9,
+      "true_color": null,
+      "linetype": "CONTINUOUS",
+      "lineweight": -3,
+      "plot": 1,
+      "purpose": "preserved original DWG layer"
+    },
+    {
+      "name": "尺寸",
+      "aci": 223,
+      "true_color": 15293355,
+      "linetype": "CONTINUOUS",
+      "lineweight": -3,
+      "plot": 1,
+      "purpose": "preserved original DWG layer"
+    },
+    {
+      "name": "HEATER",
+      "aci": 7,
+      "lineweight": 25,
+      "purpose": "true-size four-corner heater outline",
+      "true_color": null,
+      "linetype": "Continuous",
+      "plot": 1
+    },
+    {
+      "name": "HEATER_LEAD",
+      "aci": 7,
+      "lineweight": 18,
+      "purpose": "two lead indication lines",
+      "true_color": null,
+      "linetype": "Continuous",
+      "plot": 1
+    },
+    {
+      "name": "DIMENSION",
+      "aci": 7,
+      "lineweight": 18,
+      "purpose": "native width and length dimensions",
+      "true_color": null,
+      "linetype": "Continuous",
+      "plot": 1
+    }
+  ],
+  "frame_lines_mm": [
+    [
+      142.132615162283,
+      36.428570704632,
+      142.132615162283,
+      9.761904037966,
+      "图纸底框",
+      40,
+      16308017,
+      "BYLAYER"
+    ],
+    [
+      118.000040132214,
+      23.0952373713,
+      118.000040132214,
+      9.761904037966,
+      "0",
+      7,
+      null,
+      "BYLAYER"
+    ],
+    [
+      128.952421084602,
+      23.0952373713,
+      128.952421084602,
+      9.761904037966,
+      "0",
+      7,
+      null,
+      "BYLAYER"
+    ],
+    [
+      95.476190243498,
+      49.761904037966,
+      95.476190243498,
+      9.761904037966,
+      "图纸底框",
+      40,
+      16308017,
+      "BYLAYER"
+    ],
+    [
+      28.80952373973,
+      23.0952373713,
+      200.238095005395,
+      23.0952373713,
+      "0",
+      7,
+      null,
+      "BYLAYER"
+    ],
+    [
+      95.476190243498,
+      16.428570704632,
+      142.132615162283,
+      16.428570704632,
+      "0",
+      7,
+      null,
+      "Continuous"
+    ],
+    [
+      205.0,
+      5.0,
+      205.0,
+      287.857142857144,
+      "0",
+      7,
+      null,
+      "BYLAYER"
+    ],
+    [
+      28.80952373973,
+      256.428570537857,
+      4.999999930199,
+      256.428570537857,
+      "图纸底框",
+      40,
+      16308017,
+      "BYLAYER"
+    ],
+    [
+      28.80952373973,
+      263.095237204521,
+      4.999999930199,
+      263.095237204521,
+      "0",
+      256,
+      null,
+      "BYLAYER"
+    ],
+    [
+      28.80952373973,
+      269.76190387119,
+      4.999999930199,
+      269.76190387119,
+      "图纸底框",
+      40,
+      16308017,
+      "BYLAYER"
+    ],
+    [
+      28.80952373973,
+      276.428570537857,
+      4.999999930199,
+      276.428570537857,
+      "0",
+      256,
+      null,
+      "BYLAYER"
+    ],
+    [
+      200.238095005395,
+      283.095237204524,
+      4.999999930199,
+      283.095237204524,
+      "图纸底框",
+      40,
+      16308017,
+      "BYLAYER"
+    ],
+    [
+      4.999999930199,
+      114.999999276062,
+      28.80952373973,
+      114.999999276062,
+      "图纸底框",
+      40,
+      16308017,
+      "BYLAYER"
+    ],
+    [
+      4.999999930199,
+      121.666665942728,
+      28.80952373973,
+      121.666665942728,
+      "0",
+      7,
+      null,
+      "BYLAYER"
+    ],
+    [
+      4.999999930199,
+      154.999999276062,
+      28.80952373973,
+      154.999999276062,
+      "图纸底框",
+      40,
+      16308017,
+      "BYLAYER"
+    ],
+    [
+      4.999999930199,
+      148.333332609396,
+      28.80952373973,
+      148.333332609396,
+      "0",
+      7,
+      null,
+      "BYLAYER"
+    ],
+    [
+      4.999999930199,
+      134.999999276065,
+      28.80952373973,
+      134.999999276065,
+      "0",
+      7,
+      null,
+      "BYLAYER"
+    ],
+    [
+      4.999999930199,
+      141.666665942728,
+      28.80952373973,
+      141.666665942728,
+      "图纸底框",
+      40,
+      16308017,
+      "BYLAYER"
+    ],
+    [
+      4.999999930199,
+      128.333332609399,
+      28.80952373973,
+      128.333332609399,
+      "图纸底框",
+      40,
+      16308017,
+      "BYLAYER"
+    ],
+    [
+      4.999999930199,
+      161.666665942731,
+      28.80952373973,
+      161.666665942731,
+      "0",
+      7,
+      null,
+      "BYLAYER"
+    ],
+    [
+      4.999999930199,
+      168.333332609399,
+      28.80952373973,
+      168.333332609399,
+      "图纸底框",
+      40,
+      16308017,
+      "BYLAYER"
+    ],
+    [
+      62.142856910164,
+      9.761904037966,
+      62.142856910164,
+      36.428570704632,
+      "0",
+      7,
+      null,
+      "BYLAYER"
+    ],
+    [
+      36.428571195871,
+      9.761904037966,
+      36.428571195871,
+      49.761904037966,
+      "0",
+      7,
+      null,
+      "BYLAYER"
+    ],
+    [
+      28.809523576817,
+      283.095237204524,
+      28.809523576817,
+      9.761904037966,
+      "图纸底框",
+      40,
+      16308017,
+      "BYLAYER"
+    ],
+    [
+      69.761904529212,
+      49.761904037966,
+      69.761904529212,
+      9.761904037966,
+      "0",
+      7,
+      null,
+      "BYLAYER"
+    ],
+    [
+      200.238095005395,
+      9.761904037966,
+      4.999999930199,
+      9.761904037966,
+      "图纸底框",
+      40,
+      16308017,
+      "BYLAYER"
+    ],
+    [
+      28.80952373973,
+      16.428570704632,
+      4.999999930199,
+      16.428570704632,
+      "0",
+      7,
+      null,
+      "BYLAYER"
+    ],
+    [
+      28.80952373973,
+      36.428570704632,
+      4.999999930199,
+      36.428570704632,
+      "0",
+      7,
+      null,
+      "BYLAYER"
+    ],
+    [
+      28.80952373973,
+      29.761904037966,
+      4.999999930199,
+      29.761904037966,
+      "图纸底框",
+      40,
+      16308017,
+      "BYLAYER"
+    ],
+    [
+      28.80952373973,
+      23.0952373713,
+      4.999999930199,
+      23.0952373713,
+      "0",
+      7,
+      null,
+      "BYLAYER"
+    ],
+    [
+      28.80952373973,
+      56.428570704632,
+      4.999999930199,
+      56.428570704632,
+      "图纸底框",
+      40,
+      16308017,
+      "BYLAYER"
+    ],
+    [
+      28.80952373973,
+      49.761904037966,
+      4.999999930199,
+      49.761904037966,
+      "0",
+      7,
+      null,
+      "BYLAYER"
+    ],
+    [
+      28.80952373973,
+      43.0952373713,
+      4.999999930199,
+      43.0952373713,
+      "图纸底框",
+      40,
+      16308017,
+      "BYLAYER"
+    ],
+    [
+      28.80952373973,
+      63.0952373713,
+      4.999999930199,
+      63.0952373713,
+      "0",
+      7,
+      null,
+      "BYLAYER"
+    ],
+    [
+      28.80952373973,
+      69.761904037966,
+      4.999999930199,
+      69.761904037966,
+      "图纸底框",
+      40,
+      16308017,
+      "BYLAYER"
+    ],
+    [
+      5.0,
+      287.857142857144,
+      5.0,
+      5.0,
+      "0",
+      7,
+      null,
+      "BYLAYER"
+    ],
+    [
+      5.0,
+      5.0,
+      205.0,
+      5.0,
+      "0",
+      7,
+      null,
+      "BYLAYER"
+    ],
+    [
+      28.809523576817,
+      49.761904037966,
+      200.238095005395,
+      49.761904037966,
+      "图纸底框",
+      40,
+      16308017,
+      "BYLAYER"
+    ],
+    [
+      205.0,
+      287.857142857144,
+      5.0,
+      287.857142857144,
+      "0",
+      7,
+      null,
+      "BYLAYER"
+    ],
+    [
+      28.809523576817,
+      29.761904037966,
+      95.476190243498,
+      29.761904037966,
+      "0",
+      7,
+      null,
+      "BYLAYER"
+    ],
+    [
+      28.809523576817,
+      36.428570704632,
+      147.857142624443,
+      36.428570704632,
+      "图纸底框",
+      40,
+      16308017,
+      "BYLAYER"
+    ],
+    [
+      28.809523576817,
+      43.0952373713,
+      95.476190243498,
+      43.0952373713,
+      "0",
+      7,
+      null,
+      "BYLAYER"
+    ],
+    [
+      28.809523576817,
+      16.428570704632,
+      95.476190243498,
+      16.428570704632,
+      "0",
+      7,
+      null,
+      "BYLAYER"
+    ],
+    [
+      200.238095005395,
+      9.761904037966,
+      200.238095005395,
+      283.095237204524,
+      "图纸底框",
+      40,
+      16308017,
+      "BYLAYER"
+    ],
+    [
+      200.238095005395,
+      36.428570704632,
+      147.857142624443,
+      36.428570704632,
+      "图纸底框",
+      40,
+      16308017,
+      "BYLAYER"
+    ]
+  ],
+  "blank_cells_mm": [
+    [
+      25.5129,
+      38.0,
+      95.0,
+      48.0
+    ],
+    [
+      25.5129,
+      27.0,
+      95.0,
+      38.0
+    ]
+  ],
+  "fixed_text": [
+    {
+      "text": "质量",
+      "entity_type": "TEXT",
+      "point_mm": [
+        120.338720200114,
+        17.920634196696
+      ],
+      "height_mm": 4.0,
+      "style": "HZ",
+      "rotation": 0.0,
+      "halign": 0,
+      "valign": 0,
+      "width_factor": 0.7,
+      "allowed_frame_crossings": []
+    },
+    {
+      "text": "签字、日期",
+      "entity_type": "TEXT",
+      "point_mm": [
+        75.138580681294,
+        37.963050869206
+      ],
+      "height_mm": 4.0,
+      "style": "HZ",
+      "rotation": 0.0,
+      "halign": 0,
+      "valign": 0,
+      "width_factor": 0.7,
+      "allowed_frame_crossings": []
+    },
+    {
+      "text": "共        页",
+      "entity_type": "TEXT",
+      "point_mm": [
+        159.857142857141,
+        5.190946632238
+      ],
+      "height_mm": 4.0,
+      "style": "HZ",
+      "rotation": 0.0,
+      "halign": 0,
+      "valign": 0,
+      "width_factor": 0.7,
+      "allowed_frame_crossings": [
+        36
+      ]
+    },
+    {
+      "text": "阶 段 标 记",
+      "entity_type": "TEXT",
+      "point_mm": [
+        98.722343302333,
+        17.825396101459
+      ],
+      "height_mm": 4.0,
+      "style": "HZ",
+      "rotation": 0.0,
+      "halign": 0,
+      "valign": 0,
+      "width_factor": 0.7,
+      "allowed_frame_crossings": []
+    },
+    {
+      "text": "第       页",
+      "entity_type": "TEXT",
+      "point_mm": [
+        184.314547217779,
+        5.286184727478
+      ],
+      "height_mm": 4.0,
+      "style": "HZ",
+      "rotation": 0.0,
+      "halign": 0,
+      "valign": 0,
+      "width_factor": 0.7,
+      "allowed_frame_crossings": [
+        25,
+        36
+      ]
+    },
+    {
+      "text": "比例",
+      "entity_type": "TEXT",
+      "point_mm": [
+        132.354484632906,
+        17.857142133205
+      ],
+      "height_mm": 4.0,
+      "style": "HZ",
+      "rotation": 0.0,
+      "halign": 0,
+      "valign": 0,
+      "width_factor": 0.7,
+      "allowed_frame_crossings": []
+    },
+    {
+      "text": "CAD",
+      "entity_type": "MTEXT",
+      "point_mm": [
+        16.90476183496,
+        266.428570537857
+      ],
+      "height_mm": 4.0,
+      "style": "HZ",
+      "rotation": 0.0,
+      "raw_text": "CAD",
+      "attachment_point": 5,
+      "flow_direction": 5,
+      "width_mm": 23.80952380952398,
+      "line_spacing_factor": 1.0,
+      "line_spacing_style": 1,
+      "content_policy": "preserve_source_raw_v1",
+      "allowed_frame_crossings": []
+    },
+    {
+      "text": "软盘编号",
+      "entity_type": "MTEXT",
+      "point_mm": [
+        16.90476183496,
+        279.76190387119
+      ],
+      "height_mm": 4.0,
+      "style": "HZ",
+      "rotation": 0.0,
+      "raw_text": "软盘编号",
+      "attachment_point": 5,
+      "flow_direction": 5,
+      "width_mm": 23.80952380952398,
+      "line_spacing_factor": 1.0,
+      "line_spacing_style": 1,
+      "content_policy": "preserve_source_raw_v1",
+      "allowed_frame_crossings": []
+    },
+    {
+      "text": "会签",
+      "entity_type": "MTEXT",
+      "point_mm": [
+        16.90476183496,
+        172.378468066832
+      ],
+      "height_mm": 4.0,
+      "style": "HZ",
+      "rotation": 0.0,
+      "raw_text": "会签",
+      "attachment_point": 5,
+      "flow_direction": 5,
+      "width_mm": 23.80952380952398,
+      "line_spacing_factor": 1.0,
+      "line_spacing_style": 1,
+      "content_policy": "preserve_source_raw_v1",
+      "allowed_frame_crossings": []
+    },
+    {
+      "text": "描图",
+      "entity_type": "MTEXT",
+      "point_mm": [
+        16.90476183496,
+        66.428570704632
+      ],
+      "height_mm": 4.0,
+      "style": "HZ",
+      "rotation": 0.0,
+      "raw_text": "描图",
+      "attachment_point": 5,
+      "flow_direction": 5,
+      "width_mm": 23.80952380952398,
+      "line_spacing_factor": 1.0,
+      "line_spacing_style": 1,
+      "content_policy": "preserve_source_raw_v1",
+      "allowed_frame_crossings": []
+    },
+    {
+      "text": "标审",
+      "entity_type": "TEXT",
+      "point_mm": [
+        62.83266876626,
+        17.790339034655
+      ],
+      "height_mm": 4.0,
+      "style": "HZ",
+      "rotation": 0.0,
+      "halign": 0,
+      "valign": 0,
+      "width_factor": 0.7,
+      "allowed_frame_crossings": [
+        24
+      ]
+    },
+    {
+      "text": "批准",
+      "entity_type": "TEXT",
+      "point_mm": [
+        62.881654092855,
+        11.349057285651
+      ],
+      "height_mm": 4.0,
+      "style": "HZ",
+      "rotation": 0.0,
+      "halign": 0,
+      "valign": 0,
+      "width_factor": 0.7,
+      "allowed_frame_crossings": [
+        24
+      ]
+    },
+    {
+      "text": "更 改 单 号",
+      "entity_type": "TEXT",
+      "point_mm": [
+        46.679783609093,
+        37.98304380694
+      ],
+      "height_mm": 4.0,
+      "style": "HZ",
+      "rotation": 0.0,
+      "halign": 0,
+      "valign": 0,
+      "width_factor": 0.7,
+      "allowed_frame_crossings": []
+    },
+    {
+      "text": "工艺",
+      "entity_type": "TEXT",
+      "point_mm": [
+        29.546256559593,
+        11.456660514597
+      ],
+      "height_mm": 4.0,
+      "style": "HZ",
+      "rotation": 0.0,
+      "halign": 0,
+      "valign": 0,
+      "width_factor": 0.7,
+      "allowed_frame_crossings": [
+        22
+      ]
+    },
+    {
+      "text": "底图登记号",
+      "entity_type": "MTEXT",
+      "point_mm": [
+        16.90476183496,
+        26.428570704632
+      ],
+      "height_mm": 4.0,
+      "style": "HZ",
+      "rotation": 0.0,
+      "raw_text": "底图登记号",
+      "attachment_point": 5,
+      "flow_direction": 5,
+      "width_mm": 23.80952380952398,
+      "line_spacing_factor": 1.0,
+      "line_spacing_style": 1,
+      "content_policy": "preserve_source_raw_v1",
+      "allowed_frame_crossings": []
+    },
+    {
+      "text": "旧底图登记号",
+      "entity_type": "MTEXT",
+      "point_mm": [
+        16.90476183496,
+        39.761904037966
+      ],
+      "height_mm": 4.0,
+      "style": "HZ",
+      "rotation": 0.0,
+      "raw_text": "旧底图登记号",
+      "attachment_point": 5,
+      "flow_direction": 5,
+      "width_mm": 23.80952380952398,
+      "line_spacing_factor": 1.0,
+      "line_spacing_style": 1,
+      "content_policy": "preserve_source_raw_v1",
+      "allowed_frame_crossings": []
+    },
+    {
+      "text": "设计",
+      "entity_type": "TEXT",
+      "point_mm": [
+        29.666666433969,
+        31.478226107089
+      ],
+      "height_mm": 4.0,
+      "style": "HZ",
+      "rotation": 0.0,
+      "halign": 0,
+      "valign": 0,
+      "width_factor": 0.7,
+      "allowed_frame_crossings": [
+        22
+      ]
+    },
+    {
+      "text": "审核",
+      "entity_type": "TEXT",
+      "point_mm": [
+        29.500569209118,
+        17.859053521106
+      ],
+      "height_mm": 4.0,
+      "style": "HZ",
+      "rotation": 0.0,
+      "halign": 0,
+      "valign": 0,
+      "width_factor": 0.7,
+      "allowed_frame_crossings": [
+        22
+      ]
+    },
+    {
+      "text": "校对",
+      "entity_type": "TEXT",
+      "point_mm": [
+        29.655615834787,
+        24.46871750151
+      ],
+      "height_mm": 4.0,
+      "style": "HZ",
+      "rotation": 0.0,
+      "halign": 0,
+      "valign": 0,
+      "width_factor": 0.7,
+      "allowed_frame_crossings": [
+        22
+      ]
+    },
+    {
+      "text": "标记",
+      "entity_type": "TEXT",
+      "point_mm": [
+        29.528085519975,
+        37.951297775191
+      ],
+      "height_mm": 4.0,
+      "style": "HZ",
+      "rotation": 0.0,
+      "halign": 0,
+      "valign": 0,
+      "width_factor": 0.7,
+      "allowed_frame_crossings": [
+        22
+      ]
+    },
+    {
+      "text": "描校",
+      "entity_type": "MTEXT",
+      "point_mm": [
+        16.90476183496,
+        53.0952373713
+      ],
+      "height_mm": 4.0,
+      "style": "HZ",
+      "rotation": 0.0,
+      "raw_text": "描校",
+      "attachment_point": 5,
+      "flow_direction": 5,
+      "width_mm": 23.80952380952398,
+      "line_spacing_factor": 1.0,
+      "line_spacing_style": 1,
+      "content_policy": "preserve_source_raw_v1",
+      "allowed_frame_crossings": []
+    }
+  ],
+  "field_anchors_mm": {
+    "organization": {
+      "text": "单位名称",
+      "entity_type": "MTEXT",
+      "point_mm": [
+        95.476190243498,
+        46.236903877001
+      ],
+      "height_mm": 6.0,
+      "style": "HZ",
+      "rotation": 0.0,
+      "raw_text": "\\pxqc;{\\H1.042x;单位名称}",
+      "attachment_point": 1,
+      "flow_direction": 5,
+      "width_mm": 104.7619047618974,
+      "line_spacing_factor": 1.0,
+      "line_spacing_style": 1,
+      "placeholder": "单位名称",
+      "content_policy": "preserve_source_format_replace_placeholder_v1",
+      "bounds_mm": [
+        95.47619024349797,
+        36.428570704632,
+        200.23809500539537,
+        49.761904037966
+      ]
+    },
+    "model": {
+      "text": "型号名称",
+      "entity_type": "MTEXT",
+      "point_mm": [
+        95.476190243498,
+        32.517389386197
+      ],
+      "height_mm": 5.0,
+      "style": "HZ",
+      "rotation": 0.0,
+      "raw_text": "\\pxqc;型号名称",
+      "attachment_point": 1,
+      "flow_direction": 5,
+      "width_mm": 46.65642491878558,
+      "line_spacing_factor": 1.0,
+      "line_spacing_style": 1,
+      "placeholder": "型号名称",
+      "content_policy": "preserve_source_format_replace_placeholder_v1",
+      "bounds_mm": [
+        95.47619024349797,
+        23.0952373713,
+        142.13261516228354,
+        36.428570704632
+      ]
+    },
+    "name": {
+      "text": "加热器名称",
+      "entity_type": "MTEXT",
+      "point_mm": [
+        142.132615162283,
+        32.714111916674
+      ],
+      "height_mm": 5.0,
+      "style": "HZ",
+      "rotation": 0.0,
+      "raw_text": "\\pxqc;{\\H1.042x;加热器名称}",
+      "attachment_point": 1,
+      "flow_direction": 5,
+      "width_mm": 58.10547984311174,
+      "line_spacing_factor": 1.0,
+      "line_spacing_style": 1,
+      "placeholder": "加热器名称",
+      "content_policy": "preserve_source_format_replace_placeholder_v1",
+      "bounds_mm": [
+        142.13261516228295,
+        23.0952373713,
+        200.23809500539468,
+        36.428570704632
+      ]
+    },
+    "code": {
+      "text": "加热器代号",
+      "entity_type": "MTEXT",
+      "point_mm": [
+        142.132615162283,
+        18.436708796253
+      ],
+      "height_mm": 4.0,
+      "style": "HZ",
+      "rotation": 0.0,
+      "raw_text": "\\pxqc;加热器代号",
+      "attachment_point": 1,
+      "flow_direction": 5,
+      "width_mm": 58.1054798431119,
+      "line_spacing_factor": 1.0,
+      "line_spacing_style": 1,
+      "placeholder": "加热器代号",
+      "content_policy": "preserve_source_format_replace_placeholder_v1",
+      "bounds_mm": [
+        142.13261516228295,
+        9.761904037966,
+        200.23809500539485,
+        23.0952373713
+      ]
+    },
+    "designer": {
+      "text": "设计人员",
+      "entity_type": "MTEXT",
+      "point_mm": [
+        36.428571195871,
+        34.828765569206
+      ],
+      "height_mm": 4.0,
+      "style": "HZ",
+      "rotation": 0.0,
+      "raw_text": "\\pxqc;设计人员",
+      "attachment_point": 1,
+      "flow_direction": 5,
+      "width_mm": 25.71428571428638,
+      "line_spacing_factor": 1.0,
+      "line_spacing_style": 1,
+      "placeholder": "设计人员",
+      "content_policy": "preserve_source_format_replace_placeholder_v1",
+      "bounds_mm": [
+        36.42857119587097,
+        29.761904037966,
+        62.14285691015735,
+        36.428570704632
+      ]
+    },
+    "checker": {
+      "text": "校对人员",
+      "entity_type": "MTEXT",
+      "point_mm": [
+        36.428571195871,
+        28.453316972506
+      ],
+      "height_mm": 4.0,
+      "style": "HZ",
+      "rotation": 0.0,
+      "raw_text": "\\pxqc;校对人员",
+      "attachment_point": 1,
+      "flow_direction": 5,
+      "width_mm": 25.71428571429274,
+      "line_spacing_factor": 1.0,
+      "line_spacing_style": 1,
+      "placeholder": "校对人员",
+      "content_policy": "preserve_source_format_replace_placeholder_v1",
+      "bounds_mm": [
+        36.42857119587097,
+        23.0952373713,
+        62.142856910163715,
+        29.761904037966
+      ]
+    },
+    "reviewer": {
+      "text": "审核人员",
+      "entity_type": "MTEXT",
+      "point_mm": [
+        36.428571195871,
+        21.673259837096
+      ],
+      "height_mm": 4.0,
+      "style": "HZ",
+      "rotation": 0.0,
+      "raw_text": "\\pxqc;审核人员",
+      "attachment_point": 1,
+      "flow_direction": 5,
+      "width_mm": 25.71428571428638,
+      "line_spacing_factor": 1.0,
+      "line_spacing_style": 1,
+      "placeholder": "审核人员",
+      "content_policy": "preserve_source_format_replace_placeholder_v1",
+      "bounds_mm": [
+        36.42857119587097,
+        16.428570704632,
+        62.14285691015735,
+        23.0952373713
+      ]
+    },
+    "approver": {
+      "text": "批准人员",
+      "entity_type": "MTEXT",
+      "point_mm": [
+        69.761904529212,
+        15.111964902918
+      ],
+      "height_mm": 4.0,
+      "style": "HZ",
+      "rotation": 0.0,
+      "raw_text": "\\pxqc;批准人员",
+      "attachment_point": 1,
+      "flow_direction": 5,
+      "width_mm": 25.71428571428638,
+      "line_spacing_factor": 1.0,
+      "line_spacing_style": 1,
+      "placeholder": "批准人员",
+      "content_policy": "preserve_source_format_replace_placeholder_v1",
+      "bounds_mm": [
+        69.76190452921173,
+        9.761904037966,
+        95.47619024349811,
+        16.428570704632
+      ]
+    },
+    "standards_reviewer": {
+      "text": "标审人员",
+      "entity_type": "MTEXT",
+      "point_mm": [
+        69.761904529212,
+        21.747616687618
+      ],
+      "height_mm": 4.0,
+      "style": "HZ",
+      "rotation": 0.0,
+      "raw_text": "\\pxqc;标审人员",
+      "attachment_point": 1,
+      "flow_direction": 5,
+      "width_mm": 25.71428571428638,
+      "line_spacing_factor": 1.0,
+      "line_spacing_style": 1,
+      "placeholder": "标审人员",
+      "content_policy": "preserve_source_format_replace_placeholder_v1",
+      "bounds_mm": [
+        69.76190452921173,
+        16.428570704632,
+        95.47619024349811,
+        23.0952373713
+      ]
+    },
+    "stage": {
+      "text": "阶段标记",
+      "entity_type": "MTEXT",
+      "point_mm": [
+        95.476190243498,
+        15.135565891449
+      ],
+      "height_mm": 4.0,
+      "style": "HZ",
+      "rotation": 0.0,
+      "raw_text": "\\pxqc;阶段标记",
+      "attachment_point": 1,
+      "flow_direction": 5,
+      "width_mm": 22.52384988871623,
+      "line_spacing_factor": 1.0,
+      "line_spacing_style": 1,
+      "placeholder": "阶段标记",
+      "content_policy": "preserve_source_format_replace_placeholder_v1",
+      "bounds_mm": [
+        95.47619024349797,
+        9.761904037966,
+        118.0000401322142,
+        16.428570704632
+      ]
+    },
+    "scale": {
+      "text": "比例因子",
+      "entity_type": "MTEXT",
+      "point_mm": [
+        128.952421084602,
+        15.115448214245
+      ],
+      "height_mm": 4.0,
+      "style": "HZ",
+      "rotation": 0.0,
+      "raw_text": "\\pxqc;比例因子",
+      "attachment_point": 1,
+      "flow_direction": 5,
+      "width_mm": 13.18019407768148,
+      "line_spacing_factor": 1.0,
+      "line_spacing_style": 1,
+      "placeholder": "比例因子",
+      "content_policy": "preserve_source_format_replace_placeholder_v1",
+      "bounds_mm": [
+        128.9524210846016,
+        9.761904037966,
+        142.1326151622831,
+        16.428570704632
+      ]
+    }
+  },
+  "technical_text": {
+    "text": "技术要求\n1.电阻值：R=阻值W±阻值偏差W；\n2.单回路；\n3.康铜箔BMn40－1.5，GB/T6145-2010；\n4.聚酰亚胺薄膜HF，GB/T13542.6-2006；\n5.导线 Q/YC97A-2011，导线长度均为300mm；\n6.导热线条的走向按工艺最佳方案，但导线的引出方向按图所示；\n7.加热片尺寸以图中标注为准；\n8.数量：投产数量。",
+    "entity_type": "MTEXT",
+    "point_mm": [
+      134.751634520231,
+      106.231739238227
+    ],
+    "height_mm": 3.0,
+    "style": "HZ",
+    "rotation": 0.0,
+    "raw_text": "技术要求\\P1.电阻值：R=阻值{\\fSymbol|b0|i0|c2|p18;W\\fSystem|b0|i0|c134|p33;±}阻值偏差{\\fSymbol|b0|i0|c2|p18;W}；\\P2.单回路；\\P3.康铜箔BMn40－1.5，GB/T6145-2010；\\P4.聚酰亚胺薄膜HF，GB/T13542.6-2006；\\P5.导线 Q/YC97A-2011，导线长度均为300mm；\\P6.导热线条的走向按工艺最佳方案，但导线的引出方向按图所示；\\P7.加热片尺寸以图中标注为准；\\P8.数量：投产数量。",
+    "attachment_point": 1,
+    "flow_direction": 5,
+    "width_mm": 68.48646048516446,
+    "line_spacing_factor": 1.0,
+    "line_spacing_style": 1,
+    "content_policy": "controlled_unicode_paragraphs_v1",
+    "bounds_mm": [
+      134.5,
+      57.5,
+      203.0,
+      111.0
+    ],
+    "bounds_tolerance_mm": 0.0
+  },
+  "development_baseline": {
+    "status": "user_accepted_direction",
+    "formal_delivery_approval": "pending",
+    "technical_block_translation_paper_mm": [
+      3,
+      8
+    ],
+    "source": "docs/decisions/B02-development-baseline.md"
+  }
+}

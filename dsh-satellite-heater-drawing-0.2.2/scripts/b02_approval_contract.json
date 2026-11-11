@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "approval_scope": [
+    "exact frozen B02 native-template linework, layers, colors, fixed labels, and mapped editable field anchors",
+    "native MTEXT raw and effective inline formatting, paragraph alignment, flow direction, glyph bounds, controlled cells, and frame-crossing baseline",
+    "original HZ txt.shx plus hzdx.shx CAD dependency and separately identified temporary Noto PDF rendering",
+    "controlled native-dimension regeneration and complete effective-display inheritance chain",
+    "three sample-specific reconstructed centers, leads, and dimension placements with recorded uncertainty plus the explicit non-sample fallback",
+    "target CAD DXF edit-REGEN-save-close-reopen for the exact candidate hashes"
+  ],
+  "dxf_actions": [
+    "open_exact_input",
+    "edit_outline",
+    "edit_text",
+    "edit_native_dimension",
+    "explicit_dimension_update",
+    "regen",
+    "save",
+    "close",
+    "reopen",
+    "verify_units_fonts_dimensions"
+  ],
+  "dwg_actions": [
+    "open_exact_dwg",
+    "edit_outline",
+    "edit_text",
+    "edit_native_dimension",
+    "explicit_dimension_update",
+    "regen",
+    "save",
+    "close",
+    "reopen",
+    "verify_units_fonts_dimensions"
+  ]
+}

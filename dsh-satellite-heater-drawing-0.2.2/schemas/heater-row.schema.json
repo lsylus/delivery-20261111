@@ -1,0 +1,269 @@
+{
+  "$defs": {
+    "HeaterFields": {
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Name",
+          "type": "string"
+        },
+        "code": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Code",
+          "type": "string"
+        },
+        "width_mm": {
+          "pattern": "^(?:0\\.[0-9]*[1-9][0-9]*|[1-9][0-9]*(?:\\.[0-9]+)?)$(?![\\s\\S])",
+          "title": "Width Mm",
+          "type": "string"
+        },
+        "length_mm": {
+          "pattern": "^(?:0\\.[0-9]*[1-9][0-9]*|[1-9][0-9]*(?:\\.[0-9]+)?)$(?![\\s\\S])",
+          "title": "Length Mm",
+          "type": "string"
+        },
+        "lead_side": {
+          "$ref": "#/$defs/LeadSide"
+        },
+        "resistance_ohm": {
+          "pattern": "^(?:0\\.[0-9]*[1-9][0-9]*|[1-9][0-9]*(?:\\.[0-9]+)?)$(?![\\s\\S])",
+          "title": "Resistance Ohm",
+          "type": "string"
+        },
+        "tolerance_ohm": {
+          "pattern": "^(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$(?![\\s\\S])",
+          "title": "Tolerance Ohm",
+          "type": "string"
+        },
+        "quantity_text": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Quantity Text",
+          "type": "string"
+        },
+        "requested_scale": {
+          "pattern": "^1:(?:1(?:\\.[0-9]+)?|(?:[2-9]|[1-9][0-9]+)(?:\\.[0-9]+)?)$(?![\\s\\S])",
+          "title": "Requested Scale",
+          "type": "string"
+        },
+        "organization": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Organization",
+          "type": "string"
+        },
+        "model": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Model",
+          "type": "string"
+        },
+        "designer": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Designer",
+          "type": "string"
+        },
+        "checker": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Checker",
+          "type": "string"
+        },
+        "reviewer": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Reviewer",
+          "type": "string"
+        },
+        "standards_reviewer": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Standards Reviewer",
+          "type": "string"
+        },
+        "approver": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Approver",
+          "type": "string"
+        },
+        "stage": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Stage",
+          "type": "string"
+        }
+      },
+      "required": [
+        "name",
+        "code",
+        "width_mm",
+        "length_mm",
+        "lead_side",
+        "resistance_ohm",
+        "tolerance_ohm",
+        "quantity_text",
+        "requested_scale",
+        "organization",
+        "model",
+        "designer",
+        "checker",
+        "reviewer",
+        "standards_reviewer",
+        "approver",
+        "stage"
+      ],
+      "title": "HeaterFields",
+      "type": "object"
+    },
+    "LeadSide": {
+      "enum": [
+        "short",
+        "long"
+      ],
+      "title": "LeadSide",
+      "type": "string"
+    },
+    "RawHeaterFields": {
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "title": "Name"
+        },
+        "code": {
+          "title": "Code"
+        },
+        "width_mm": {
+          "title": "Width Mm"
+        },
+        "length_mm": {
+          "title": "Length Mm"
+        },
+        "lead_side": {
+          "title": "Lead Side"
+        },
+        "resistance_ohm": {
+          "title": "Resistance Ohm"
+        },
+        "tolerance_ohm": {
+          "title": "Tolerance Ohm"
+        },
+        "quantity_text": {
+          "title": "Quantity Text"
+        },
+        "requested_scale": {
+          "title": "Requested Scale"
+        },
+        "organization": {
+          "title": "Organization"
+        },
+        "model": {
+          "title": "Model"
+        },
+        "designer": {
+          "title": "Designer"
+        },
+        "checker": {
+          "title": "Checker"
+        },
+        "reviewer": {
+          "title": "Reviewer"
+        },
+        "standards_reviewer": {
+          "title": "Standards Reviewer"
+        },
+        "approver": {
+          "title": "Approver"
+        },
+        "stage": {
+          "title": "Stage"
+        }
+      },
+      "required": [
+        "name",
+        "code",
+        "width_mm",
+        "length_mm",
+        "lead_side",
+        "resistance_ohm",
+        "tolerance_ohm",
+        "quantity_text",
+        "requested_scale",
+        "organization",
+        "model",
+        "designer",
+        "checker",
+        "reviewer",
+        "standards_reviewer",
+        "approver",
+        "stage"
+      ],
+      "title": "RawHeaterFields",
+      "type": "object"
+    },
+    "SourceLocation": {
+      "additionalProperties": false,
+      "properties": {
+        "sheet": {
+          "maxLength": 128,
+          "minLength": 1,
+          "title": "Sheet",
+          "type": "string"
+        },
+        "excel_row": {
+          "minimum": 2,
+          "title": "Excel Row",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "sheet",
+        "excel_row"
+      ],
+      "title": "SourceLocation",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": 1,
+      "default": 1,
+      "title": "Schema Version",
+      "type": "integer"
+    },
+    "row_id": {
+      "pattern": "^[^:\\r\\n]+:(?:[2-9]|[1-9][0-9]+)$(?![\\s\\S])",
+      "title": "Row Id",
+      "type": "string"
+    },
+    "source": {
+      "$ref": "#/$defs/SourceLocation"
+    },
+    "raw": {
+      "$ref": "#/$defs/RawHeaterFields"
+    },
+    "values": {
+      "$ref": "#/$defs/HeaterFields"
+    }
+  },
+  "required": [
+    "row_id",
+    "source",
+    "raw",
+    "values"
+  ],
+  "title": "HeaterRow",
+  "type": "object",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://dsh.local/heater-drawing/v1/heater-row.schema.json",
+  "x-semantic-validator": "heater_drawing.domain.models.validate_contract_semantics",
+  "x-validation-order": [
+    "draft-2020-12-structure",
+    "shared-python-semantics"
+  ]
+}

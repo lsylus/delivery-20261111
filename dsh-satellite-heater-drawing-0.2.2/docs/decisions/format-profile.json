@@ -1,0 +1,43 @@
+{
+  "schema_version": 3,
+  "status": "approved",
+  "actor": "project-user",
+  "decided_at": "2026-11-08T16:31:01+08:00",
+  "scope": "B02 first-release DWG scope",
+  "conclusion": "postpone_dwg_keep_dxf_pdf_v1",
+  "decision_source": "docs/orchestration/user-review-fix10.md and commit fc7ef4c010377557df35419b18f2da2f9e103268",
+  "core_profile": "dxf_pdf_v1",
+  "core_profile_version": 1,
+  "candidate_path": "docs/evidence/B02-development-baseline/candidate",
+  "candidate_manifest_sha256": "0fc298cd05e459fe7dc33a42046f0b05db3ffd90b295305e4747bc233cfcfbd7",
+  "dxf": {
+    "version": "R2018",
+    "acad_version": "AC1032",
+    "insunits": 4,
+    "unit": "mm",
+    "template_source": "authorized one-time original CAD template conversion",
+    "template_dxf_sha256": "3bcf858e7417f304bcaf7100abc1b8fa111dad76a070337f790b687edf5415c7",
+    "cad_text_style": "HZ",
+    "cad_font_dependency": "txt.shx + hzdx.shx",
+    "cad_font_approval": "pending_target_cad_validation"
+  },
+  "pdf": {
+    "paper": "A4 portrait",
+    "source": "generated DXF through the controlled renderer",
+    "temporary_font": "NotoSansCJKsc-Regular",
+    "temporary_font_status": "accepted_development_baseline_delivery_approval_pending"
+  },
+  "sample_layout": {
+    "status": "accepted_development_baseline",
+    "geometry_authority": "Excel native millimetres and declared 1:1/1:2 scale",
+    "heater_center_uncertainty_mm": 0.2,
+    "dimension_placement_uncertainty_mm": 0.25,
+    "non_sample_policy": "same deterministic lead rule; full rendered clearance check",
+    "lead_rule": "short-edge-paper-v1"
+  },
+  "dwg_probe_result": "not_a_first_release_requirement",
+  "dwg_release_decision": "postpone_keep_dxf_pdf_baseline",
+  "upgrade_consequence": "A future DWG release requires separate project authorization, real round-trip evidence, and target-CAD edit/save/reopen validation.",
+  "engineering_approval_status": "pending",
+  "approval_evidence": "docs/evidence/B02-development-baseline/human-approval.json"
+}

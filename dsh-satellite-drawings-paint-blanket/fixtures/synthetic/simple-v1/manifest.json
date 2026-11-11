@@ -1,0 +1,59 @@
+{
+  "purpose": "Analytic demonstration fixtures, independently selectable assembly members",
+  "cases": [
+    {
+      "name": "cube",
+      "path": "fixtures/synthetic/simple-v1/cube.step",
+      "sha256": "d202191009d1e1f3081a2616b8c7cc7734b254d5de00270bdbdad6666c3c8f32",
+      "bytes": 16981,
+      "units": "mm",
+      "members": [
+        "body"
+      ],
+      "intended_policy": "regular_box_v1",
+      "excluded_member": null
+    },
+    {
+      "name": "cylinder",
+      "path": "fixtures/synthetic/simple-v1/cylinder.step",
+      "sha256": "f902fe480af5faa9b2657f03c682071fb6c69806d5ba49cc9f112e3b3a122747",
+      "bytes": 7146,
+      "units": "mm",
+      "members": [
+        "body"
+      ],
+      "intended_policy": "regular_cylinder_v1",
+      "excluded_member": null
+    },
+    {
+      "name": "cube-cylinder",
+      "path": "fixtures/synthetic/simple-v1/cube-cylinder.step",
+      "sha256": "88974e3aa43b3f849dc97a6b8c8b910dfa7578adc4c82313642da93822cd8001",
+      "bytes": 22748,
+      "units": "mm",
+      "members": [
+        "body",
+        "exposed-part"
+      ],
+      "intended_policy": "regular_box_v1",
+      "excluded_member": "exposed-part"
+    }
+  ],
+  "expected": {
+    "cube_dimensions_mm": [
+      105,
+      105,
+      105
+    ],
+    "cylinder_diameter_height_mm": [
+      84,
+      84
+    ],
+    "combination_body_dimensions_mm": [
+      105,
+      105,
+      105
+    ],
+    "combination_exposed_cylinder_radius_mm": 10
+  }
+}

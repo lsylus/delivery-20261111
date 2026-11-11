@@ -1,0 +1,115 @@
+{
+  "$defs": {
+    "ArtifactKind": {
+      "enum": [
+        "dxf",
+        "dwg",
+        "pdf_single",
+        "pdf_merged",
+        "excel_original",
+        "excel_actual",
+        "report",
+        "manifest",
+        "zip"
+      ],
+      "title": "ArtifactKind",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "artifact_id": {
+      "format": "uuid",
+      "title": "Artifact Id",
+      "type": "string"
+    },
+    "run_id": {
+      "format": "uuid",
+      "title": "Run Id",
+      "type": "string"
+    },
+    "revision_hash": {
+      "pattern": "^[0-9a-f]{64}$(?![\\s\\S])",
+      "title": "Revision Hash",
+      "type": "string"
+    },
+    "relative_path": {
+      "minLength": 1,
+      "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$))(?!.*\\\\)[\\s\\S]+$(?![\\s\\S])",
+      "title": "Relative Path",
+      "type": "string"
+    },
+    "media_type": {
+      "minLength": 1,
+      "title": "Media Type",
+      "type": "string"
+    },
+    "bytes": {
+      "minimum": 0,
+      "title": "Bytes",
+      "type": "integer"
+    },
+    "sha256": {
+      "pattern": "^[0-9a-f]{64}$(?![\\s\\S])",
+      "title": "Sha256",
+      "type": "string"
+    },
+    "row_ids": {
+      "items": {
+        "pattern": "^[^:\\r\\n]+:(?:[2-9]|[1-9][0-9]+)$(?![\\s\\S])",
+        "type": "string"
+      },
+      "title": "Row Ids",
+      "type": "array"
+    },
+    "page_count": {
+      "anyOf": [
+        {
+          "minimum": 1,
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Page Count"
+    },
+    "page_index": {
+      "anyOf": [
+        {
+          "minimum": 1,
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Page Index"
+    },
+    "kind": {
+      "$ref": "#/$defs/ArtifactKind"
+    }
+  },
+  "required": [
+    "artifact_id",
+    "run_id",
+    "revision_hash",
+    "relative_path",
+    "media_type",
+    "bytes",
+    "sha256",
+    "row_ids",
+    "kind"
+  ],
+  "title": "Artifact",
+  "type": "object",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://dsh.local/heater-drawing/v1/artifact.schema.json",
+  "x-semantic-validator": "heater_drawing.domain.models.validate_contract_semantics",
+  "x-validation-order": [
+    "draft-2020-12-structure",
+    "shared-python-semantics"
+  ]
+}

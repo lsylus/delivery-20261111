@@ -1,0 +1,137 @@
+{
+  "schema_version": 1,
+  "session_id": "session",
+  "module": "blanket",
+  "project_id": "b7def269efa447d4a37cf08629bba75b",
+  "model_ref": {
+    "assembly_digest": "a2baab1dd0b87bd29438f4c15e2751c14e2fc279a000e315cf7c520b5362e367",
+    "model_id": "31cd465a587541be86262be6be2528cf",
+    "model_revision": 1,
+    "project_id": "b7def269efa447d4a37cf08629bba75b"
+  },
+  "engineering_revision": "8bc7b05592244ce2b892ec2dbed46adf",
+  "result_id": "result",
+  "entity_refs": [
+    {
+      "assembly_digest": "a2baab1dd0b87bd29438f4c15e2751c14e2fc279a000e315cf7c520b5362e367",
+      "entity_id": "face-2",
+      "entity_kind": "face",
+      "instance_id": "occ-1",
+      "model_id": "31cd465a587541be86262be6be2528cf",
+      "model_revision": 1,
+      "project_id": "b7def269efa447d4a37cf08629bba75b",
+      "signature": {
+        "adjacency": [
+          "face-3",
+          "face-4",
+          "face-5",
+          "face-6"
+        ],
+        "area_mm2": 10000,
+        "centroid_mm": [
+          50,
+          0,
+          50
+        ],
+        "normal": [
+          1,
+          0,
+          0
+        ],
+        "type": "PLANE"
+      }
+    },
+    {
+      "assembly_digest": "a2baab1dd0b87bd29438f4c15e2751c14e2fc279a000e315cf7c520b5362e367",
+      "entity_id": "face-4",
+      "entity_kind": "face",
+      "instance_id": "occ-1",
+      "model_id": "31cd465a587541be86262be6be2528cf",
+      "model_revision": 1,
+      "project_id": "b7def269efa447d4a37cf08629bba75b",
+      "signature": {
+        "adjacency": [
+          "face-1",
+          "face-2",
+          "face-5",
+          "face-6"
+        ],
+        "area_mm2": 10000,
+        "centroid_mm": [
+          0,
+          50,
+          50
+        ],
+        "normal": [
+          0,
+          1,
+          0
+        ],
+        "type": "PLANE"
+      }
+    }
+  ],
+  "view": "2d",
+  "local_coordinates": [],
+  "annotation": "swap seam",
+  "view_transform": [
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1
+  ],
+  "blanket_target": {
+    "kind": "seam",
+    "id": "x+/e1~y+/e2",
+    "edges": [
+      {
+        "id": "x+/e1",
+        "panel_key": "x+",
+        "panel_id": "8bc7b05592244ce2b892ec2dbed46adf:x+",
+        "mapping_ref": "8bc7b05592244ce2b892ec2dbed46adf:x+:c35f78227e06159f1daf7f79",
+        "world": [
+          [
+            52.5,
+            52.5,
+            0
+          ],
+          [
+            52.5,
+            52.5,
+            105
+          ]
+        ]
+      },
+      {
+        "id": "y+/e2",
+        "panel_key": "y+",
+        "panel_id": "8bc7b05592244ce2b892ec2dbed46adf:y+",
+        "mapping_ref": "8bc7b05592244ce2b892ec2dbed46adf:y+:c35f78227e06159f1daf7f79",
+        "world": [
+          [
+            52.5,
+            52.5,
+            105
+          ],
+          [
+            52.5,
+            52.5,
+            0
+          ]
+        ]
+      }
+    ]
+  }
+}

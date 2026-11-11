@@ -1,0 +1,2208 @@
+{
+  "B01": {
+    "prerequisites": [],
+    "tests": [
+      "tests/contracts/test_schemas.py",
+      "tests/contracts/test_validation_runner.py"
+    ],
+    "commands": [
+      [
+        "{python}",
+        "scripts/check_source_boundary.py",
+        "--output",
+        "docs/evidence/B01/source-boundary.json"
+      ],
+      [
+        "{python}",
+        "scripts/rebuild_dependencies.py"
+      ],
+      [
+        "{python}",
+        "scripts/check_inventory.py"
+      ]
+    ],
+    "generated_evidence": [
+      "docs/evidence/B01/source-boundary.json",
+      "docs/evidence/B01/dependency-rebuild.json",
+      "docs/evidence/B01/inventory-check.json"
+    ],
+    "evidence": [
+      {
+        "path": "docs/evidence/B01/source-boundary.json",
+        "json_status": "pass"
+      },
+      {
+        "path": "docs/evidence/B01/dependency-rebuild.json",
+        "json_status": "pass"
+      },
+      {
+        "path": "docs/evidence/B01/inventory-check.json",
+        "json_status": "pass"
+      },
+      {
+        "path": "fixtures/manifests/cases.json",
+        "schema": "cases"
+      },
+      {
+        "path": "contracts/common.schema.json"
+      },
+      {
+        "path": "contracts/model.schema.json"
+      },
+      {
+        "path": "contracts/run.schema.json"
+      },
+      {
+        "path": "contracts/drawing.schema.json"
+      },
+      {
+        "path": "contracts/paint.schema.json"
+      },
+      {
+        "path": "contracts/blanket.schema.json"
+      },
+      {
+        "path": "contracts/operation.schema.json"
+      },
+      {
+        "path": "contracts/cases.schema.json"
+      },
+      {
+        "path": "contracts/config.schema.json"
+      },
+      {
+        "path": "contracts/summary.schema.json"
+      },
+      {
+        "path": "contracts/openapi.yaml"
+      },
+      {
+        "path": "uv.lock"
+      },
+      {
+        "path": "package-lock.json"
+      },
+      {
+        "path": "pyproject.toml"
+      },
+      {
+        "path": "service/pyproject.toml"
+      },
+      {
+        "path": "packages/geometry-core/pyproject.toml"
+      },
+      {
+        "path": "package.json"
+      },
+      {
+        "path": "README.md"
+      },
+      {
+        "path": "docs/architecture/runtime.md"
+      },
+      {
+        "path": "docs/decisions/numerical-policy.md"
+      },
+      {
+        "path": "docs/evidence/B01/environment.md"
+      },
+      {
+        "path": "docs/evidence/B01/source-provenance.json"
+      },
+      {
+        "path": "fixtures/synthetic/specifications.json"
+      },
+      {
+        "path": "scripts/contracts.py"
+      },
+      {
+        "path": "scripts/check_source_boundary.py"
+      },
+      {
+        "path": "scripts/register_cases.py"
+      },
+      {
+        "path": "scripts/rebuild_dependencies.py"
+      },
+      {
+        "path": "scripts/check_inventory.py"
+      },
+      {
+        "path": "docs/contracts.md"
+      },
+      {
+        "path": "docs/reference/input-capabilities.md"
+      }
+    ],
+    "inputs": [
+      "fixtures/manifests/zip.inventory.json",
+      "fixtures/manifests/Star1.inventory.json",
+      "fixtures/manifests/Star2.inventory.json",
+      "fixtures/manifests/Star3.inventory.json",
+      "fixtures/manifests/Star4.inventory.json",
+      "fixtures/manifests/catch-original.inventory.json",
+      "fixtures/manifests/real-thruster.inventory.json",
+      "fixtures/manifests/real-gearbox.inventory.json",
+      "fixtures/manifests/satellite-assembly.inventory.json"
+    ],
+    "manual_evidence": [],
+    "timeout_s": 1200,
+    "resource_records": [
+      "docs/evidence/B01/dependency-rebuild.json"
+    ],
+    "limitations": [
+      "B01 has no CAD algorithms or production API; schema fixtures are not CAD acceptance.",
+      "Controlled samples registered and header-identified only; assemblies, revision correspondence and native/DWG tool licenses remain unverified.",
+      "Windows ZIP remains at original controlled location; Linux does not contain a copied 670MB model.",
+      "No manufacturing approval required by B01; later batch manual CAD reopen evidence cannot be replaced by this run.",
+      "Source guard covers Git and nonignored files; ignored runtime databases are outside the read-only source audit."
+    ]
+  },
+  "B04": {
+    "prerequisites": [
+      {
+        "summary": "docs/evidence/B01/summary.json"
+      }
+    ],
+    "tests": [
+      "tests/formats/test_drawing_document.py",
+      "tests/formats/test_dxf_roundtrip.py",
+      "tests/formats/test_dwg_adapter.py",
+      "tests/contracts/test_schemas.py",
+      "tests/contracts/test_validation_runner.py",
+      "tests/formats/test_probe_cleanup.py"
+    ],
+    "commands": [
+      [
+        "{python}",
+        "scripts/probe_b04_environment.py"
+      ],
+      [
+        "{python}",
+        "scripts/probe_dwg.py",
+        "--fixture",
+        "fixtures/synthetic/drawing_sample.json",
+        "--config",
+        "work/config/converters.local.json",
+        "--output",
+        "work/runs/B04-dwg",
+        "--reuse-reviewed"
+      ],
+      [
+        "{python}",
+        "scripts/probe_alternative_cad.py"
+      ],
+      [
+        "{python}",
+        "scripts/check_b04_acceptance.py"
+      ],
+      [
+        "{python}",
+        "scripts/check_source_boundary.py",
+        "--output",
+        "docs/evidence/B04/source-boundary.json"
+      ]
+    ],
+    "blocked_exit_codes": [
+      3
+    ],
+    "generated_evidence": [
+      "docs/evidence/B04/acceptance.json",
+      "docs/evidence/B04/source-boundary.json"
+    ],
+    "evidence": [
+      {
+        "path": "docs/evidence/B04/capability.json"
+      },
+      {
+        "path": "docs/evidence/B04/conversion.json"
+      },
+      {
+        "path": "docs/evidence/B04/sample.dxf"
+      },
+      {
+        "path": "docs/evidence/B04/environment.json"
+      },
+      {
+        "path": "docs/evidence/B04/tool-discovery.json"
+      },
+      {
+        "path": "docs/evidence/B04/license-research.json"
+      },
+      {
+        "path": "docs/evidence/B04/autocad-reopen.md"
+      },
+      {
+        "path": "docs/evidence/B04/dxf-readback.json",
+        "json_status": "pass"
+      },
+      {
+        "path": "docs/evidence/B04/acceptance.json",
+        "json_status": "pass"
+      },
+      {
+        "path": "docs/evidence/B04/source-boundary.json",
+        "json_status": "pass"
+      },
+      {
+        "path": "service/src/thermal_drawings/drawing/__init__.py"
+      },
+      {
+        "path": "service/src/thermal_drawings/drawing/converter.py"
+      },
+      {
+        "path": "service/src/thermal_drawings/drawing/document.py"
+      },
+      {
+        "path": "service/src/thermal_drawings/drawing/drawing.schema.json"
+      },
+      {
+        "path": "service/src/thermal_drawings/drawing/dxf_export.py"
+      },
+      {
+        "path": "service/src/thermal_drawings/drawing/profiles.py"
+      },
+      {
+        "path": "service/src/thermal_drawings/drawing/validation.py"
+      },
+      {
+        "path": "scripts/probe_dwg.py"
+      },
+      {
+        "path": "scripts/check_b04_acceptance.py"
+      },
+      {
+        "path": "service/pyproject.toml"
+      },
+      {
+        "path": "uv.lock"
+      },
+      {
+        "path": "docs/architecture/dwg-output.md"
+      },
+      {
+        "path": "docs/contracts.md"
+      },
+      {
+        "path": "scripts/probe_b04_environment.py"
+      },
+      {
+        "path": "docs/evidence/B04/sample.dwg"
+      },
+      {
+        "path": "docs/evidence/B04/sample.readback.dxf"
+      },
+      {
+        "path": "docs/evidence/B04/windows-discovery.json"
+      },
+      {
+        "path": "docs/evidence/B04/oda-download.json"
+      },
+      {
+        "path": "docs/evidence/B04/oda-about-terms.txt"
+      },
+      {
+        "path": "docs/evidence/B04/license-evaluation.json"
+      },
+      {
+        "path": "docs/evidence/B04/oda-headless.sh"
+      },
+      {
+        "path": "docs/evidence/B04/oda-official-page.html"
+      },
+      {
+        "path": "docs/evidence/B04/libredwg-official-page.html"
+      },
+      {
+        "path": "scripts/probe_alternative_cad.py"
+      },
+      {
+        "path": "scripts/freecad_b04_probe.py"
+      },
+      {
+        "path": "docs/evidence/B04/alternative-cad.json"
+      },
+      {
+        "path": ".gitattributes"
+      },
+      {
+        "path": "docs/evidence/B04/packaging.json",
+        "json_status": "pass"
+      },
+      {
+        "path": "docs/evidence/B04/alternative-cad-r1.json"
+      },
+      {
+        "path": "docs/evidence/B04/qcad-r1/probe.json"
+      },
+      {
+        "path": "docs/evidence/B04/qcad-r1/research.json"
+      },
+      {
+        "path": "docs/evidence/B04/resource-cleanup-r1.json"
+      },
+      {
+        "path": "scripts/qcad_b04_probe.js"
+      }
+    ],
+    "inputs": [
+      "fixtures/synthetic/drawing_sample.json",
+      "contracts/drawing.schema.json"
+    ],
+    "manual_evidence": [
+      {
+        "path": "docs/evidence/B04/autocad-reopen.json"
+      }
+    ],
+    "resource_records": [
+      "docs/evidence/B04/conversion.json",
+      "docs/evidence/B04/alternative-cad.json",
+      "docs/evidence/B04/alternative-cad-r1.json",
+      "docs/evidence/B04/resource-cleanup-r1.json"
+    ],
+    "timeout_s": 180,
+    "limitations": [
+      "Real ODA 27.10.0.0 forward/reverse conversion is verified for this analytic fixture only; reverse DXF is auxiliary evidence, not independent AutoCAD acceptance.",
+      "User-authorized local evaluation only; production unattended deployment and redistribution grants remain unverified. Commercial binaries are not committed or bundled.",
+      "No authorized AutoCAD environment/version/license or independent edit/save/reopen evidence is available; B04 remains blocked.",
+      "FreeCAD 0.19.2 actual ODA-backed edit/save/reopen failed dimensional fidelity (25.4x units) and editable dimension retention; not independent DWG/AutoCAD acceptance.",
+      "B02/B03/B06 may proceed by their own dependencies; B09/B12 final DWG acceptance cannot be downgraded.",
+      "2026-11-07 remediation preserves blocked and the independent review FAIL; QCAD trials are archived investigation only, not AutoCAD acceptance.",
+      "Per latest user direction, the coordinator may start B02 after this cleanup handoff; this B04 chat stops without further DWG compatibility work."
+    ]
+  },
+  "B02": {
+    "prerequisites": [
+      {
+        "summary": "docs/evidence/B01/summary.json"
+      }
+    ],
+    "tests": [
+      "tests/geometry/test_xcaf_characterization.py",
+      "tests/geometry/test_transforms.py",
+      "tests/geometry/test_serialization.py",
+      "tests/geometry/test_face_mesh_map.py",
+      "tests/contracts/test_schemas.py",
+      "tests/contracts/test_validation_runner.py"
+    ],
+    "commands": [
+      [
+        "{python}",
+        "scripts/check_b02_artifacts.py"
+      ],
+      [
+        ".tools/node/bin/node",
+        "scripts/check_b02_glb.mjs"
+      ],
+      [
+        "{python}",
+        "scripts/check_b02_isolated.py"
+      ],
+      [
+        "{python}",
+        "scripts/check_source_boundary.py",
+        "--output",
+        "docs/evidence/B02/source-boundary.json"
+      ]
+    ],
+    "generated_evidence": [
+      "docs/evidence/B02/readback.json",
+      "docs/evidence/B02/environment.json",
+      "docs/evidence/B02/glb-loader.json",
+      "docs/evidence/B02/isolated-environment.json",
+      "docs/evidence/B02/source-boundary.json"
+    ],
+    "evidence": [
+      {
+        "path": "docs/evidence/B02/prerequisites.json",
+        "json_status": "pass"
+      },
+      {
+        "path": "docs/evidence/B02/source-provenance.json",
+        "json_status": "pass"
+      },
+      {
+        "path": "docs/evidence/B02/readback.json",
+        "json_status": "pass"
+      },
+      {
+        "path": "docs/evidence/B02/environment.json",
+        "json_status": "pass"
+      },
+      {
+        "path": "docs/evidence/B02/glb-loader.json",
+        "json_status": "pass"
+      },
+      {
+        "path": "docs/evidence/B02/isolated-environment.json",
+        "json_status": "pass"
+      },
+      {
+        "path": "docs/evidence/B02/source-boundary.json",
+        "json_status": "pass"
+      },
+      {
+        "path": "packages/geometry-core/src/geometry_core/bounds.py"
+      },
+      {
+        "path": "packages/geometry-core/src/geometry_core/hashing.py"
+      },
+      {
+        "path": "packages/geometry-core/src/geometry_core/serialization.py"
+      },
+      {
+        "path": "packages/geometry-core/src/geometry_core/tessellation.py"
+      },
+      {
+        "path": "packages/geometry-core/src/geometry_core/transforms.py"
+      },
+      {
+        "path": "packages/geometry-core/src/geometry_core/glb_serialization.py"
+      },
+      {
+        "path": "packages/geometry-core/src/geometry_core/topology.py"
+      },
+      {
+        "path": "packages/geometry-core/src/geometry_core/xcaf.py"
+      },
+      {
+        "path": "packages/geometry-core/src/geometry_core/__init__.py"
+      },
+      {
+        "path": "packages/geometry-core/src/geometry_core/snapshot.py"
+      },
+      {
+        "path": "scripts/build_geometry_fixtures.py"
+      },
+      {
+        "path": "scripts/probe_geometry.py"
+      },
+      {
+        "path": "scripts/check_b02_artifacts.py"
+      },
+      {
+        "path": "scripts/check_b02_glb.mjs"
+      },
+      {
+        "path": "scripts/check_b02_isolated.py"
+      },
+      {
+        "path": "scripts/contracts.py"
+      },
+      {
+        "path": "contracts/mesh-map.schema.json"
+      },
+      {
+        "path": "docs/architecture/geometry-core.md"
+      },
+      {
+        "path": "docs/contracts.md"
+      },
+      {
+        "path": "docs/evidence/B02/feature-differences.md"
+      },
+      {
+        "path": "packages/geometry-core/pyproject.toml"
+      },
+      {
+        "path": "uv.lock"
+      },
+      {
+        "path": "tests/geometry/conftest.py"
+      },
+      {
+        "path": "docs/evidence/B02/artifacts/assembly-tree/roundtrip.step"
+      },
+      {
+        "path": "docs/evidence/B02/artifacts/assembly-tree/model.glb"
+      },
+      {
+        "path": "docs/evidence/B02/artifacts/assembly-tree/mesh-map.json"
+      },
+      {
+        "path": "docs/evidence/B02/artifacts/assembly-tree/snapshot.json"
+      },
+      {
+        "path": "docs/evidence/B02/artifacts/inch-box/roundtrip.step"
+      },
+      {
+        "path": "docs/evidence/B02/artifacts/inch-box/model.glb"
+      },
+      {
+        "path": "docs/evidence/B02/artifacts/inch-box/mesh-map.json"
+      },
+      {
+        "path": "docs/evidence/B02/artifacts/inch-box/snapshot.json"
+      },
+      {
+        "path": "docs/evidence/B02/artifacts/panel-opening/roundtrip.step"
+      },
+      {
+        "path": "docs/evidence/B02/artifacts/panel-opening/model.glb"
+      },
+      {
+        "path": "docs/evidence/B02/artifacts/panel-opening/mesh-map.json"
+      },
+      {
+        "path": "docs/evidence/B02/artifacts/panel-opening/snapshot.json"
+      },
+      {
+        "path": "docs/evidence/B02/artifacts/concave/roundtrip.step"
+      },
+      {
+        "path": "docs/evidence/B02/artifacts/concave/model.glb"
+      },
+      {
+        "path": "docs/evidence/B02/artifacts/concave/mesh-map.json"
+      },
+      {
+        "path": "docs/evidence/B02/artifacts/concave/snapshot.json"
+      },
+      {
+        "path": "docs/evidence/B02/artifacts/assembly-tree/shapes/def-1.brep"
+      },
+      {
+        "path": "docs/evidence/B02/artifacts/assembly-tree/shapes/def-2.brep"
+      },
+      {
+        "path": "docs/evidence/B02/artifacts/assembly-tree/shapes/def-4.brep"
+      },
+      {
+        "path": "docs/evidence/B02/artifacts/assembly-tree/shapes/def-3.brep"
+      },
+      {
+        "path": "docs/evidence/B02/artifacts/inch-box/shapes/def-1.brep"
+      },
+      {
+        "path": "docs/evidence/B02/artifacts/panel-opening/shapes/def-1.brep"
+      },
+      {
+        "path": "docs/evidence/B02/artifacts/concave/shapes/def-1.brep"
+      },
+      {
+        "path": "docs/evidence/B02/characterization/assembly-tree/new.json"
+      },
+      {
+        "path": "docs/evidence/B02/characterization/assembly-tree/source.json"
+      },
+      {
+        "path": "docs/evidence/B02/characterization/real-gearbox/new.json"
+      },
+      {
+        "path": "docs/evidence/B02/characterization/real-gearbox/source.json"
+      },
+      {
+        "path": "docs/evidence/B02/characterization/inch-box/new.json"
+      },
+      {
+        "path": "docs/evidence/B02/characterization/inch-box/source.json"
+      },
+      {
+        "path": "docs/evidence/B02/characterization/concave/new.json"
+      },
+      {
+        "path": "docs/evidence/B02/characterization/concave/source.json"
+      },
+      {
+        "path": ".gitattributes"
+      }
+    ],
+    "inputs": [
+      "fixtures/synthetic/geometry-manifest.json",
+      "fixtures/manifests/real-gearbox.inventory.json",
+      "contracts/common.schema.json",
+      "contracts/model.schema.json",
+      "fixtures/synthetic/assembly-tree.step",
+      "fixtures/synthetic/box-100.step",
+      "fixtures/synthetic/concave.step",
+      "fixtures/synthetic/inch-box.step",
+      "fixtures/synthetic/paint-plate-0.099.step",
+      "fixtures/synthetic/paint-plate-0.1.step",
+      "fixtures/synthetic/paint-plate-0.101.step",
+      "fixtures/synthetic/paint-plate-0.step",
+      "fixtures/synthetic/panel-opening.step"
+    ],
+    "manual_evidence": [],
+    "resource_records": [
+      "docs/evidence/B02/isolated-environment.json"
+    ],
+    "timeout_s": 360,
+    "limitations": [
+      "B02 is geometry primitives only; no legacy caller switched and no later Batch executed.",
+      "Real-gearbox verifies STEP source/new characterization, not manufacturing approval, native ASM/PRT or holdout acceptance.",
+      "Single-file STEP only: conservative external DOCUMENT_FILE rejection; wire/point-only display leaves unsupported.",
+      "Face references are revision scoped; GLB is display-only, never editable engineering truth. Tessellation tolerance is not manufacturing tolerance.",
+      "No source-root redistribution grant inferred; internal extraction is user-authorized; external release license review remains B15.",
+      "B04 remains blocked / independent FAIL; AutoCAD edit/save/reopen gate remains required."
+    ]
+  },
+  "B03": {
+    "prerequisites": [
+      {
+        "summary": "docs/evidence/B02/summary.json"
+      }
+    ],
+    "tests": [
+      "tests/geometry/test_solid_pairs.py",
+      "tests/geometry/test_face_patches.py",
+      "tests/geometry/test_measurement_characterization.py",
+      "tests/contracts/test_schemas.py",
+      "tests/contracts/test_validation_runner.py"
+    ],
+    "commands": [
+      [
+        "{python}",
+        "scripts/check_b03_artifacts.py"
+      ],
+      [
+        "{python}",
+        "scripts/check_source_boundary.py",
+        "--output",
+        "docs/evidence/B03/source-boundary.json"
+      ]
+    ],
+    "generated_evidence": [
+      "docs/evidence/B03/measurements.json",
+      "docs/evidence/B03/environment.json",
+      "docs/evidence/B03/source-boundary.json",
+      "docs/evidence/B03/characterization/source.json",
+      "docs/evidence/B03/characterization/new.json"
+    ],
+    "evidence": [
+      {
+        "path": "docs/evidence/B03/measurements.json",
+        "json_status": "pass"
+      },
+      {
+        "path": "docs/evidence/B03/environment.json",
+        "json_status": "pass"
+      },
+      {
+        "path": "docs/evidence/B03/source-boundary.json",
+        "json_status": "pass"
+      },
+      {
+        "path": "packages/geometry-core/src/geometry_core/solid_pairs.py"
+      },
+      {
+        "path": "scripts/b03_cases.py"
+      },
+      {
+        "path": "scripts/probe_b03.py"
+      },
+      {
+        "path": "scripts/audit_b03_source.py"
+      },
+      {
+        "path": "scripts/check_b03_artifacts.py"
+      },
+      {
+        "path": "docs/evidence/B03/feature-differences.md"
+      },
+      {
+        "path": "docs/evidence/B03/prerequisites.json",
+        "json_status": "pass"
+      },
+      {
+        "path": "docs/evidence/B03/source-provenance.json",
+        "json_status": "pass"
+      },
+      {
+        "path": "docs/evidence/B03/characterization/source-before.json"
+      },
+      {
+        "path": "docs/contracts.md"
+      },
+      {
+        "path": "docs/architecture/geometry-core.md"
+      },
+      {
+        "path": "docs/evidence/B03/characterization/source.json"
+      },
+      {
+        "path": "docs/evidence/B03/characterization/new.json"
+      },
+      {
+        "path": ".gitattributes"
+      },
+      {
+        "path": "scripts/check_source_boundary.py"
+      }
+    ],
+    "inputs": [
+      "docs/evidence/B02/summary.json",
+      "docs/reviews/B02.md",
+      "contracts/common.schema.json",
+      "contracts/model.schema.json",
+      "contracts/mesh-map.schema.json",
+      "scripts/b03_cases.py"
+    ],
+    "limitations": [
+      "B03 provides neutral primitives only; no legacy caller switch, no paint/blanket business policy or later Batch implemented.",
+      "Common at positive gaps is normally empty; 0.1 mm is not OCCT fuzzy tolerance. B08 must implement direction/coverage footprints separately.",
+      "Completed is not valid or approved. Planar scope and unknown area are explicit; budgets/errors cannot become zero.",
+      "Source internal extraction does not establish public redistribution rights; B15 license review retained.",
+      "B04 remains blocked / independent FAIL; final AutoCAD edit/save/reopen acceptance unchanged."
+    ],
+    "timeout_s": 1200
+  },
+  "B06": {
+    "prerequisites": [
+      {
+        "summary": "docs/evidence/B02/summary.json"
+      }
+    ],
+    "tests": [
+      "tests/runtime/test_jobs.py",
+      "tests/runtime/test_revisions.py",
+      "tests/runtime/test_auth_assets.py",
+      "tests/runtime/test_recovery.py",
+      "tests/runtime/test_step_import.py",
+      "tests/contracts/test_schemas.py",
+      "tests/contracts/test_validation_runner.py"
+    ],
+    "commands": [
+      [
+        "{python}",
+        "scripts/check_b06_acceptance.py"
+      ],
+      [
+        "{python}",
+        "scripts/check_b06_isolated.py"
+      ],
+      [
+        "{python}",
+        "scripts/check_source_boundary.py",
+        "--output",
+        "docs/evidence/B06/source-boundary.json"
+      ]
+    ],
+    "generated_evidence": [
+      "docs/evidence/B06/acceptance.json",
+      "docs/evidence/B06/environment.json",
+      "docs/evidence/B06/isolated-environment.json",
+      "docs/evidence/B06/source-boundary.json"
+    ],
+    "evidence": [
+      {
+        "path": "docs/evidence/B06/prerequisites.json",
+        "json_status": "pass"
+      },
+      {
+        "path": "docs/evidence/B06/acceptance.json",
+        "json_status": "pass"
+      },
+      {
+        "path": "docs/evidence/B06/environment.json",
+        "json_status": "pass"
+      },
+      {
+        "path": "docs/evidence/B06/isolated-environment.json",
+        "json_status": "pass"
+      },
+      {
+        "path": "docs/evidence/B06/source-boundary.json",
+        "json_status": "pass"
+      },
+      {
+        "path": "contracts/common.schema.json"
+      },
+      {
+        "path": "contracts/model.schema.json"
+      },
+      {
+        "path": "contracts/openapi.yaml"
+      },
+      {
+        "path": "contracts/run.schema.json"
+      },
+      {
+        "path": "contracts/runtime.schema.json"
+      },
+      {
+        "path": "docs/architecture/project-runtime.md"
+      },
+      {
+        "path": "docs/contracts.md"
+      },
+      {
+        "path": "scripts/check_b06_acceptance.py"
+      },
+      {
+        "path": "scripts/check_b06_isolated.py"
+      },
+      {
+        "path": "scripts/serve_dev.py"
+      },
+      {
+        "path": "service/pyproject.toml"
+      },
+      {
+        "path": "service/src/thermal_drawings/api/__init__.py"
+      },
+      {
+        "path": "service/src/thermal_drawings/api/auth.py"
+      },
+      {
+        "path": "service/src/thermal_drawings/app.py"
+      },
+      {
+        "path": "service/src/thermal_drawings/domain/__init__.py"
+      },
+      {
+        "path": "service/src/thermal_drawings/domain/errors.py"
+      },
+      {
+        "path": "service/src/thermal_drawings/domain/schemas/blanket.schema.json"
+      },
+      {
+        "path": "service/src/thermal_drawings/domain/schemas/cases.schema.json"
+      },
+      {
+        "path": "service/src/thermal_drawings/domain/schemas/common.schema.json"
+      },
+      {
+        "path": "service/src/thermal_drawings/domain/schemas/config.schema.json"
+      },
+      {
+        "path": "service/src/thermal_drawings/domain/schemas/drawing.schema.json"
+      },
+      {
+        "path": "service/src/thermal_drawings/domain/schemas/mesh-map.schema.json"
+      },
+      {
+        "path": "service/src/thermal_drawings/domain/schemas/model.schema.json"
+      },
+      {
+        "path": "service/src/thermal_drawings/domain/schemas/operation.schema.json"
+      },
+      {
+        "path": "service/src/thermal_drawings/domain/schemas/paint.schema.json"
+      },
+      {
+        "path": "service/src/thermal_drawings/domain/schemas/run.schema.json"
+      },
+      {
+        "path": "service/src/thermal_drawings/domain/schemas/runtime.schema.json"
+      },
+      {
+        "path": "service/src/thermal_drawings/domain/schemas/summary.schema.json"
+      },
+      {
+        "path": "service/src/thermal_drawings/domain/validation.py"
+      },
+      {
+        "path": "service/src/thermal_drawings/importers/__init__.py"
+      },
+      {
+        "path": "service/src/thermal_drawings/importers/step.py"
+      },
+      {
+        "path": "service/src/thermal_drawings/runtime/__init__.py"
+      },
+      {
+        "path": "service/src/thermal_drawings/runtime/publication.py"
+      },
+      {
+        "path": "service/src/thermal_drawings/runtime/queue.py"
+      },
+      {
+        "path": "service/src/thermal_drawings/runtime/recovery.py"
+      },
+      {
+        "path": "service/src/thermal_drawings/runtime/worker.py"
+      },
+      {
+        "path": "service/src/thermal_drawings/settings.py"
+      },
+      {
+        "path": "service/src/thermal_drawings/storage/__init__.py"
+      },
+      {
+        "path": "service/src/thermal_drawings/storage/assets.py"
+      },
+      {
+        "path": "service/src/thermal_drawings/storage/repository.py"
+      },
+      {
+        "path": "tests/runtime/conftest.py"
+      },
+      {
+        "path": "tests/runtime/http_harness.py"
+      },
+      {
+        "path": "tests/runtime/test_auth_assets.py"
+      },
+      {
+        "path": "tests/runtime/test_jobs.py"
+      },
+      {
+        "path": "tests/runtime/test_recovery.py"
+      },
+      {
+        "path": "tests/runtime/test_revisions.py"
+      },
+      {
+        "path": "tests/runtime/test_step_import.py"
+      },
+      {
+        "path": "uv.lock"
+      },
+      {
+        "path": "docs/evidence/B06/artifacts/snapshot.json"
+      },
+      {
+        "path": "docs/evidence/B06/artifacts/model.glb"
+      },
+      {
+        "path": "docs/evidence/B06/artifacts/mesh-map.json"
+      },
+      {
+        "path": "docs/evidence/B06/artifacts/engineering.json"
+      },
+      {
+        "path": "docs/evidence/B06/artifacts/restored.json"
+      },
+      {
+        "path": "docs/evidence/B06/artifacts/shapes/def-1.brep"
+      },
+      {
+        "path": "docs/evidence/B06/artifacts/shapes/def-2.brep"
+      },
+      {
+        "path": "docs/evidence/B06/artifacts/shapes/def-3.brep"
+      },
+      {
+        "path": "docs/evidence/B06/artifacts/shapes/def-4.brep"
+      },
+      {
+        "path": ".gitattributes"
+      },
+      {
+        "path": "docs/evidence/B06/artifacts/blanket/engineering.json"
+      },
+      {
+        "path": "docs/evidence/B06/artifacts/blanket/restored.json"
+      }
+    ],
+    "inputs": [
+      "docs/evidence/B02/summary.json",
+      "docs/reviews/B02.md",
+      "fixtures/synthetic/assembly-tree.step"
+    ],
+    "manual_evidence": [],
+    "resource_records": [
+      "docs/evidence/B06/acceptance.json",
+      "docs/evidence/B06/isolated-environment.json"
+    ],
+    "timeout_s": 600,
+    "limitations": [
+      "Trusted host assertion protocol not configured; only explicit loopback dev-only authentication is verified. B07/B15 must verify real host/session trust.",
+      "Single-file STEP only, bounded uploads; archives and native ASM/PRT unsupported; no large-assembly SLA or B14 acceptance implied.",
+      "EngineeringBundle stores revisions and controlled asset references; same-project/module restore requires persistent service assets, not offline portable JSON.",
+      "No paint/blanket algorithms, DWG generation, plugin deployment or other Batch implementation; B04 remains blocked/independent FAIL and AutoCAD edit/save/reopen is still required.",
+      "B03 independent review PASS at 87f2304a75171d2bc19c8dc1fd8e9189e8d563c9; B03 and B06 jointly precede B08, but B03 is not a B06 prerequisite."
+    ]
+  },
+  "B08": {
+    "tests": [
+      "tests/paint/test_contact_footprints.py",
+      "tests/paint/test_feature_protection.py",
+      "tests/paint/test_region_clipping.py",
+      "tests/paint/test_paint_failure.py",
+      "tests/paint/test_paint_runtime.py",
+      "tests/contracts/test_schemas.py",
+      "tests/contracts/test_validation_runner.py",
+      "tests/paint/test_review_regressions.py"
+    ],
+    "prerequisites": [
+      {
+        "summary": "docs/evidence/B03/summary.json"
+      },
+      {
+        "summary": "docs/evidence/B06/summary.json"
+      }
+    ],
+    "commands": [
+      [
+        "{python}",
+        "scripts/check_b08_prerequisites.py"
+      ],
+      [
+        "{python}",
+        "scripts/check_b08_acceptance.py"
+      ],
+      [
+        "{python}",
+        "scripts/check_b08_review_regressions.py"
+      ],
+      [
+        "{python}",
+        "scripts/check_source_boundary.py",
+        "--output",
+        "docs/evidence/B08/source-boundary.json"
+      ]
+    ],
+    "generated_evidence": [
+      "docs/evidence/B08/prerequisites.json",
+      "docs/evidence/B08/acceptance.json",
+      "docs/evidence/B08/environment.json",
+      "docs/evidence/B08/source-boundary.json",
+      "docs/evidence/B08/review-regressions.json"
+    ],
+    "evidence": [
+      {
+        "path": "docs/evidence/B08/prerequisites.json",
+        "json_status": "pass"
+      },
+      {
+        "path": "docs/evidence/B08/acceptance.json",
+        "json_status": "pass"
+      },
+      {
+        "path": "docs/evidence/B08/environment.json",
+        "json_status": "pass"
+      },
+      {
+        "path": "docs/evidence/B08/source-boundary.json",
+        "json_status": "pass"
+      },
+      {
+        "path": ".gitattributes"
+      },
+      {
+        "path": "contracts/openapi.yaml"
+      },
+      {
+        "path": "contracts/operation.schema.json"
+      },
+      {
+        "path": "contracts/paint.schema.json"
+      },
+      {
+        "path": "contracts/runtime.schema.json"
+      },
+      {
+        "path": "docs/architecture/paint-rules.md"
+      },
+      {
+        "path": "docs/contracts.md"
+      },
+      {
+        "path": "scripts/b08_cases.py"
+      },
+      {
+        "path": "scripts/check_b08_acceptance.py"
+      },
+      {
+        "path": "scripts/check_b08_prerequisites.py"
+      },
+      {
+        "path": "service/src/thermal_drawings/app.py"
+      },
+      {
+        "path": "service/src/thermal_drawings/domain/schemas/operation.schema.json"
+      },
+      {
+        "path": "service/src/thermal_drawings/domain/schemas/paint.schema.json"
+      },
+      {
+        "path": "service/src/thermal_drawings/domain/schemas/runtime.schema.json"
+      },
+      {
+        "path": "service/src/thermal_drawings/paint/__init__.py"
+      },
+      {
+        "path": "service/src/thermal_drawings/paint/assets.py"
+      },
+      {
+        "path": "service/src/thermal_drawings/paint/checks.py"
+      },
+      {
+        "path": "service/src/thermal_drawings/paint/contacts.py"
+      },
+      {
+        "path": "service/src/thermal_drawings/paint/features.py"
+      },
+      {
+        "path": "service/src/thermal_drawings/paint/offsets.py"
+      },
+      {
+        "path": "service/src/thermal_drawings/paint/overrides.py"
+      },
+      {
+        "path": "service/src/thermal_drawings/paint/pipeline.py"
+      },
+      {
+        "path": "service/src/thermal_drawings/paint/selection.py"
+      },
+      {
+        "path": "service/src/thermal_drawings/runtime/publication.py"
+      },
+      {
+        "path": "service/src/thermal_drawings/runtime/worker.py"
+      },
+      {
+        "path": "service/src/thermal_drawings/storage/repository.py"
+      },
+      {
+        "path": "tests/paint/conftest.py"
+      },
+      {
+        "path": "tests/paint/http_case.py"
+      },
+      {
+        "path": "docs/evidence/B08/artifacts/paint-result.json",
+        "schema": "paint",
+        "definition": "PaintResult"
+      },
+      {
+        "path": "docs/evidence/B08/artifacts/drawing.json",
+        "schema": "drawing"
+      },
+      {
+        "path": "docs/evidence/B08/review-regressions.json",
+        "json_status": "pass"
+      },
+      {
+        "path": "scripts/check_b08_review_regressions.py"
+      },
+      {
+        "path": "scripts/contracts.py"
+      },
+      {
+        "path": "service/src/thermal_drawings/domain/validation.py"
+      }
+    ],
+    "inputs": [
+      "docs/evidence/B03/summary.json",
+      "docs/reviews/B03.md",
+      "docs/evidence/B06/summary.json",
+      "docs/reviews/B06.md",
+      "fixtures/synthetic/paint/assembly.step",
+      "fixtures/synthetic/paint/specification.json",
+      "docs/reviews/B08.md"
+    ],
+    "manual_evidence": [],
+    "resource_records": [
+      "docs/evidence/B08/acceptance.json"
+    ],
+    "timeout_s": 900,
+    "limitations": [
+      "B08 covers one oriented coplanar target group, standard opening loops, regular integral circular bosses and explicit feature classification; nonplanar or unknown local contact returns needs_review.",
+      "Polyline chord 1e-7 mm, round offset 2048 segments/quadrant; analytic numerical verification is not manufacturing approval. Exact threshold and +/-1e-7 mm uncertainty are excluded from ordinary contact.",
+      "No B07/B09 implementation, production host authentication, DWG or platform configuration changes. B04 remains blocked/independent FAIL; final AutoCAD open/edit/save/reopen is mandatory.",
+      "EngineeringBundle preserves source assets and paint parameters/classification for regeneration; full interactive drawing editing and bundle integration remain B09.",
+      "All runtime acceptance uses isolated loopback dev credentials; no production host access is claimed.",
+      "PaintOverride arrays use mandatory project schema keyword x-uniqueBy:id, supported by both contract validators including cross-schema references; standard uniqueItems alone cannot enforce property uniqueness.",
+      "B08 reserves the complete B03 Cartesian face scan before every call; reservations are global and never refunded even if B03 exits early. This conservative accounting preserves the unchanged B03 API.",
+      "Blind or unverified openings require an exact single floor FaceRef with a reasoned hole/exclude override; no automatic process approval. B08 independent review remains FAIL pending re-review of this repair."
+    ]
+  },
+  "B07": {
+    "tests": [
+      "tests/e2e/test_b07_contracts.py",
+      "tests/runtime/test_auth_assets.py",
+      "tests/runtime/test_revisions.py",
+      "tests/runtime/test_step_import.py",
+      "tests/contracts/test_validation_runner.py"
+    ],
+    "prerequisites": [
+      {
+        "summary": "docs/evidence/B06/summary.json"
+      },
+      {
+        "summary": "docs/evidence/B08/summary.json"
+      }
+    ],
+    "commands": [
+      [
+        "npm",
+        "run",
+        "test",
+        "--workspace",
+        "packages/host-bridge"
+      ],
+      [
+        "npm",
+        "run",
+        "test:e2e",
+        "--",
+        "tests/e2e/workspace-isolation.spec.ts",
+        "tests/e2e/model-selection.spec.ts",
+        "tests/e2e/live-failure.spec.ts"
+      ],
+      [
+        "{python}",
+        "scripts/check_b07_prerequisites.py"
+      ],
+      [
+        "{python}",
+        "scripts/check_source_boundary.py",
+        "--output",
+        "docs/evidence/B07/source-boundary.json"
+      ],
+      [
+        "{python}",
+        "scripts/check_b07_acceptance.py"
+      ]
+    ],
+    "generated_evidence": [
+      "docs/evidence/B07/acceptance.json",
+      "docs/evidence/B07/environment.json",
+      "docs/evidence/B07/browser-acceptance.json",
+      "docs/evidence/B07/selection-flow.json",
+      "docs/evidence/B07/annotation-context.json",
+      "docs/evidence/B07/source-boundary.json",
+      "docs/evidence/B07/formal-host.json"
+    ],
+    "evidence": [
+      {
+        "path": "docs/evidence/B07/prerequisites.json",
+        "json_status": "pass"
+      },
+      {
+        "path": "docs/evidence/B07/acceptance.json",
+        "json_status": "pass"
+      },
+      {
+        "path": "docs/evidence/B07/environment.json",
+        "json_status": "pass"
+      },
+      {
+        "path": "docs/evidence/B07/browser-acceptance.json",
+        "json_status": "pass"
+      },
+      {
+        "path": "docs/evidence/B07/selection-flow.json",
+        "json_status": "pass"
+      },
+      {
+        "path": "docs/evidence/B07/annotation-context.json",
+        "json_status": "pass"
+      },
+      {
+        "path": "docs/evidence/B07/source-boundary.json",
+        "json_status": "pass"
+      },
+      {
+        "path": "docs/evidence/B07/formal-host.json",
+        "json_status": "pass"
+      },
+      {
+        "path": "package.json"
+      },
+      {
+        "path": "packages/host-bridge/package.json"
+      },
+      {
+        "path": "packages/host-bridge/src/chat-bridge.mjs"
+      },
+      {
+        "path": "packages/host-bridge/src/client.jsx"
+      },
+      {
+        "path": "packages/host-bridge/src/commands.mjs"
+      },
+      {
+        "path": "packages/host-bridge/src/host-runtime.mjs"
+      },
+      {
+        "path": "packages/host-bridge/src/mcp-context.mjs"
+      },
+      {
+        "path": "packages/host-bridge/src/mcp.mjs"
+      },
+      {
+        "path": "packages/host-bridge/src/plugin.mjs"
+      },
+      {
+        "path": "packages/host-bridge/src/proxy.mjs"
+      },
+      {
+        "path": "packages/host-bridge/src/selection-context.mjs"
+      },
+      {
+        "path": "packages/host-bridge/src/workspace.mjs"
+      },
+      {
+        "path": "packages/host-bridge/tests/bridge.test.mjs"
+      },
+      {
+        "path": "packages/workbench-common/package.json"
+      },
+      {
+        "path": "packages/workbench-common/src/ChecksPanel.tsx"
+      },
+      {
+        "path": "packages/workbench-common/src/DrawingView.tsx"
+      },
+      {
+        "path": "packages/workbench-common/src/SelectionPanel.tsx"
+      },
+      {
+        "path": "packages/workbench-common/src/Viewer3D.tsx"
+      },
+      {
+        "path": "packages/workbench-common/src/Workbench.tsx"
+      },
+      {
+        "path": "packages/workbench-common/src/api.ts"
+      },
+      {
+        "path": "packages/workbench-common/src/fixture.ts"
+      },
+      {
+        "path": "packages/workbench-common/src/interaction/annotations.ts"
+      },
+      {
+        "path": "packages/workbench-common/src/interaction/commands.ts"
+      },
+      {
+        "path": "packages/workbench-common/src/interaction/selection.ts"
+      },
+      {
+        "path": "packages/workbench-common/src/providers.ts"
+      },
+      {
+        "path": "packages/workbench-common/src/state.ts"
+      },
+      {
+        "path": "packages/workbench-common/src/style.css"
+      },
+      {
+        "path": "packages/workbench-common/src/types.ts"
+      },
+      {
+        "path": "playwright.config.ts"
+      },
+      {
+        "path": "plugins/blanket/plugin/build.mjs"
+      },
+      {
+        "path": "plugins/blanket/plugin/cordis.patch.yml"
+      },
+      {
+        "path": "plugins/blanket/plugin/mcp/server.mjs"
+      },
+      {
+        "path": "plugins/blanket/plugin/package.json"
+      },
+      {
+        "path": "plugins/blanket/plugin/src/client.jsx"
+      },
+      {
+        "path": "plugins/blanket/plugin/src/index.mjs"
+      },
+      {
+        "path": "plugins/blanket/plugin/src/workspace.mjs"
+      },
+      {
+        "path": "plugins/blanket/web/demo/index.html"
+      },
+      {
+        "path": "plugins/blanket/web/demo/original.html"
+      },
+      {
+        "path": "plugins/blanket/web/index.html"
+      },
+      {
+        "path": "plugins/blanket/web/package.json"
+      },
+      {
+        "path": "plugins/blanket/web/src/main.tsx"
+      },
+      {
+        "path": "plugins/paint/plugin/build.mjs"
+      },
+      {
+        "path": "plugins/paint/plugin/cordis.patch.yml"
+      },
+      {
+        "path": "plugins/paint/plugin/mcp/server.mjs"
+      },
+      {
+        "path": "plugins/paint/plugin/package.json"
+      },
+      {
+        "path": "plugins/paint/plugin/src/client.jsx"
+      },
+      {
+        "path": "plugins/paint/plugin/src/index.mjs"
+      },
+      {
+        "path": "plugins/paint/plugin/src/workspace.mjs"
+      },
+      {
+        "path": "plugins/paint/web/demo/index.html"
+      },
+      {
+        "path": "plugins/paint/web/demo/original.html"
+      },
+      {
+        "path": "plugins/paint/web/index.html"
+      },
+      {
+        "path": "plugins/paint/web/package.json"
+      },
+      {
+        "path": "plugins/paint/web/src/main.tsx"
+      },
+      {
+        "path": "scripts/b07_e2e_env.py"
+      },
+      {
+        "path": "scripts/build_workspaces.mjs"
+      },
+      {
+        "path": "scripts/check_b07_acceptance.py"
+      },
+      {
+        "path": "scripts/check_workspace.mjs"
+      },
+      {
+        "path": "scripts/run_b07_browser.py"
+      },
+      {
+        "path": "tests/e2e/helpers.ts"
+      },
+      {
+        "path": "tests/e2e/host.tsx"
+      },
+      {
+        "path": "tests/e2e/isolated_host.mjs"
+      },
+      {
+        "path": "tests/e2e/live-failure.spec.ts"
+      },
+      {
+        "path": "tests/e2e/model-selection.spec.ts"
+      },
+      {
+        "path": "tests/e2e/test_b07_contracts.py"
+      },
+      {
+        "path": "tests/e2e/workspace-isolation.spec.ts"
+      },
+      {
+        "path": "tsconfig.b07.json"
+      },
+      {
+        "path": "docs/evidence/B07/real-face-selection.png"
+      },
+      {
+        "path": "docs/evidence/B07/fixture-selection.png"
+      },
+      {
+        "path": "docs/evidence/B07/browser-step-import.png"
+      },
+      {
+        "path": "docs/evidence/B07/two-plugin-host.png"
+      },
+      {
+        "path": "docs/evidence/B07/draft-isolation.png"
+      },
+      {
+        "path": "docs/evidence/B07/service-failure.png"
+      },
+      {
+        "path": "docs/evidence/B07/packages/paint.tgz"
+      },
+      {
+        "path": "docs/evidence/B07/packages/blanket.tgz"
+      },
+      {
+        "path": ".gitignore"
+      },
+      {
+        "path": "scripts/verify_batch.py"
+      },
+      {
+        "path": "scripts/check_b07_prerequisites.py"
+      },
+      {
+        "path": "tests/contracts/test_validation_runner.py"
+      }
+    ],
+    "inputs": [
+      "fixtures/synthetic/assembly-tree.step",
+      "docs/evidence/B06/summary.json",
+      "docs/reviews/B06.md",
+      "docs/evidence/B08/summary.json",
+      "docs/reviews/B08.md",
+      "package-lock.json"
+    ],
+    "resource_records": [
+      "docs/evidence/B07/acceptance.json"
+    ],
+    "limitations": [
+      "Formal host identity issuer/audience/signature/key discovery/subject mapping/session revocation protocol not configured; isolated adapter acceptance does not satisfy production host integration. B07 remains blocked.",
+      "2D document is an explicit selection mapping fixture, not B08 paint output or blanket calculation.",
+      "No DWG/production export. B04 remains blocked/independent FAIL; final AutoCAD open/edit/save/reopen acceptance required.",
+      "Small real B06-imported synthetic STEP; large assemblies/native ASM/PRT and manufacturing verification are out of B07 scope."
+    ],
+    "timeout_s": 1200,
+    "pre_commands": [
+      [
+        "npm",
+        "ci"
+      ],
+      [
+        "npm",
+        "run",
+        "build",
+        "--workspaces",
+        "--if-present"
+      ],
+      [
+        "npx",
+        "tsc",
+        "-p",
+        "tsconfig.b07.json"
+      ]
+    ]
+  },
+  "B05": {
+    "prerequisites": [
+      {
+        "summary": "docs/evidence/B02/summary.json"
+      }
+    ],
+    "tests": [
+      "tests/formats/test_native_detection.py",
+      "tests/formats/test_dependency_manifest.py",
+      "tests/formats/test_native_conversion.py",
+      "tests/contracts/test_validation_runner.py"
+    ],
+    "pre_commands": [
+      [
+        "{python}",
+        "scripts/check_b05_prerequisites.py"
+      ]
+    ],
+    "commands": [
+      [
+        "{python}",
+        "scripts/probe_b05_environment.py"
+      ],
+      [
+        "{python}",
+        "scripts/probe_native.py",
+        "--case-manifest",
+        "fixtures/manifests/native_cases.json",
+        "--config",
+        "work/config/converters.local.json",
+        "--output",
+        "docs/evidence/B05"
+      ],
+      [
+        "{python}",
+        "scripts/check_b05_evidence.py"
+      ],
+      [
+        "{python}",
+        "scripts/check_source_boundary.py",
+        "--output",
+        "docs/evidence/B05/source-boundary.json"
+      ]
+    ],
+    "generated_evidence": [
+      "docs/evidence/B05/prerequisites.json",
+      "docs/evidence/B05/environment.json",
+      "docs/evidence/B05/Star1-inventory.json",
+      "docs/evidence/B05/nx-probe-inventory.json",
+      "docs/evidence/B05/nx-business-inventory.json",
+      "docs/evidence/B05/conversion-report.json",
+      "docs/evidence/B05/capabilities.json",
+      "docs/evidence/B05/historical-readback.log",
+      "docs/evidence/B05/scope-checks.json",
+      "docs/evidence/B05/native-acceptance.json",
+      "docs/evidence/B05/source-boundary.json",
+      "docs/evidence/B05/cases/creo-panel-part.json",
+      "docs/evidence/B05/cases/creo-star-sensor-assembly.json",
+      "docs/evidence/B05/cases/creo-tyy-assembly.json",
+      "docs/evidence/B05/cases/nx-empty-probe.json",
+      "docs/evidence/B05/cases/nx-thermal-business-part.json"
+    ],
+    "evidence": [
+      {
+        "path": "docs/evidence/B05/prerequisites.json",
+        "json_status": "pass"
+      },
+      {
+        "path": "docs/evidence/B05/environment.json",
+        "json_status": "pass"
+      },
+      {
+        "path": "docs/evidence/B05/Star1-inventory.json"
+      },
+      {
+        "path": "docs/evidence/B05/nx-probe-inventory.json"
+      },
+      {
+        "path": "docs/evidence/B05/nx-business-inventory.json"
+      },
+      {
+        "path": "docs/evidence/B05/conversion-report.json"
+      },
+      {
+        "path": "docs/evidence/B05/capabilities.json"
+      },
+      {
+        "path": "docs/evidence/B05/historical-readback.log"
+      },
+      {
+        "path": "docs/evidence/B05/scope-checks.json",
+        "json_status": "pass"
+      },
+      {
+        "path": "docs/evidence/B05/native-acceptance.json",
+        "json_status": "pass"
+      },
+      {
+        "path": "docs/evidence/B05/source-boundary.json",
+        "json_status": "pass"
+      },
+      {
+        "path": "docs/evidence/B05/cases/creo-panel-part.json"
+      },
+      {
+        "path": "docs/evidence/B05/cases/creo-star-sensor-assembly.json"
+      },
+      {
+        "path": "docs/evidence/B05/cases/creo-tyy-assembly.json"
+      },
+      {
+        "path": "docs/evidence/B05/cases/nx-empty-probe.json"
+      },
+      {
+        "path": "docs/evidence/B05/cases/nx-thermal-business-part.json"
+      },
+      {
+        "path": "service/src/thermal_drawings/importers/detect.py"
+      },
+      {
+        "path": "service/src/thermal_drawings/importers/manifest.py"
+      },
+      {
+        "path": "service/src/thermal_drawings/importers/native.py"
+      },
+      {
+        "path": "service/src/thermal_drawings/importers/capabilities.py"
+      },
+      {
+        "path": "scripts/check_b05_prerequisites.py"
+      },
+      {
+        "path": "scripts/inspect_native_manifest.py"
+      },
+      {
+        "path": "scripts/probe_native.py"
+      },
+      {
+        "path": "scripts/probe_b05_environment.py"
+      },
+      {
+        "path": "scripts/readback_native_step.py"
+      },
+      {
+        "path": "scripts/check_b05_evidence.py"
+      },
+      {
+        "path": "docs/architecture/native-input.md"
+      },
+      {
+        "path": "docs/evidence/B05/windows-environment.json"
+      }
+    ],
+    "inputs": [
+      "fixtures/manifests/native_cases.json",
+      "fixtures/manifests/Star1.inventory.json",
+      "docs/evidence/B02/summary.json",
+      "docs/reviews/B02.md"
+    ],
+    "resource_records": [
+      "docs/evidence/B05/conversion-report.json"
+    ],
+    "blocked_exit_codes": [
+      3
+    ],
+    "timeout_s": 1200,
+    "limitations": [
+      "No authorized Creo/SDK endpoint; no engine-specific adapter selected. Mandatory real part and complete assembly conversion not executed: B05 blocked.",
+      "Native candidate dependency hints are not authoritative; geometry/units/placements/completeness remain unknown, including single PRT external references.",
+      "NX probe is not acceptance; historical STEP-derived NX thermal business output is not external assembly validation. Native support list empty.",
+      "B04 and B07 remain blocked/FAIL. Final AutoCAD open/edit/save/reopen requirement unchanged. STEP independent scope can proceed; B14/B15 full native delivery blocked."
+    ]
+  },
+  "B09": {
+    "prerequisites": [
+      {
+        "summary": "docs/evidence/B04/summary.json"
+      },
+      {
+        "summary": "docs/evidence/B07/summary.json"
+      },
+      {
+        "summary": "docs/evidence/B08/summary.json"
+      }
+    ],
+    "tests": [
+      "tests/integration/test_paint_workflow.py",
+      "tests/integration/test_b09_commands.py"
+    ],
+    "commands": [
+      [
+        "{python}",
+        "scripts/check_b09_acceptance.py"
+      ]
+    ],
+    "evidence": [
+      {
+        "path": "docs/evidence/B09/workflow.json",
+        "json_status": "pass"
+      },
+      {
+        "path": "docs/evidence/B09/real/browser-flow.json",
+        "json_status": "pass"
+      }
+    ],
+    "manual_evidence": [
+      {
+        "path": "docs/evidence/B09/autocad-reopen.json"
+      },
+      {
+        "path": "docs/evidence/B09/engineering-reference.json"
+      },
+      {
+        "path": "docs/evidence/B09/formal-dsh.json"
+      }
+    ],
+    "inputs": [
+      "fixtures/manifests/paint_cases.json"
+    ],
+    "limitations": [
+      "B09 full acceptance retains B04 AutoCAD and B07 formal DSH gates; independent developer tests cannot replace human reference acceptance.",
+      "B05 native conversion remains unavailable; B09 scope uses STEP only."
+    ],
+    "timeout_s": 1500
+  },
+  "B10": {
+    "prerequisites": [
+      {
+        "summary": "docs/evidence/B02/summary.json"
+      },
+      {
+        "summary": "docs/evidence/B06/summary.json"
+      },
+      {
+        "summary": "docs/evidence/B09/summary.json",
+        "development_policy": "B10-consumes-B09-development-v1"
+      }
+    ],
+    "tests": [
+      "tests/blanket/test_box_allowance.py",
+      "tests/blanket/test_envelope_volume.py",
+      "tests/blanket/test_cover_openings.py",
+      "tests/blanket/test_baseline_revision.py",
+      "tests/blanket/test_runtime.py",
+      "tests/blanket/test_gate.py",
+      "tests/blanket/test_contracts.py"
+    ],
+    "commands": [
+      [
+        "{python}",
+        "scripts/check_b10_prerequisites.py"
+      ],
+      [
+        "{python}",
+        "scripts/check_b10_acceptance.py"
+      ],
+      [
+        ".tools/node/bin/node",
+        "scripts/check_b10_glb.mjs"
+      ],
+      [
+        "{python}",
+        "scripts/check_b10_regression.py"
+      ],
+      [
+        "{python}",
+        "scripts/check_source_boundary.py",
+        "--output",
+        "docs/evidence/B10/source-boundary.json"
+      ]
+    ],
+    "evidence": [
+      {
+        "path": "docs/evidence/B10/prerequisites.json",
+        "json_status": "pass"
+      },
+      {
+        "path": "docs/evidence/B10/acceptance.json",
+        "json_status": "pass"
+      },
+      {
+        "path": "docs/evidence/B10/glb-loader.json",
+        "json_status": "pass"
+      },
+      {
+        "path": "docs/evidence/B10/regression/summary.json",
+        "json_status": "pass"
+      },
+      {
+        "path": "docs/evidence/B10/source-boundary.json",
+        "json_status": "pass"
+      },
+      {
+        "path": "service/src/thermal_drawings/blanket/selection.py"
+      },
+      {
+        "path": "service/src/thermal_drawings/blanket/baseline.py"
+      },
+      {
+        "path": "service/src/thermal_drawings/blanket/allowance.py"
+      },
+      {
+        "path": "service/src/thermal_drawings/blanket/surfaces.py"
+      },
+      {
+        "path": "service/src/thermal_drawings/blanket/openings.py"
+      },
+      {
+        "path": "service/src/thermal_drawings/blanket/volume.py"
+      },
+      {
+        "path": "service/src/thermal_drawings/blanket/checks.py"
+      },
+      {
+        "path": "service/src/thermal_drawings/blanket/pipeline.py"
+      },
+      {
+        "path": "service/src/thermal_drawings/blanket/operations.py"
+      },
+      {
+        "path": "service/src/thermal_drawings/runtime/worker.py"
+      },
+      {
+        "path": "service/src/thermal_drawings/runtime/publication.py"
+      },
+      {
+        "path": "service/src/thermal_drawings/storage/repository.py"
+      },
+      {
+        "path": "service/src/thermal_drawings/api/operations.py"
+      },
+      {
+        "path": "service/src/thermal_drawings/app.py"
+      },
+      {
+        "path": "contracts/blanket.schema.json"
+      },
+      {
+        "path": "contracts/operation.schema.json"
+      },
+      {
+        "path": "contracts/runtime.schema.json"
+      },
+      {
+        "path": "contracts/openapi.yaml"
+      },
+      {
+        "path": "scripts/check_b10_prerequisites.py"
+      },
+      {
+        "path": "scripts/check_b10_acceptance.py"
+      },
+      {
+        "path": "scripts/check_b10_regression.py"
+      },
+      {
+        "path": "scripts/check_b10_glb.mjs"
+      },
+      {
+        "path": "scripts/build_b10_fixtures.py"
+      },
+      {
+        "path": "tests/blanket/helpers.py"
+      },
+      {
+        "path": "tests/blanket/workflow.py"
+      },
+      {
+        "path": "service/src/thermal_drawings/blanket/display.py"
+      }
+    ],
+    "generated_evidence": [
+      "docs/evidence/B10/prerequisites.json",
+      "docs/evidence/B10/acceptance.json",
+      "docs/evidence/B10/glb-loader.json",
+      "docs/evidence/B10/regression/summary.json",
+      "docs/evidence/B10/source-boundary.json"
+    ],
+    "inputs": [
+      "fixtures/synthetic/blanket/manifest.json",
+      "fixtures/synthetic/blanket/box-100.step",
+      "fixtures/synthetic/blanket/thin-long.step"
+    ],
+    "resource_records": [
+      "docs/evidence/B10/acceptance.json"
+    ],
+    "timeout_s": 1800,
+    "limitations": [
+      "B10 full scope is regular box algorithms and same-project persistent engineering state; B11 unfolding and B12 UI are not implemented.",
+      "B09 development-only approval is consumed by the exact B10 policy; B09 full acceptance remains blocked.",
+      "B04 AutoCAD, B05 native ASM/PRT, B07 formal DSH and engineering truth approval remain external final gaps.",
+      "One regular rectangular outer shell occurrence per operation; enclosed cavities supported, arbitrary assemblies/curved exteriors require B13.",
+      "Numerical tolerances are recorded algorithm tolerances, not manufacturing tolerances."
+    ]
+  },
+  "B11": {
+    "prerequisites": [
+      {
+        "summary": "docs/evidence/B10/summary.json"
+      }
+    ],
+    "tests": [
+      "tests/blanket/test_unfold.py",
+      "tests/blanket/test_seam_pairing.py",
+      "tests/blanket/test_overlaps.py",
+      "tests/blanket/test_fixed_points.py",
+      "tests/blanket/test_foldback.py",
+      "tests/blanket/test_net_runtime.py",
+      "tests/blanket/test_net_contracts.py"
+    ],
+    "commands": [
+      [
+        "{python}",
+        "scripts/check_b11_prerequisites.py"
+      ],
+      [
+        "{python}",
+        "scripts/check_b11_acceptance.py"
+      ],
+      [
+        "{python}",
+        "scripts/check_b11_regression.py"
+      ],
+      [
+        "{python}",
+        "scripts/check_b11_previews.py"
+      ],
+      [
+        "{python}",
+        "scripts/check_source_boundary.py",
+        "--output",
+        "docs/evidence/B11/source-boundary.json"
+      ]
+    ],
+    "evidence": [
+      {
+        "path": "docs/evidence/B11/prerequisites.json",
+        "json_status": "pass"
+      },
+      {
+        "path": "docs/evidence/B11/acceptance.json",
+        "json_status": "pass"
+      },
+      {
+        "path": "docs/evidence/B11/regression/summary.json",
+        "json_status": "pass"
+      },
+      {
+        "path": "docs/evidence/B11/source-boundary.json",
+        "json_status": "pass"
+      },
+      {
+        "path": "service/src/thermal_drawings/blanket/panels.py"
+      },
+      {
+        "path": "service/src/thermal_drawings/blanket/seams.py"
+      },
+      {
+        "path": "service/src/thermal_drawings/blanket/unfold.py"
+      },
+      {
+        "path": "service/src/thermal_drawings/blanket/overlaps.py"
+      },
+      {
+        "path": "service/src/thermal_drawings/blanket/fixed_points.py"
+      },
+      {
+        "path": "service/src/thermal_drawings/blanket/mapping.py"
+      },
+      {
+        "path": "service/src/thermal_drawings/blanket/net_drawing.py"
+      },
+      {
+        "path": "service/src/thermal_drawings/blanket/net_pipeline.py"
+      },
+      {
+        "path": "service/src/thermal_drawings/blanket/net_native.py"
+      },
+      {
+        "path": "service/src/thermal_drawings/blanket/net_operations.py"
+      },
+      {
+        "path": "service/src/thermal_drawings/blanket/operations.py"
+      },
+      {
+        "path": "service/src/thermal_drawings/app.py"
+      },
+      {
+        "path": "service/src/thermal_drawings/runtime/worker.py"
+      },
+      {
+        "path": "service/src/thermal_drawings/runtime/publication.py"
+      },
+      {
+        "path": "contracts/blanket.schema.json"
+      },
+      {
+        "path": "contracts/model.schema.json"
+      },
+      {
+        "path": "contracts/operation.schema.json"
+      },
+      {
+        "path": "contracts/runtime.schema.json"
+      },
+      {
+        "path": "contracts/openapi.yaml"
+      },
+      {
+        "path": "scripts/check_b11_acceptance.py"
+      },
+      {
+        "path": "scripts/check_b11_prerequisites.py"
+      },
+      {
+        "path": "scripts/check_b11_regression.py"
+      },
+      {
+        "path": "tests/blanket/net_helpers.py"
+      },
+      {
+        "path": "tests/blanket/net_workflow.py"
+      },
+      {
+        "path": "scripts/check_b11_previews.py"
+      },
+      {
+        "path": "docs/evidence/B11/previews/summary.json",
+        "json_status": "pass"
+      }
+    ],
+    "generated_evidence": [
+      "docs/evidence/B11/prerequisites.json",
+      "docs/evidence/B11/acceptance.json",
+      "docs/evidence/B11/regression/summary.json",
+      "docs/evidence/B11/source-boundary.json",
+      "docs/evidence/B11/previews/summary.json"
+    ],
+    "inputs": [
+      "fixtures/synthetic/blanket_nets/cases.json",
+      "fixtures/synthetic/blanket/box-100.step"
+    ],
+    "resource_records": [
+      "docs/evidence/B11/acceptance.json"
+    ],
+    "timeout_s": 1800,
+    "limitations": [
+      "B11 planar full-edge rule panels only; arbitrary curved/subdivided edge arrangements remain B13.",
+      "Boundary points within numerical 1e-6mm are explicitly rejected; no manufacturing clearance standard is invented.",
+      "B12 UI and DWG workflow not implemented in B11; B04/B05/B07/B09 final external acceptance gaps retained.",
+      "Full batch tests do not substitute independent review; B11 status remains in_progress pending review."
+    ]
+  },
+  "B12": {
+    "prerequisites": [
+      {
+        "summary": "docs/evidence/B04/summary.json"
+      },
+      {
+        "summary": "docs/evidence/B07/summary.json"
+      },
+      {
+        "summary": "docs/evidence/B11/summary.json"
+      }
+    ],
+    "tests": [
+      "tests/integration/test_blanket_workflow.py",
+      "tests/contracts/test_b12_gate.py"
+    ],
+    "commands": [
+      [
+        "npm",
+        "run",
+        "build",
+        "--workspaces",
+        "--if-present"
+      ],
+      [
+        "{python}",
+        "scripts/run_b12_browser.py"
+      ]
+    ],
+    "manual_evidence": [
+      {
+        "path": "docs/evidence/B12/autocad-acceptance.json"
+      },
+      {
+        "path": "docs/evidence/B12/formal-dsh.json"
+      },
+      {
+        "path": "docs/evidence/B12/engineering-review.json"
+      }
+    ],
+    "limitations": [
+      "Actual AutoCAD open/edit/save/reopen, formal DSH and engineering truth required. STEP development is a separate scoped gate."
+    ]
+  },
+  "B13": {
+    "prerequisites": [
+      {
+        "summary": "docs/evidence/B09/summary.json"
+      },
+      {
+        "summary": "docs/evidence/B12/summary.json"
+      }
+    ],
+    "tests": [
+      "tests/blanket/test_complex_envelope.py",
+      "tests/blanket/test_developable.py",
+      "tests/blanket/test_piecewise_mapping.py",
+      "tests/paint/test_complex_targets.py",
+      "tests/integration/test_revision_rebinding.py",
+      "tests/integration/test_b13_workflow.py",
+      "tests/contracts/test_b13_gate.py"
+    ],
+    "commands": [
+      [
+        "{python}",
+        "scripts/check_b13_measurements.py"
+      ],
+      [
+        "{python}",
+        "scripts/run_b13_browser.py"
+      ]
+    ],
+    "manual_evidence": [
+      {
+        "path": "docs/evidence/B13/manufacturing-approval.json",
+        "json_status": "pass"
+      },
+      {
+        "path": "docs/evidence/B13/paint-process-approval.json",
+        "json_status": "pass"
+      },
+      {
+        "path": "docs/evidence/B13/openings-approval.json",
+        "json_status": "pass"
+      }
+    ],
+    "limitations": [
+      "Original B09/B12 full prerequisites remain required; scoped B13 developer tests never waive required geometry/manufacturing cases."
+    ]
+  }
+}

@@ -1,0 +1,2 @@
+import {defineConfig} from '@playwright/test';
+export default defineConfig({testDir:'tests/e2e',workers:1,fullyParallel:false,timeout:360000,expect:{timeout:120000},outputDir:'work/b09-playwright',reporter:[['list'],['json',{outputFile:'docs/evidence/B09/browser.json'}]],use:{viewport:{width:1600,height:1400},headless:true,launchOptions:{args:['--no-sandbox','--use-angle=swiftshader','--enable-unsafe-swiftshader']}}});

@@ -1,0 +1,85 @@
+{
+  "$defs": {
+    "ErrorCode": {
+      "description": "Fixed v1 vocabulary shared by row issues and HTTP errors.",
+      "enum": [
+        "INVALID_REQUEST",
+        "AUTHENTICATION_REQUIRED",
+        "ACCESS_DENIED",
+        "NOT_FOUND",
+        "REVISION_CONFLICT",
+        "PAYLOAD_TOO_LARGE",
+        "UNSUPPORTED_INPUT",
+        "CAPABILITY_UNAVAILABLE",
+        "INVALID_FIELD",
+        "MISSING_FIELD",
+        "DUPLICATE_CODE",
+        "WORKER_INTERRUPTED",
+        "INTERNAL_ERROR"
+      ],
+      "title": "ErrorCode",
+      "type": "string"
+    },
+    "ErrorDetail": {
+      "additionalProperties": false,
+      "properties": {
+        "code": {
+          "$ref": "#/$defs/ErrorCode"
+        },
+        "message": {
+          "minLength": 1,
+          "title": "Message",
+          "type": "string"
+        },
+        "details": {
+          "additionalProperties": true,
+          "title": "Details",
+          "type": "object"
+        },
+        "request_id": {
+          "minLength": 1,
+          "title": "Request Id",
+          "type": "string"
+        },
+        "current_revision_hash": {
+          "anyOf": [
+            {
+              "pattern": "^[0-9a-f]{64}$(?![\\s\\S])",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Current Revision Hash"
+        }
+      },
+      "required": [
+        "code",
+        "message",
+        "request_id"
+      ],
+      "title": "ErrorDetail",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "error": {
+      "$ref": "#/$defs/ErrorDetail"
+    }
+  },
+  "required": [
+    "error"
+  ],
+  "title": "ErrorResponse",
+  "type": "object",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://dsh.local/heater-drawing/v1/error.schema.json",
+  "x-semantic-validator": "heater_drawing.domain.models.validate_contract_semantics",
+  "x-validation-order": [
+    "draft-2020-12-structure",
+    "shared-python-semantics"
+  ]
+}

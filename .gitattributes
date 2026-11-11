@@ -1,0 +1,20 @@
+* text=auto eol=lf
+
+# CAD, office and generated geometry fixtures must retain exact bytes.
+*.step -text -whitespace
+*.stp -text -whitespace
+*.brep -text -whitespace
+*.dwg binary
+*.dxf -text -whitespace
+*.docx binary
+*.xlsx binary
+*.pdf binary
+*.shx binary
+
+# Preserve the imported heater 0.2.2 source tree byte-for-byte. Its existing
+# Windows line endings and generated templates are part of the frozen delivery.
+dsh-satellite-heater-drawing-0.2.2/** -text -whitespace
+
+# These frozen review notes use Markdown hard line breaks intentionally.
+dsh-satellite-drawings-paint-blanket/docs/reviews/B01.md -whitespace
+dsh-satellite-drawings-paint-blanket/docs/reviews/B04.md -whitespace

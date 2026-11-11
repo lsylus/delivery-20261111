@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "stage": "generated_OCCT_B02",
+  "oracle": {
+    "length_absolute_mm": 1e-06,
+    "area_volume_relative": 1e-06,
+    "zero_absolute": 1e-09
+  },
+  "files": [
+    {
+      "path": "assembly-tree.step",
+      "bytes": 37011,
+      "sha256": "c263d3dd287a4f73f46bff4dacd12dc87b6113c5f5d60b2b927f973633c03cc6"
+    },
+    {
+      "path": "box-100.step",
+      "bytes": 15455,
+      "sha256": "d7d3d2469b009e7ee245c89b31f92ffa4f73d2f33bc6c635017c377ca91d2a7c"
+    },
+    {
+      "path": "concave.step",
+      "bytes": 22183,
+      "sha256": "6e3c45c7e132b10bfba4158009b4f8990072c6887286f8d12234fa415bb92e93"
+    },
+    {
+      "path": "inch-box.step",
+      "bytes": 15760,
+      "sha256": "48a9c3845cffcaee5e73de26464c581a77fd6d47bef98bd46561f44d26ea275e"
+    },
+    {
+      "path": "paint-plate-0.099.step",
+      "bytes": 74665,
+      "sha256": "c3c7cfd43c27d07b000a627a9491353e636796c31f30b1eaa07ce77f5836fe40"
+    },
+    {
+      "path": "paint-plate-0.1.step",
+      "bytes": 74562,
+      "sha256": "132de8fe2d28b0750161e550c170bfc6b03f7aea152f3c128c39cdd7a2eb4c08"
+    },
+    {
+      "path": "paint-plate-0.101.step",
+      "bytes": 74666,
+      "sha256": "5072e5c6577886929c4e6beb8ace71c5ab34914ab8f92c32da192dd63d30a08b"
+    },
+    {
+      "path": "paint-plate-0.step",
+      "bytes": 74505,
+      "sha256": "deca036523419ec5bd5be588d7a22a6de245f72fe4c5ad0572da8ab41db20ca8"
+    },
+    {
+      "path": "panel-opening.step",
+      "bytes": 7246,
+      "sha256": "b2b7a86ddfe35b1ed56fd99e30d58d50beb97368185c060a6605eceedbf3ddd6"
+    }
+  ]
+}

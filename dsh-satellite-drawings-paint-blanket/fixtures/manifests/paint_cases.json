@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "cases": [
+    {
+      "id": "b09-real-gearbox-plane",
+      "module": "paint",
+      "purpose": "Existing STEP technical UI/edit/restore/DWG case; developer-selected face, not engineering target approval",
+      "split": "development",
+      "source_manifest": "docs/evidence/B09/real/candidate.json",
+      "main_file": "/data/qmh/satellite-plugins-20261029/dsh-satellite-geometry/cases/real-gearbox/original.step",
+      "vendor": null,
+      "version": null,
+      "expected_instances": null,
+      "reference_artifacts": [
+        "docs/evidence/B09/real/browser.dwg"
+      ],
+      "revision_match_status": "unknown",
+      "selection_spec": {
+        "condition": "Exact FaceRef and reference square recorded by probe_b09_real.py; smallest planar face candidate, no assumption of correspondence to supplied paint DWG."
+      },
+      "expected_checks": [
+        "exact_face_ref",
+        "same_revision_views",
+        "manual_square_area",
+        "undo_redo",
+        "save_restore",
+        "real_DWG_readback"
+      ],
+      "tolerances": null,
+      "requires_tools": [
+        "ODA File Converter"
+      ],
+      "completeness": "partial",
+      "unknown_reasons": {
+        "vendor": "Not established",
+        "version": "Not established",
+        "expected_instances": "Read actual snapshot; no independently established assembly truth",
+        "tolerances": "No manufacturing tolerance or engineering target approval",
+        "revision_match_status": "Supplied ZIP STEP/DWG correspondence not established",
+        "completeness": "One plane exercised; independent assembly completeness not accepted"
+      }
+    }
+  ]
+}

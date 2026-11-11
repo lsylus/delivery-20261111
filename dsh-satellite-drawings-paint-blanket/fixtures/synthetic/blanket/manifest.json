@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "cases": [
+    {
+      "path": "fixtures/synthetic/blanket/box-100.step",
+      "sha256": "b6dcff1836d0eae245bfcdb320c2db9dd7d21811c1d929a7d36da817d482804d",
+      "bytes": 15505,
+      "dimensions_mm": [
+        100,
+        100,
+        100
+      ],
+      "units": "mm"
+    },
+    {
+      "path": "fixtures/synthetic/blanket/thin-long.step",
+      "sha256": "af350ef0ebf6a8a9d9dc11b888831b81e2d4bd37a464521eefc33c28ea7d296c",
+      "bytes": 15492,
+      "dimensions_mm": [
+        1000,
+        2,
+        0.1
+      ],
+      "units": "mm"
+    }
+  ],
+  "tolerance": {
+    "length_absolute_mm": 1e-06,
+    "volume_relative": 1e-06
+  },
+  "purpose": "analytic B10 fixtures; no manufacturing truth claim"
+}

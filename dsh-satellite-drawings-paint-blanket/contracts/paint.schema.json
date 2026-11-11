@@ -1,0 +1,1186 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://satellite-drawings.invalid/contracts/paint.schema.json",
+  "$ref": "#/$defs/PaintInput",
+  "$defs": {
+    "PaintInput": {
+      "type": "object",
+      "properties": {
+        "schema_version": {
+          "const": 1
+        },
+        "model_ref": {
+          "type": "object",
+          "properties": {
+            "project_id": {
+              "type": "string",
+              "minLength": 1
+            },
+            "model_id": {
+              "type": "string",
+              "minLength": 1
+            },
+            "model_revision": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "assembly_digest": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            }
+          },
+          "required": [
+            "project_id",
+            "model_id",
+            "model_revision",
+            "assembly_digest"
+          ],
+          "additionalProperties": false
+        },
+        "target_face_refs": {
+          "type": "array",
+          "items": {
+            "allOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "project_id": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "model_id": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "model_revision": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "assembly_digest": {
+                    "type": "string",
+                    "pattern": "^[0-9a-f]{64}$"
+                  },
+                  "instance_id": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "entity_kind": {
+                    "enum": [
+                      "face",
+                      "edge",
+                      "vertex",
+                      "solid",
+                      "instance"
+                    ]
+                  },
+                  "entity_id": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "signature": {
+                    "type": "object",
+                    "properties": {
+                      "type": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "area_mm2": {
+                        "anyOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "centroid_mm": {
+                        "type": "array",
+                        "items": {
+                          "type": "number"
+                        },
+                        "minItems": 3,
+                        "maxItems": 3
+                      },
+                      "normal": {
+                        "anyOf": [
+                          {
+                            "type": "array",
+                            "items": {
+                              "type": "number"
+                            },
+                            "minItems": 3,
+                            "maxItems": 3
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "adjacency": {
+                        "type": "array",
+                        "items": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "minItems": 0
+                      }
+                    },
+                    "required": [
+                      "type",
+                      "area_mm2",
+                      "centroid_mm",
+                      "normal",
+                      "adjacency"
+                    ],
+                    "additionalProperties": false
+                  }
+                },
+                "required": [
+                  "project_id",
+                  "model_id",
+                  "model_revision",
+                  "assembly_digest",
+                  "instance_id",
+                  "entity_kind",
+                  "entity_id",
+                  "signature"
+                ],
+                "additionalProperties": false
+              },
+              {
+                "properties": {
+                  "entity_kind": {
+                    "const": "face"
+                  }
+                }
+              }
+            ]
+          },
+          "minItems": 1
+        },
+        "scope_boundary": {
+          "anyOf": [
+            {
+              "type": "object",
+              "properties": {
+                "points": {
+                  "type": "array",
+                  "items": {
+                    "type": "array",
+                    "items": {
+                      "type": "number"
+                    },
+                    "minItems": 2,
+                    "maxItems": 2
+                  },
+                  "minItems": 3
+                },
+                "closed": {
+                  "const": true
+                },
+                "orientation": {
+                  "enum": [
+                    "cw",
+                    "ccw"
+                  ]
+                }
+              },
+              "required": [
+                "points",
+                "closed",
+                "orientation"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "contact_threshold_mm": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "default": 0.1
+        },
+        "contact_comparison": {
+          "const": "lt"
+        },
+        "contact_offset_mm": {
+          "type": "number",
+          "minimum": 0,
+          "default": 3
+        },
+        "hole_offset_mm": {
+          "type": "number",
+          "minimum": 0,
+          "default": 3
+        },
+        "boss_rule": {
+          "const": "protect"
+        },
+        "boss_additional_offset_mm": {
+          "type": "number",
+          "minimum": 0,
+          "default": 0
+        },
+        "rib_rule": {
+          "const": "retain_paint"
+        },
+        "overrides": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/PaintOverride"
+          },
+          "uniqueItems": true,
+          "x-uniqueBy": "id",
+          "$comment": "x-uniqueBy is enforced by both project JSON Schema validators; plain uniqueItems cannot express uniqueness of one property."
+        },
+        "rule_version": {
+          "const": "paint-v1"
+        },
+        "curved_boundary_rules": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "boundary_id": {
+                "type": "string",
+                "pattern": "^boundary-[0-9a-f]{20}$"
+              },
+              "classification": {
+                "enum": [
+                  "hole",
+                  "boss",
+                  "rib",
+                  "exclude"
+                ]
+              },
+              "reason": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 500
+              }
+            },
+            "required": [
+              "boundary_id",
+              "classification",
+              "reason"
+            ],
+            "additionalProperties": false
+          },
+          "maxItems": 128,
+          "x-uniqueBy": "boundary_id"
+        },
+        "target_face_groups": {
+          "type": "array",
+          "items": {"allOf": [
+            {"$ref": "#/$defs/PaintTargetGroup"},
+            {"required": ["paint_type"]}
+          ]},
+          "minItems": 1,
+          "x-uniqueBy": "group_id"
+        }
+      },
+      "required": [
+        "schema_version",
+        "model_ref",
+        "target_face_refs",
+        "scope_boundary",
+        "contact_threshold_mm",
+        "contact_comparison",
+        "contact_offset_mm",
+        "hole_offset_mm",
+        "boss_rule",
+        "boss_additional_offset_mm",
+        "rib_rule",
+        "overrides",
+        "rule_version"
+      ],
+      "additionalProperties": false
+    },
+    "PaintRegion": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "kind": {
+          "enum": [
+            "contact",
+            "hole",
+            "boss",
+            "manual"
+          ]
+        },
+        "source_refs": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "project_id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "model_id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "model_revision": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "assembly_digest": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{64}$"
+              },
+              "instance_id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "entity_kind": {
+                "enum": [
+                  "face",
+                  "edge",
+                  "vertex",
+                  "solid",
+                  "instance"
+                ]
+              },
+              "entity_id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "signature": {
+                "type": "object",
+                "properties": {
+                  "type": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "area_mm2": {
+                    "anyOf": [
+                      {
+                        "type": "number",
+                        "minimum": 0
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "centroid_mm": {
+                    "type": "array",
+                    "items": {
+                      "type": "number"
+                    },
+                    "minItems": 3,
+                    "maxItems": 3
+                  },
+                  "normal": {
+                    "anyOf": [
+                      {
+                        "type": "array",
+                        "items": {
+                          "type": "number"
+                        },
+                        "minItems": 3,
+                        "maxItems": 3
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "adjacency": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "minItems": 0
+                  }
+                },
+                "required": [
+                  "type",
+                  "area_mm2",
+                  "centroid_mm",
+                  "normal",
+                  "adjacency"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "required": [
+              "project_id",
+              "model_id",
+              "model_revision",
+              "assembly_digest",
+              "instance_id",
+              "entity_kind",
+              "entity_id",
+              "signature"
+            ],
+            "additionalProperties": false
+          },
+          "minItems": 1
+        },
+        "local_frame": {
+          "type": "object",
+          "properties": {
+            "origin": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 3,
+              "maxItems": 3
+            },
+            "x_axis": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 3,
+              "maxItems": 3
+            },
+            "y_axis": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 3,
+              "maxItems": 3
+            },
+            "z_axis": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 3,
+              "maxItems": 3
+            },
+            "units": {
+              "const": "mm"
+            },
+            "handedness": {
+              "const": "right"
+            }
+          },
+          "required": [
+            "origin",
+            "x_axis",
+            "y_axis",
+            "z_axis",
+            "units",
+            "handedness"
+          ],
+          "additionalProperties": false
+        },
+        "loops": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "points": {
+                "type": "array",
+                "items": {
+                  "type": "array",
+                  "items": {
+                    "type": "number"
+                  },
+                  "minItems": 2,
+                  "maxItems": 2
+                },
+                "minItems": 3
+              },
+              "closed": {
+                "const": true
+              },
+              "orientation": {
+                "enum": [
+                  "cw",
+                  "ccw"
+                ]
+              }
+            },
+            "required": [
+              "points",
+              "closed",
+              "orientation"
+            ],
+            "additionalProperties": false
+          },
+          "minItems": 1
+        },
+        "protected": {
+          "type": "boolean"
+        },
+        "origin": {
+          "enum": [
+            "computed",
+            "manual"
+          ]
+        },
+        "confidence": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "check_refs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 0
+        },
+        "area_mm2": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "contributor_kinds": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "contact",
+              "hole",
+              "boss",
+              "manual"
+            ]
+          }
+        },
+        "provenance": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "kind": {
+                "enum": [
+                  "contact",
+                  "hole",
+                  "boss",
+                  "manual"
+                ]
+              },
+              "source_refs": {
+                "type": "array",
+                "items": {
+                  "$ref": "common.schema.json#/$defs/EntityRef"
+                }
+              },
+              "evidence": {
+                "type": "object"
+              }
+            },
+            "required": [
+              "kind",
+              "source_refs",
+              "evidence"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "surface_mapping": {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "enum": [
+                "CYLINDER",
+                "CONE",
+                "SPHERE",
+                "PLANE"
+              ]
+            },
+            "mapping_type": {
+              "enum": [
+                "isometric",
+                "approximate"
+              ]
+            },
+            "origin": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 3,
+              "maxItems": 3
+            },
+            "x_axis": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 3,
+              "maxItems": 3
+            },
+            "y_axis": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 3,
+              "maxItems": 3
+            },
+            "z_axis": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 3,
+              "maxItems": 3
+            },
+            "radius_mm": {
+              "type": "number",
+              "minimum": 0
+            },
+            "sine": {
+              "type": "number"
+            },
+            "cosine": {
+              "type": "number"
+            },
+            "uv_bounds": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 4,
+              "maxItems": 4
+            },
+            "u_origin": {
+              "type": "number"
+            },
+            "chart_offset_mm": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 2,
+              "maxItems": 2
+            },
+            "chart_kind": {
+              "enum": [
+                "gnomonic"
+              ]
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "kind",
+            "mapping_type",
+            "origin",
+            "x_axis",
+            "y_axis",
+            "z_axis",
+            "radius_mm",
+            "sine",
+            "cosine",
+            "uv_bounds",
+            "u_origin"
+          ],
+          "allOf": [
+            {
+              "if": {
+                "properties": {
+                  "kind": {
+                    "const": "PLANE"
+                  }
+                }
+              },
+              "then": {
+                "properties": {
+                  "radius_mm": {
+                    "const": 0
+                  }
+                }
+              },
+              "else": {
+                "properties": {
+                  "radius_mm": {
+                    "exclusiveMinimum": 0
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "required": [
+        "id",
+        "kind",
+        "source_refs",
+        "local_frame",
+        "loops",
+        "protected",
+        "origin",
+        "confidence",
+        "check_refs"
+      ],
+      "additionalProperties": false
+    },
+    "PaintOverride": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "version": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "model_revision": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "face_ref": {
+          "$ref": "common.schema.json#/$defs/EntityRef"
+        },
+        "classification": {
+          "enum": [
+            "contact",
+            "boss",
+            "rib",
+            "exclude",
+            "unknown",
+            "hole"
+          ]
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "id",
+        "version",
+        "model_revision",
+        "face_ref",
+        "classification",
+        "reason"
+      ],
+      "additionalProperties": false
+    },
+    "PaintTargetGroup": {
+      "type": "object",
+      "properties": {
+        "group_id": {"type": "string", "pattern": "^[A-Za-z0-9_-]{1,80}$"},
+        "instance_id": {"type": "string", "minLength": 1},
+        "instance_name": {"type": "string", "minLength": 1},
+        "direction_label": {"type": "string", "minLength": 1, "maxLength": 80},
+        "normal": {"type": "array", "items": {"type": "number"}, "minItems": 3, "maxItems": 3},
+        "side_label": {"enum": ["exterior", "interior", "undetermined", "unassigned", "side-a", "side-b"]},
+        "paint_type": {"type": "string", "minLength": 1, "maxLength": 80},
+        "default_paint_type": {"type": "string", "minLength": 1, "maxLength": 80},
+        "target_face_refs": {
+          "type": "array",
+          "items": {"$ref": "common.schema.json#/$defs/EntityRef"},
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "area_mm2": {"type": "number", "exclusiveMinimum": 0},
+        "centroid_mm": {"type": "array", "items": {"type": "number"}, "minItems": 3, "maxItems": 3},
+        "confidence": {
+          "type": "object",
+          "properties": {
+            "score": {"type": "number", "minimum": 0, "maximum": 1},
+            "level": {"enum": ["high", "medium", "low"]},
+            "reasons": {"type": "array", "items": {"type": "string"}}
+          },
+          "required": ["score", "level", "reasons"],
+          "additionalProperties": false
+        },
+        "recommended": {"type": "boolean"},
+        "selectable": {"type": "boolean"},
+        "topology_status": {"enum": ["valid", "invalid", "unrenderable", "unsupported_shell"]},
+        "opposite_group_id": {"type": ["string", "null"]},
+        "diagnostic": {"anyOf": [{"type": "object"}, {"type": "string"}, {"type": "null"}]}
+      },
+      "required": ["group_id", "instance_id", "instance_name", "direction_label", "normal", "side_label", "target_face_refs"],
+      "additionalProperties": false
+    },
+    "PaintBatchInput": {
+      "allOf": [
+        {"$ref": "#/$defs/PaintInput"},
+        {"required": ["target_face_groups"]}
+      ]
+    },
+    "PaintRecommendationInput": {
+      "type": "object",
+      "properties": {
+        "model_ref": {"$ref": "common.schema.json#/$defs/ModelRef"}
+      },
+      "required": ["model_ref"],
+      "additionalProperties": false
+    },
+    "PaintRecommendationResult": {
+      "type": "object",
+      "properties": {
+        "schema_version": {"const": 1},
+        "revision_id": {"type": "string", "minLength": 1},
+        "model_ref": {"$ref": "common.schema.json#/$defs/ModelRef"},
+        "status": {"enum": ["passed", "needs_review", "failed"]},
+        "groups": {
+          "type": "array",
+          "items": {"allOf": [
+            {"$ref": "#/$defs/PaintTargetGroup"},
+            {"required": ["default_paint_type", "area_mm2", "centroid_mm", "confidence", "recommended", "selectable", "topology_status", "opposite_group_id", "diagnostic"]}
+          ]}
+        },
+        "diagnostics": {"type": "array", "items": {"type": "object"}}
+      },
+      "required": ["schema_version", "revision_id", "model_ref", "status", "groups", "diagnostics"],
+      "additionalProperties": false
+    },
+    "PaintBatchResult": {
+      "type": "object",
+      "properties": {
+        "schema_version": {"const": 1},
+        "revision_id": {"type": "string", "minLength": 1},
+        "model_ref": {"$ref": "common.schema.json#/$defs/ModelRef"},
+        "status": {"enum": ["passed", "needs_review", "failed"]},
+        "groups": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "properties": {
+              "group_id": {"type": "string", "pattern": "^[A-Za-z0-9_-]{1,80}$"},
+              "instance_id": {"type": "string", "minLength": 1},
+              "instance_name": {"type": "string", "minLength": 1},
+              "direction_label": {"type": "string", "minLength": 1},
+              "normal": {"type": "array", "items": {"type": "number"}, "minItems": 3, "maxItems": 3},
+              "side_label": {"type": "string", "minLength": 1},
+              "paint_type": {"type": "string", "minLength": 1},
+              "target_face_refs": {"type": "array", "items": {"$ref": "common.schema.json#/$defs/EntityRef"}, "minItems": 1},
+              "status": {"enum": ["passed", "needs_review", "failed"]},
+              "paint": {"anyOf": [{"$ref": "#/$defs/PaintResult"}, {"type": "null"}]},
+              "error": {
+                "anyOf": [
+                  {"type": "object", "properties": {"code": {"type": "string"}, "message": {"type": "string"}}, "required": ["code", "message"], "additionalProperties": false},
+                  {"type": "null"}
+                ]
+              }
+            },
+            "required": ["group_id", "instance_id", "instance_name", "direction_label", "normal", "side_label", "paint_type", "target_face_refs", "status", "paint", "error"],
+            "additionalProperties": false
+          }
+        },
+        "summary": {
+          "type": "object",
+          "properties": {
+            "passed": {"type": "integer", "minimum": 0},
+            "needs_review": {"type": "integer", "minimum": 0},
+            "failed": {"type": "integer", "minimum": 0}
+            ,"total": {"type": "integer", "minimum": 0}
+            ,"exportable": {"type": "integer", "minimum": 0}
+          },
+          "required": ["passed", "needs_review", "failed"],
+          "additionalProperties": false
+        },
+        "checks": {"type": "array", "items": {"$ref": "common.schema.json#/$defs/Check"}}
+      },
+      "required": ["schema_version", "revision_id", "model_ref", "status", "groups", "summary", "checks"],
+      "additionalProperties": false
+    },
+    "PaintResult": {
+      "type": "object",
+      "properties": {
+        "schema_version": {
+          "const": 1
+        },
+        "revision_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "model_ref": {
+          "$ref": "common.schema.json#/$defs/ModelRef"
+        },
+        "status": {
+          "enum": [
+            "passed",
+            "needs_review",
+            "failed"
+          ]
+        },
+        "regions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/PaintRegion"
+          }
+        },
+        "diagnostics": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "code": {
+                "type": "string",
+                "minLength": 1
+              },
+              "status": {
+                "enum": [
+                  "fail",
+                  "needs_review"
+                ]
+              },
+              "source_refs": {
+                "type": "array",
+                "items": {
+                  "$ref": "common.schema.json#/$defs/EntityRef"
+                }
+              },
+              "observed": {
+                "type": "object"
+              }
+            },
+            "required": [
+              "code",
+              "status",
+              "source_refs",
+              "observed"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "checks": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/Check"
+          }
+        },
+        "drawing_document": {
+          "anyOf": [
+            {
+              "$ref": "drawing.schema.json#/$defs/DrawingDocument"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "overlay": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "region_id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "source_refs": {
+                "type": "array",
+                "items": {
+                  "$ref": "common.schema.json#/$defs/EntityRef"
+                }
+              },
+              "loops_world_mm": {
+                "type": "array",
+                "items": {
+                  "type": "array",
+                  "items": {
+                    "type": "array",
+                    "items": {
+                      "type": "number"
+                    },
+                    "minItems": 3,
+                    "maxItems": 3
+                  }
+                }
+              }
+            },
+            "required": [
+              "region_id",
+              "source_refs",
+              "loops_world_mm"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "evidence": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "numerical_policy": {
+          "type": "object",
+          "properties": {
+            "chord_mm": {
+              "type": "number"
+            },
+            "gap_uncertainty_mm": {
+              "type": "number"
+            },
+            "offset_quad_segments": {
+              "type": "integer"
+            },
+            "manufacturing_tolerance": {
+              "const": false
+            }
+          },
+          "required": [
+            "chord_mm",
+            "gap_uncertainty_mm",
+            "offset_quad_segments",
+            "manufacturing_tolerance"
+          ],
+          "additionalProperties": false
+        },
+        "algorithm_version": {
+          "enum": [
+            "b08-planar-v1",
+            "b08-planar-v1-r1",
+            "b13-native-paint-v1",
+            "b13-native-paint-v2"
+          ]
+        },
+        "candidate_editable": {
+          "type": "boolean"
+        },
+        "surface_mapping": {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "enum": [
+                "CYLINDER",
+                "CONE",
+                "SPHERE",
+                "PLANE"
+              ]
+            },
+            "mapping_type": {
+              "enum": [
+                "isometric",
+                "approximate"
+              ]
+            },
+            "origin": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 3,
+              "maxItems": 3
+            },
+            "x_axis": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 3,
+              "maxItems": 3
+            },
+            "y_axis": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 3,
+              "maxItems": 3
+            },
+            "z_axis": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 3,
+              "maxItems": 3
+            },
+            "radius_mm": {
+              "type": "number",
+              "minimum": 0
+            },
+            "sine": {
+              "type": "number"
+            },
+            "cosine": {
+              "type": "number"
+            },
+            "uv_bounds": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 4,
+              "maxItems": 4
+            },
+            "u_origin": {
+              "type": "number"
+            },
+            "chart_offset_mm": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 2,
+              "maxItems": 2
+            },
+            "chart_kind": {
+              "enum": [
+                "gnomonic"
+              ]
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "kind",
+            "mapping_type",
+            "origin",
+            "x_axis",
+            "y_axis",
+            "z_axis",
+            "radius_mm",
+            "sine",
+            "cosine",
+            "uv_bounds",
+            "u_origin"
+          ],
+          "allOf": [
+            {
+              "if": {
+                "properties": {
+                  "kind": {
+                    "const": "PLANE"
+                  }
+                }
+              },
+              "then": {
+                "properties": {
+                  "radius_mm": {
+                    "const": 0
+                  }
+                }
+              },
+              "else": {
+                "properties": {
+                  "radius_mm": {
+                    "exclusiveMinimum": 0
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "required": [
+        "schema_version",
+        "revision_id",
+        "model_ref",
+        "status",
+        "regions",
+        "diagnostics",
+        "checks",
+        "drawing_document",
+        "overlay",
+        "evidence",
+        "numerical_policy",
+        "algorithm_version"
+      ],
+      "additionalProperties": false
+    }
+  }
+}

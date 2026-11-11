@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "scope": "B05 existing development candidates; no source is yet certified as a complete native assembly",
+  "cases": [
+    {
+      "id": "creo-panel-part",
+      "inventory_id": "Star1",
+      "source_root": "/data/qmh/satellite-plugins-20261029/dsh-satellite-geometry/runtime/tianyuan-geometry-20261008/inputs/Star1",
+      "main_file": "舱板a.prt.5",
+      "role": "required_real_part_candidate",
+      "required": true
+    },
+    {
+      "id": "creo-star-sensor-assembly",
+      "inventory_id": "Star1",
+      "source_root": "/data/qmh/satellite-plugins-20261029/dsh-satellite-geometry/runtime/tianyuan-geometry-20261008/inputs/Star1",
+      "main_file": "星敏a.asm.5",
+      "role": "assembly_candidate_not_yet_proven_complete",
+      "required": false
+    },
+    {
+      "id": "creo-tyy-assembly",
+      "inventory_id": "Star1",
+      "source_root": "/data/qmh/satellite-plugins-20261029/dsh-satellite-geometry/runtime/tianyuan-geometry-20261008/inputs/Star1",
+      "main_file": "tyy_sl.asm.5",
+      "role": "required_small_assembly_candidate_not_yet_proven_complete",
+      "required": true
+    },
+    {
+      "id": "nx-empty-probe",
+      "inventory_id": "nx-probe",
+      "source_root": "/data/qmh/satellite-plugins-20261029/dsh-satellite-thermal/runtime/nx-probe",
+      "main_file": "probe.prt",
+      "role": "format_probe_only_never_acceptance",
+      "required": false
+    },
+    {
+      "id": "nx-thermal-business-part",
+      "inventory_id": "nx-business",
+      "source_root": "/data/qmh/satellite-plugins-20261029/dsh-satellite-thermal/runtime/nx-jobs/9c766c672f60488b81ea902fc92e700e/nx",
+      "main_file": "geometry_master.prt",
+      "role": "historical_STEP_derived_business_geometry_not_external_assembly_acceptance",
+      "required": false
+    }
+  ],
+  "historical_step": {
+    "source_root": "/data/qmh/satellite-plugins-20261029/dsh-satellite-geometry/runtime/tianyuan-geometry-20261008/creo-conversion-test",
+    "relative_path": "j30j-9zkp3d_1_1.stp",
+    "role": "suspected_empty_export_negative_control"
+  }
+}

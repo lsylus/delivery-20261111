@@ -1,0 +1,17 @@
+{
+  "purpose": "Click equipment once to include its body and terminal, excluding neighbouring equipment.",
+  "case": "cube-cylinder-module",
+  "source": "fixtures/synthetic/feature-composite/cube-cylinder-module.step",
+  "units": "mm",
+  "sha256": "cebcad344a4b1474a895bfc75a233502b05d13a08454c35cae22b5845647d248",
+  "bytes": 39916,
+  "equipment_name": "Equipment-module",
+  "included_members": [
+    "Body",
+    "Terminal"
+  ],
+  "unrelated_members": [
+    "Unrelated-device"
+  ],
+  "default_excluded_instances": []
+}

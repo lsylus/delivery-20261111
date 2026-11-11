@@ -1,0 +1,31 @@
+{
+  "name": "satellite-drawings-workspace",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "packageManager": "npm@11.19.0",
+  "workspaces": [
+    "packages/workbench-common",
+    "packages/host-bridge",
+    "plugins/paint/plugin",
+    "plugins/paint/web",
+    "plugins/blanket/plugin",
+    "plugins/blanket/web"
+  ],
+  "scripts": {
+    "typecheck": "tsc -p tsconfig.b07.json",
+    "test:e2e": ".venv/bin/python scripts/run_e2e.py",
+    "build": "npm run build --workspaces --if-present"
+  },
+  "devDependencies": {
+    "typescript": "5.9.3",
+    "@types/react": "19.2.2",
+    "@types/react-dom": "19.2.2",
+    "@types/three": "0.184.0",
+    "esbuild": "0.25.12",
+    "@playwright/test": "1.58.2"
+  }
+}

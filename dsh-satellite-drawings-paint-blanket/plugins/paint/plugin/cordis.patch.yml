@@ -1,0 +1,6 @@
+- insert:
+    - id: satellite-paint
+      name: '@satellite-drawings/paint-plugin'
+      config:
+        serviceUrl: 'http://127.0.0.1:18777'
+        tenant: xingqiao-9999
