@@ -13,7 +13,7 @@ from .api.host_auth import HostAuthenticator, authorize_resource
 from .domain.errors import ServiceError, require
 from .domain.validation import validate, canonical
 from .storage.repository import Repository, uid
-from .storage.assets import filename, sha, controlled, check_step, sync_dir
+from .storage.assets import filename, header_filename, sha, controlled, check_step, sync_dir
 from .runtime.queue import Queue
 
 
@@ -136,7 +136,7 @@ def create_app(settings):
         principal = request.state.principal
         with repo.tx() as c:
             repo.bound(c, principal, project)
-        name = filename(request.headers.get('x-filename'))
+        name = header_filename(request.headers.get('x-filename'))
         require(request.headers.get('content-type', '').split(';')[0] in ('application/step', 'application/octet-stream'), message='Raw STEP upload required')
         id_ = uid()
         temp = repo.root / 'uploads' / id_

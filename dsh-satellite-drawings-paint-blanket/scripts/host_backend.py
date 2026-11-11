@@ -22,7 +22,7 @@ def atomic(path,value):
 def main():
     p=argparse.ArgumentParser();p.add_argument('--root',type=Path,required=True);p.add_argument('--allowed-parent',type=Path,default=Path('/data/qmh'))
     sub=p.add_subparsers(dest='command',required=True)
-    sub.add_parser('init')
+    i=sub.add_parser('init');i.add_argument('--converter-config',type=Path)
     e=sub.add_parser('enroll');e.add_argument('--public-info',type=Path,required=True);e.add_argument('--user',required=True);e.add_argument('--tenant',default='xingqiao-9999')
     e=sub.add_parser('revoke');e.add_argument('--kid',required=True)
     e=sub.add_parser('project-access');e.add_argument('--project',required=True);e.add_argument('--owner',required=True);e.add_argument('--access',choices=['deny','read','write'],required=True)
@@ -30,10 +30,13 @@ def main():
     if root.resolve()!=root:raise ValueError('Backend root must use a canonical path without symlink ancestors')
     if not root.is_absolute() or not root.is_relative_to(allowed_parent) or root.is_symlink():raise ValueError(f'New backend root must be under {allowed_parent}')
     if args.command=='init':
+        converter=args.converter_config.resolve(strict=True) if args.converter_config else None
         root.mkdir(mode=0o700,parents=True,exist_ok=False)
         (root/'data').mkdir(mode=0o700)
         atomic(root/'hosts.json',{'version':1,'keys':{}})
-        atomic(root/'config.json',{'auth_mode':'dsh-account','data_root':str(root/'data'),'host_registry':str(root/'hosts.json'),'bind_host':'127.0.0.1','upload_limit':67108864,'timeout_s':120,'memory_limit_mb':4096,'concurrency':1})
+        config={'auth_mode':'dsh-account','data_root':str(root/'data'),'host_registry':str(root/'hosts.json'),'bind_host':'127.0.0.1','upload_limit':67108864,'timeout_s':900,'memory_limit_mb':32768,'concurrency':1}
+        if converter:config['converter_config']=str(converter)
+        atomic(root/'config.json',config)
         print(json.dumps({'root':str(root),'configured':True,'authorized_keys':0,'status':'awaiting_platform_public_key_enrollment'}));return
     if root.stat().st_mode&0o077:raise ValueError('Private backend root required')
     registry=json.loads((root/'hosts.json').read_text())

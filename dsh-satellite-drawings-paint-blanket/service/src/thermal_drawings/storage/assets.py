@@ -2,15 +2,29 @@
 import hashlib
 import os
 from pathlib import Path
-import re
+import unicodedata
+from urllib.parse import unquote
 from ..domain.errors import require
 
 
 def filename(value):
-    require(isinstance(value, str) and bool(re.fullmatch(r'[A-Za-z0-9][A-Za-z0-9_.-]{0,119}\.(?:step|stp)', value, re.I)),
+    require(isinstance(value, str), message='A simple STEP basename is required; archives and paths are unsupported')
+    value = unicodedata.normalize('NFC', value)
+    stem, dot, extension = value.rpartition('.')
+    require(dot and extension.lower() in ('step', 'stp') and stem and len(value) <= 125,
+            message='A simple STEP basename is required; archives and paths are unsupported')
+    require(stem[0].isalnum() and all(character.isalnum() or character in '_.-' for character in stem),
             message='A simple STEP basename is required; archives and paths are unsupported')
     require('..' not in value)
     return value
+
+
+def header_filename(value):
+    require(isinstance(value, str), message='A UTF-8 encoded STEP filename is required')
+    try:
+        return filename(unquote(value, encoding='utf-8', errors='strict'))
+    except UnicodeError:
+        require(False, message='A UTF-8 encoded STEP filename is required')
 
 
 def sha(path):

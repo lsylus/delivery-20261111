@@ -20,6 +20,12 @@
 
 已获授权并开始执行的几何任务不会因稍后退出登录自动取消。授权检查与提交之间不是跨进程事务；撤销保证后续授权请求拒绝，不承诺撤销前已通过授权的操作可回滚。任务取消使用本模块 run 工具，不能把 run_id 当成功。
 
+5090 正式部署由 operator 运行一个共享的 `18777` 后端。`host_backend.py init`
+生成 900 秒、32768 MiB、单 worker 的私有配置，并通过
+`--converter-config` 写入已审核的 OpenCADStudio 配置路径。每个 DSH 账号中的
+paint 与 blanket 模块各自产生一个持久公钥；operator 使用现有 `enroll` 命令将
+两条公开身份加入共享后端。相同 profile 升级插件时凭证保留，不需要重复登记。
+
 ## 安装和工具
 
 两包独立 insert-only IDs；原生 DSH 模块由实际 installAnchor 提供，不打包第二套 dsh-tools。实际 Cordis 要求异步 apply 才能等待初始化；对象参数明确 additionalProperties。原生工具为每模块 `host_status`、`operation`、`run`。原隔离 MCP 脚本保持显式 isolated-adapter 配置，正式使用 DSH 原生工具，不把隔离 bearer 接入正式链。

@@ -91,8 +91,14 @@ Initialize a private backend root. The default security policy allows roots unde
 .venv/bin/python scripts/host_backend.py \
   --allowed-parent /data/qmh \
   --root /data/qmh/satellite-drawings-backend \
-  init
+  init \
+  --converter-config "$PWD/deploy/opencadstudio-5090.json"
 ```
+
+The generated formal configuration uses one worker with a 900-second deadline and a
+32 GiB virtual-address limit. The converter option records the reviewed
+OpenCADStudio configuration in the backend config so paint and blanket DWG export
+use the same settings as the validated trial service.
 
 Start the loopback backend:
 

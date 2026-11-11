@@ -3,6 +3,7 @@ import {workspaceEntry} from './workspace.mjs';
 import {attachChat} from './chat-bridge.mjs';
 export function clientPlugin(module) {
   const entry=workspaceEntry(module);
+  const sidebarId=`@satellite-drawings/${module}-plugin/workspace`;
   function Panel({sessionId,useInput,inputActions,onClose}) {
     const frame=useRef(null), live=useRef(null), [notice,setNotice]=useState('');
     const input=useInput(s=>s);live.current={sessionId,input,inputActions};
@@ -37,8 +38,21 @@ export function clientPlugin(module) {
     return <section style={{height:'100%',display:'flex',flexDirection:'column'}}>{onClose&&<button onClick={onClose}>关闭</button>}{notice&&<p role="status">{notice}</p>}{sessionId?<iframe key={sessionId} ref={frame} title={entry.name.zh} src={`/satellite-${module}/?session=${encodeURIComponent(sessionId)}`} style={{border:0,flex:1,width:'100%'}}/>:<p>请选择当前会话。</p>}</section>;
   }
   function Entry({activeTab,onSelectTab}) {return <button aria-expanded={activeTab===entry.key} onClick={()=>onSelectTab(entry.key)}>{entry.name.zh}</button>;}
-  return {inject:['slots'],apply(ctx){
+  function OpenEntry({sessionId,openWorkspace}) {
+    const available=typeof sessionId==='string'&&sessionId.length>0;
+    return <button type="button" disabled={!available} title={available?`在右侧栏打开${entry.name.zh}`:'请先选择会话'} onClick={()=>{if(available)openWorkspace(sessionId);}}>{entry.name.zh}</button>;
+  }
+  return {inject:['slots','sidebarRight','sidebarRightTabs'],apply(ctx){
+    ctx.effect(()=>ctx.sidebarRightTabs.register({
+      id:sidebarId,kind:entry.key,title:()=>entry.name.zh,keepMounted:true,
+      guide:[{id:entry.id,order:entry.order,title:()=>entry.name.zh}],
+    }),`${module}: right sidebar page`);
+    ctx.slots.inject('sidebar.right.pane.tab',()=>ctx.slots.register({name:'sidebar.right.pane.tab',key:sidebarId},Panel));
     ctx.slots.inject('custom.agent.nav',()=>ctx.slots.register({name:'custom.agent.nav',id:entry.id,metadata:entry,label:Object.assign(()=>entry.name.zh,{agentWorkspace:entry})},Entry));
     ctx.slots.inject('custom.agent.workspace',()=>ctx.slots.register({name:'custom.agent.workspace',key:entry.key},Panel));
+    ctx.slots.inject('conversation.session.header.actions',()=>ctx.slots.register({
+      name:'conversation.session.header.actions',id:`satellite-${module}-open`,order:entry.order,
+      inject:()=>({openWorkspace:sessionId=>ctx.sidebarRight.openTabIn(sessionId,entry.key)}),
+    },OpenEntry));
   }};
 }

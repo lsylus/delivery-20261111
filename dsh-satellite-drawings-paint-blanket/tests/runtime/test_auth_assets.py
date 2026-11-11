@@ -2,6 +2,7 @@ import io
 import json
 from pathlib import Path
 import zipfile
+from urllib.parse import quote
 import pytest
 from thermal_drawings.settings import Settings
 from thermal_drawings.api.auth import DevAuthenticator
@@ -53,6 +54,18 @@ def test_upload_paths_rejected(service, name):
     service.call('POST', f'/projects/{p}/assets', b'ISO-10303-21; END-ISO-10303-21;', expected=422,
                  headers={'Content-Type': 'application/step', 'X-Filename': name})
     assert not list((service.data / 'uploads').iterdir())
+
+
+def test_percent_encoded_unicode_upload_filename(service):
+    project = service.project()
+    uploaded = service.call(
+        'POST', f'/projects/{project}/assets',
+        (Path(__file__).resolve().parents[2] / 'fixtures/synthetic/assembly-tree.step').read_bytes(), expected=201,
+        headers={'Content-Type': 'application/step', 'X-Filename': quote('简化卫星.step')},
+    )[1]
+    assert uploaded['filename'] == '简化卫星.step'
+    run = service.wait(service.submit_import(project, uploaded))
+    assert run['state'] == 'succeeded'
 
 
 def test_archives_truncated_and_oversize_rejected(service):
